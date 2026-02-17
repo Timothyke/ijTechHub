@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tech Hub – Websites, Branding & Digital Solutions That Grow Your Business." />
+  <meta name="keywords" content="web development, branding, digital agency, UI/UX design, SEO, e-commerce, Tech Hub" />
+  <title>Tech Hub | Build Your Digital Presence with Confidence</title>
+
+  <!-- Font Awesome for real social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════
+       TOKENS & RESET
+    ═══════════════════════════════════════ */
+    :root {
+      --navy:        #050F2C;
+      --navy-mid:    #0A1A45;
+      --navy-light:  #102060;
+      --teal:        #0ABFBD;
+      --teal-light:  #2DD4D2;
+      --teal-dim:    rgba(10,191,189,.15);
+      --gold:        #C9A84C;
+      --gold-light:  #E8C96A;
+      --white:       #FFFFFF;
+      --gray:        #8A9AC0;
+      --gray-light:  #C5CEE8;
+      --card-bg:     rgba(16,32,96,.55);
+      --border:      rgba(10,191,189,.2);
+      --shadow:      0 20px 60px rgba(0,0,0,.45);
+      --radius:      16px;
+      --radius-sm:   10px;
+      --tr:          .35s cubic-bezier(.4,0,.2,1);
+      --font-d:      'Syne', sans-serif;
+      --font-b:      'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--navy); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+    ul   { list-style: none; }
+
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+    /* ── Tags, titles, utility ── */
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-d); font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--teal);
+      background: var(--teal-dim); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 50px; margin-bottom: 18px;
+    }
+    .section-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+    .section-title { font-family: var(--font-d); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .section-title span { color: var(--teal); }
+    .section-sub { font-size: 1.05rem; font-weight: 300; color: var(--gray-light); max-width: 580px; line-height: 1.7; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+    section { padding: 100px 0; }
+    .gold-line { width: 50px; height: 3px; background: linear-gradient(90deg,var(--gold),transparent); border-radius: 2px; margin-bottom: 20px; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-d); font-weight: 700; font-size: .92rem;
+      letter-spacing: .04em; padding: 14px 30px; border-radius: 50px;
+      border: none; cursor: pointer; transition: var(--tr); position: relative; overflow: hidden;
+    }
+    .btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.08); opacity: 0; transition: opacity .25s; }
+    .btn:hover::after { opacity: 1; }
+    .btn-primary { background: linear-gradient(135deg,var(--teal),#0892C0); color: var(--navy); box-shadow: 0 8px 30px rgba(10,191,189,.38); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(10,191,189,.5); }
+    .btn-outline  { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.3); }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+    .btn-gold     { background: linear-gradient(135deg,var(--gold),var(--gold-light)); color: var(--navy); box-shadow: 0 8px 28px rgba(201,168,76,.32); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(201,168,76,.5); }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ═══════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════ */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 12px 0; transition: background .4s, padding .4s, box-shadow .4s;
+    }
+    #navbar.scrolled {
+      background: rgba(5,15,44,.94); backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px); padding: 8px 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,.4);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img {
+      height: 52px; width: 52px; object-fit: contain;
+      filter: drop-shadow(0 2px 10px rgba(201,168,76,.45));
+    }
+    .nav-logo-text { font-family: var(--font-d); font-size: 1.45rem; font-weight: 800; color: var(--white); }
+    .nav-logo-text span { color: var(--gold-light); }
+
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { font-size: .88rem; font-weight: 500; color: var(--gray-light); transition: color .25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--teal); border-radius: 2px; transition: width .3s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { margin-left: 10px; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--tr); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,15,44,.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; color: var(--white); transition: color .2s; }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-close { position: absolute; top: 24px; right: 5%; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
+    .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+    .glow-1 { width: 600px; height: 600px; background: radial-gradient(circle,rgba(10,191,189,.22),transparent 65%); top: -120px; right: -100px; animation: floatG 8s ease-in-out infinite alternate; }
+    .glow-2 { width: 500px; height: 500px; background: radial-gradient(circle,rgba(201,168,76,.12),transparent 65%); bottom: -80px; left: -80px; animation: floatG 10s ease-in-out infinite alternate-reverse; }
+    @keyframes floatG { from{transform:translate(0,0) scale(1)} to{transform:translate(20px,30px) scale(1.06)} }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(10,191,189,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,191,189,.04) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; position: relative; z-index: 2; }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-dim); border: 1px solid var(--border); color: var(--teal-light); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 7px 16px; border-radius: 50px; margin-bottom: 22px; }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(10,191,189,.5)} 50%{box-shadow:0 0 0 7px rgba(10,191,189,0)} }
+
+    .hero-title { font-family: var(--font-d); font-size: clamp(2.4rem,5.2vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 22px; }
+    .hero-title .accent { color: var(--teal); }
+    .hero-title .gold   { color: var(--gold-light); }
+    .hero-sub { font-size: 1.1rem; font-weight: 300; color: var(--gray-light); line-height: 1.7; max-width: 500px; margin-bottom: 36px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 50px; }
+    .hero-stats { display: flex; gap: 36px; }
+    .stat-num { font-family: var(--font-d); font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .stat-num span { color: var(--teal); }
+    .stat-label { font-size: .78rem; color: var(--gray); margin-top: 4px; }
+
+    /* Hero visual */
+    .hero-visual { position: relative; }
+    .hero-img-card { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); position: relative; }
+    .hero-img-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(5,15,44,.85) 0%,transparent 60%); }
+    .hero-img-caption { position: absolute; bottom: 20px; left: 20px; right: 20px; }
+    .hero-img-caption h3 { font-family: var(--font-d); font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .hero-img-caption p { font-size: .78rem; color: var(--gray-light); }
+    .float-badge { position: absolute; bottom: -18px; right: 24px; background: linear-gradient(135deg,var(--gold),var(--gold-light)); color: var(--navy); font-family: var(--font-d); font-size: .78rem; font-weight: 800; padding: 10px 20px; border-radius: 50px; box-shadow: 0 8px 28px rgba(201,168,76,.4); white-space: nowrap; }
+    .hero-pill { position: absolute; display: flex; align-items: center; gap: 8px; background: rgba(5,15,44,.9); border: 1px solid var(--border); backdrop-filter: blur(10px); border-radius: 50px; padding: 8px 14px; font-size: .75rem; font-weight: 600; white-space: nowrap; }
+    .hero-pill-1 { top: 18px; left: -20px; }
+    .hero-pill-2 { top: 50%; right: -14px; transform: translateY(-50%); }
+    .hero-pill .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+
+    /* ═══════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════ */
+    #about { position: relative; overflow: hidden; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+    .about-visual { position: relative; }
+    .about-img-main { border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .about-img-main img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+    .about-img-thumb { position: absolute; bottom: -24px; right: -24px; width: 160px; border-radius: 16px; overflow: hidden; border: 3px solid var(--navy); box-shadow: var(--shadow); }
+    .about-img-thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .about-accent-card { position: absolute; bottom: -20px; left: -20px; background: linear-gradient(135deg,var(--teal),#0892C0); border-radius: 18px; padding: 18px 24px; box-shadow: 0 12px 36px rgba(10,191,189,.4); }
+    .accent-card-num { font-family: var(--font-d); font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .accent-card-text { font-size: .76rem; color: var(--navy); font-weight: 500; opacity: .8; }
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 30px; }
+    .pillar { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; transition: border-color .25s, transform .25s; }
+    .pillar:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .pillar-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .pillar-title { font-family: var(--font-d); font-weight: 700; font-size: .9rem; margin-bottom: 4px; }
+    .pillar-desc { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+
+    /* ═══════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════ */
+    #services { background: var(--navy-mid); position: relative; overflow: hidden; }
+    #services::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg,transparent,var(--border),transparent); }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .service-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; position: relative; overflow: hidden; transition: transform .3s, border-color .3s, box-shadow .3s; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,transparent,var(--teal),transparent); opacity: 0; transition: opacity .3s; }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(10,191,189,.4); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .service-card:hover::before { opacity: 1; }
+    .service-card.featured { border-color: rgba(201,168,76,.35); background: linear-gradient(135deg,rgba(16,32,96,.7),rgba(201,168,76,.06)); }
+    .service-card.featured::before { background: linear-gradient(90deg,transparent,var(--gold),transparent); opacity: 1; }
+    .service-icon-wrap { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; background: var(--teal-dim); border: 1px solid var(--border); transition: transform .3s; }
+    .service-card:hover .service-icon-wrap { transform: scale(1.1) rotate(-4deg); }
+    .service-card.featured .service-icon-wrap { background: rgba(201,168,76,.12); border-color: rgba(201,168,76,.25); }
+    .service-title { font-family: var(--font-d); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .service-desc { font-size: .87rem; color: var(--gray-light); line-height: 1.65; }
+    .service-arrow { display: inline-flex; align-items: center; gap: 5px; margin-top: 18px; font-size: .8rem; font-weight: 600; color: var(--teal); opacity: 0; transform: translateX(-8px); transition: opacity .3s, transform .3s; }
+    .service-card:hover .service-arrow { opacity: 1; transform: none; }
+
+    /* ═══════════════════════════════════════
+       WHY CHOOSE US
+    ═══════════════════════════════════════ */
+    #why { position: relative; }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-list { display: flex; flex-direction: column; gap: 16px; }
+    .why-item { display: flex; align-items: flex-start; gap: 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 22px; transition: border-color .25s, transform .25s; }
+    .why-item:hover { border-color: var(--teal); transform: translateX(6px); }
+    .why-check { width: 36px; height: 36px; border-radius: 10px; background: var(--teal-dim); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .why-title { font-family: var(--font-d); font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+    .why-desc { font-size: .82rem; color: var(--gray); line-height: 1.55; }
+    .big-stat-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: var(--shadow); text-align: center; position: relative; overflow: hidden; }
+    .big-stat-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%,rgba(10,191,189,.1),transparent 65%); pointer-events: none; }
+    .big-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 28px; }
+    .bsg-item { padding: 28px 20px; border: 1px solid var(--border); background: rgba(255,255,255,.02); }
+    .bsg-item:first-child{border-radius:16px 0 0 0} .bsg-item:nth-child(2){border-radius:0 16px 0 0} .bsg-item:nth-child(3){border-radius:0 0 0 16px} .bsg-item:last-child{border-radius:0 0 16px 0}
+    .bsg-num { font-family: var(--font-d); font-size: 2.4rem; font-weight: 800; color: var(--teal); line-height: 1; margin-bottom: 6px; }
+    .bsg-label { font-size: .78rem; color: var(--gray); }
+    .promise-badge { background: linear-gradient(135deg,var(--gold),var(--gold-light)); color: var(--navy); border-radius: 12px; padding: 16px 24px; font-family: var(--font-d); font-weight: 700; font-size: .9rem; }
+
+    /* ═══════════════════════════════════════
+       PORTFOLIO
+    ═══════════════════════════════════════ */
+    #portfolio { background: var(--navy-mid); position: relative; overflow: hidden; }
+    .portfolio-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .pf-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--gray-light); font-size: .82rem; font-weight: 500; padding: 8px 18px; border-radius: 50px; cursor: pointer; transition: var(--tr); }
+    .pf-btn.active,.pf-btn:hover { background: var(--teal-dim); border-color: var(--teal); color: var(--teal-light); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .port-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: transform .3s, box-shadow .3s; cursor: pointer; }
+    .port-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+    .port-thumb { width: 100%; position: relative; overflow: hidden; }
+    .port-thumb img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .5s ease; }
+    .port-card:hover .port-thumb img { transform: scale(1.06); }
+    .port-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(5,15,44,.95) 0%,rgba(5,15,44,.5) 50%,transparent 100%); opacity: 0; transition: opacity .3s; display: flex; align-items: flex-end; padding: 20px; }
+    .port-card:hover .port-overlay { opacity: 1; }
+    .view-btn { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; font-weight: 600; color: var(--teal); }
+    .port-info { padding: 18px 20px; background: var(--card-bg); }
+    .port-tag { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); margin-bottom: 5px; }
+    .port-name { font-family: var(--font-d); font-weight: 700; font-size: .95rem; }
+    .port-desc { font-size: .78rem; color: var(--gray); margin-top: 4px; }
+
+    /* ═══════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════ */
+    #testimonials { position: relative; overflow: hidden; }
+    .testi-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+    .testi-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; position: relative; overflow: hidden; transition: border-color .3s, transform .3s; }
+    .testi-card:hover { border-color: rgba(10,191,189,.4); transform: translateY(-4px); }
+    .testi-card.featured { grid-column: 1/-1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; border-color: rgba(201,168,76,.3); background: linear-gradient(135deg,var(--card-bg),rgba(201,168,76,.04)); }
+    .quote-icon { font-size: 3rem; line-height: 1; color: var(--teal); opacity: .3; margin-bottom: 10px; }
+    .testi-text { font-size: 1rem; font-weight: 300; color: var(--gray-light); line-height: 1.75; margin-bottom: 22px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--teal); flex-shrink: 0; }
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-name { font-weight: 600; font-size: .9rem; }
+    .author-role { font-size: .76rem; color: var(--gray); }
+    .testi-stars { margin-bottom: 14px; color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+    .testi-side-img { width: 140px; height: 140px; border-radius: 16px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); }
+    .testi-side-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #contact { background: var(--navy-mid); position: relative; overflow: hidden; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; align-items: start; }
+    .contact-info-text { font-size: .95rem; color: var(--gray-light); line-height: 1.7; margin-bottom: 32px; }
+    .contact-methods { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .contact-method { display: flex; align-items: center; gap: 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 18px; transition: border-color .25s; }
+    .contact-method:hover { border-color: var(--teal); }
+    .method-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--teal-dim); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--teal); flex-shrink: 0; }
+    .method-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--gray); margin-bottom: 2px; }
+    .method-value { font-weight: 600; font-size: .9rem; }
+    .contact-form { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; position: relative; }
+    .contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,var(--teal),var(--gold)); }
+    .form-title { font-family: var(--font-d); font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: .8rem; font-weight: 500; color: var(--gray-light); margin-bottom: 6px; }
+    .form-group input,.form-group textarea,.form-group select { width: 100%; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-sm); color: var(--white); font-family: var(--font-b); font-size: .9rem; padding: 12px 16px; outline: none; transition: border-color .25s; appearance: none; }
+    .form-group input::placeholder,.form-group textarea::placeholder { color: var(--gray); }
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--navy-mid); }
+    .form-submit { width: 100%; padding: 15px; font-size: .95rem; }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer { background: var(--navy); border-top: 1px solid var(--border); padding: 70px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.8fr repeat(3,1fr); gap: 50px; margin-bottom: 56px; }
+    .footer-brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand-logo img { height: 46px; width: 46px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(201,168,76,.4)); }
+    .footer-brand-logo-text { font-family: var(--font-d); font-size: 1.3rem; font-weight: 800; color: var(--white); }
+    .footer-brand-logo-text span { color: var(--gold-light); }
+    .footer-brand p { font-size: .85rem; color: var(--gray); line-height: 1.7; max-width: 260px; margin-bottom: 22px; }
+
+    /* Social icons with real FA icons */
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem; color: var(--gray-light);
+      transition: background .25s, border-color .25s, color .25s, transform .25s;
+    }
+    .social-link:hover { transform: translateY(-3px); }
+    .social-link.fb:hover { background: rgba(24,119,242,.15); border-color: #1877F2; color: #1877F2; }
+    .social-link.ig:hover { background: rgba(228,64,95,.15);  border-color: #E4405F; color: #E4405F; }
+    .social-link.tw:hover { background: rgba(255,255,255,.08);border-color: #fff;    color: #fff; }
+    .social-link.li:hover { background: rgba(10,102,194,.15); border-color: #0A66C2; color: #0A66C2; }
+    .social-link.wa:hover { background: rgba(37,211,102,.15); border-color: #25D366; color: #25D366; }
+
+    .footer-col h4 { font-family: var(--font-d); font-size: .88rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--white); margin-bottom: 18px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: .85rem; color: var(--gray); transition: color .25s; display: flex; align-items: center; gap: 6px; }
+    .footer-col ul a::before { content: '›'; color: var(--teal); font-size: 1rem; }
+    .footer-col ul a:hover { color: var(--teal-light); }
+    .footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: .83rem; color: var(--gray); margin-bottom: 12px; }
+    .footer-contact-item i { color: var(--teal); width: 14px; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: .8rem; color: var(--gray); }
+    .footer-copy span { color: var(--teal); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: .78rem; color: var(--gray); transition: color .25s; }
+    .footer-legal a:hover { color: var(--teal); }
+
+    /* Back to top / toast */
+    #back-top { position: fixed; bottom: 28px; right: 28px; width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg,var(--teal),#0892C0); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 8px 24px rgba(10,191,189,.4); transform: translateY(80px); opacity: 0; transition: var(--tr); z-index: 500; }
+    #back-top.visible { transform: none; opacity: 1; }
+    #back-top:hover { transform: translateY(-3px); }
+    #toast { position: fixed; bottom: 90px; right: 28px; background: var(--teal); color: var(--navy); font-family: var(--font-d); font-weight: 700; font-size: .88rem; padding: 12px 22px; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.4); transform: translateY(20px); opacity: 0; transition: var(--tr); pointer-events: none; z-index: 600; }
+    #toast.show { transform: none; opacity: 1; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width:1024px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width:768px) {
+      section { padding: 70px 0; }
+      .nav-links,.nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner,.about-inner,.why-inner,.contact-inner { grid-template-columns: 1fr; gap: 50px; }
+      .hero-visual { display: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .testi-card.featured { grid-column: auto; display: block; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-img-thumb,.about-accent-card { display: none; }
+      .about-pillars { grid-template-columns: 1fr; }
+      .hero-stats { gap: 22px; }
+      .stat-num { font-size: 1.4rem; }
+    }
+    @media (max-width:480px) {
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+
+    <a href="#hero" class="nav-logo">
+      <!--
+        ★ YOUR LOGO IMAGE
+        Keep this filename if your logo file is in the same folder as this HTML.
+        Or update the path: src="images/logo.png"
+      -->
+      <img src="images/logo.png" alt="Tech Hub Logo" />
+      <div class="nav-logo-text">Tech<span>Hub</span></div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about"        onclick="closeMobile()">About</a>
+  <a href="#services"     onclick="closeMobile()">Services</a>
+  <a href="#portfolio"    onclick="closeMobile()">Portfolio</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#contact"      onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Get a Quote</a>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container hero-inner">
+
+    <div class="hero-copy reveal">
+      <div class="hero-badge"><span class="dot"></span>Trusted Digital Agency</div>
+      <h1 class="hero-title">
+        Build Your<br>
+        <span class="accent">Digital Presence</span><br>
+        with <span class="gold">Confidence</span>
+      </h1>
+      <p class="hero-sub">Websites, Branding &amp; Digital Solutions That Grow Your Business. We turn ideas into powerful online experiences that convert.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">✦ Get a Quote</a>
+        <a href="#services" class="btn btn-outline">View Services ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">150<span>+</span></div><div class="stat-label">Projects Delivered</div></div>
+        <div class="stat-item"><div class="stat-num">98<span>%</span></div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat-item"><div class="stat-num">5<span>+</span></div><div class="stat-label">Years Experience</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" style="transition-delay:.2s">
+      <div style="position:relative">
+        <div class="hero-pill hero-pill-1"><span class="pill-dot"></span>Live Projects Active</div>
+        <div class="hero-pill hero-pill-2"><span class="pill-dot"></span>5-Star Rated</div>
+
+        <div class="hero-img-card">
+          <!--
+            ★ REPLACE with your best showcase/hero image (team, office, or project screenshot).
+            Recommended size: 900×680px
+            Example: src="images/hero-showcase.jpg"
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80"
+            alt="Tech Hub digital solutions showcase"
+          />
+          <div class="hero-img-overlay"></div>
+          <div class="hero-img-caption">
+            <h3>Award-Winning Digital Solutions</h3>
+            <p>Websites · Branding · E-Commerce · SEO</p>
+          </div>
+        </div>
+        <div class="float-badge">✦ 5-Star Rated Agency</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section id="about">
+  <div class="container about-inner">
+
+    <div class="about-visual reveal">
+      <div class="about-img-main">
+        <!--
+          ★ REPLACE with your team photo or office photo (portrait orientation).
+          Recommended size: 700×875px
+          Example: src="images/team.jpg"
+        -->
+        <img
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80"
+          alt="Tech Hub team working together"
+        />
+      </div>
+
+      <div class="about-img-thumb">
+        <!--
+          ★ REPLACE with a secondary photo (close-up of work, happy client, or logo).
+          Recommended size: 300×300px
+          Example: src="images/team-detail.jpg"
+        -->
+        <img
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&q=80"
+          alt="Tech Hub team detail"
+        />
+      </div>
+
+      <div class="about-accent-card">
+        <div class="accent-card-num">150+</div>
+        <div class="accent-card-text">Projects Completed</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="section-tag">About Tech Hub</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">We Help Businesses <span>Thrive</span> Online</h2>
+      <p class="section-sub" style="margin-bottom:24px">Tech Hub is a results-driven digital agency built for ambitious businesses. We combine strategic thinking with creative execution to deliver websites, brands, and digital experiences that don't just look great — they convert.</p>
+      <p style="font-size:.9rem;color:var(--gray);line-height:1.7;margin-bottom:30px">Since our founding, we've partnered with startups, established brands, and everything in between — always bringing reliability, creativity, and measurable results to every project. Your growth is our mission.</p>
+      <div class="about-pillars">
+        <div class="pillar"><div class="pillar-icon">🎯</div><div class="pillar-title">Results-Driven</div><div class="pillar-desc">Every decision is guided by your business goals and real data.</div></div>
+        <div class="pillar"><div class="pillar-icon">⚡</div><div class="pillar-title">Fast Delivery</div><div class="pillar-desc">We move fast without sacrificing quality or attention to detail.</div></div>
+        <div class="pillar"><div class="pillar-icon">🤝</div><div class="pillar-title">True Partnership</div><div class="pillar-desc">We collaborate closely and stay accountable from start to finish.</div></div>
+        <div class="pillar"><div class="pillar-icon">💡</div><div class="pillar-title">Creative Excellence</div><div class="pillar-desc">Designs that stand out and brand stories that resonate deeply.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Services Built to <span>Scale</span> Your Business</h2>
+      <p class="section-sub">From design to development to digital strategy — everything your business needs to dominate online.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">💻</div>
+        <h3 class="service-title">Website Development</h3>
+        <p class="service-desc">Custom, blazing-fast websites built with modern tech. Fully responsive, SEO-optimised, and designed to convert visitors into clients.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card featured reveal" style="transition-delay:.05s">
+        <div class="service-icon-wrap">🛒</div>
+        <h3 class="service-title">E-Commerce Solutions</h3>
+        <p class="service-desc">Powerful online stores that sell 24/7. Seamless checkouts, secure payments, and inventory management to grow your revenue effortlessly.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-icon-wrap">🎨</div>
+        <h3 class="service-title">UI/UX &amp; Graphic Design</h3>
+        <p class="service-desc">Interfaces that delight users and keep them engaged. Strategic UX research paired with visually stunning design that elevates your product.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.05s">
+        <div class="service-icon-wrap">✦</div>
+        <h3 class="service-title">Branding &amp; Logo Design</h3>
+        <p class="service-desc">A brand identity that commands attention. Logos, colour palettes, typography, and guidelines that tell your unique story.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-icon-wrap">🔒</div>
+        <h3 class="service-title">Website Maintenance &amp; Security</h3>
+        <p class="service-desc">Keep your site fast, updated, and protected. Regular backups, security monitoring, and performance optimisation so you focus on your business.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.15s">
+        <div class="service-icon-wrap">📱</div>
+        <h3 class="service-title">Social Media Management</h3>
+        <p class="service-desc">Consistent, engaging content across all platforms. We build your audience, boost engagement, and turn followers into loyal paying customers.</p>
+        <div class="service-arrow">Learn more →</div>
+      </div>
+      <div class="service-card reveal" style="grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:28px 32px">
+        <div class="service-icon-wrap" style="margin-bottom:0">🔍</div>
+        <div>
+          <h3 class="service-title" style="margin-bottom:6px">SEO Optimisation</h3>
+          <p class="service-desc" style="max-width:580px">Data-driven SEO strategies that drive organic traffic, qualified leads, and sustainable long-term growth for your business.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     WHY CHOOSE US
+════════════════════════════════════════ -->
+<section id="why">
+  <div class="container why-inner">
+    <div class="reveal">
+      <div class="section-tag">Why Tech Hub</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">The Agency That <span>Delivers</span></h2>
+      <p class="section-sub" style="margin-bottom:36px">We don't just build websites — we build growth engines. Here's why businesses choose Tech Hub and keep coming back.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="why-check">🎯</div><div><div class="why-title">Client-Focused Solutions</div><div class="why-desc">Your goals drive every decision. We listen first, then craft strategies tailored to your specific business needs.</div></div></div>
+        <div class="why-item"><div class="why-check">💰</div><div><div class="why-title">Affordable, Transparent Pricing</div><div class="why-desc">Premium quality without the premium price tag. Clear pricing with no hidden fees — ever.</div></div></div>
+        <div class="why-item"><div class="why-check">⚡</div><div><div class="why-title">Fast, Reliable Delivery</div><div class="why-desc">We respect your time. Streamlined processes ensure projects are delivered on schedule, every time.</div></div></div>
+        <div class="why-item"><div class="why-check">✨</div><div><div class="why-title">Modern, Standout Designs</div><div class="why-desc">No templates. Every design is bespoke, current, and crafted to make you unforgettable.</div></div></div>
+        <div class="why-item"><div class="why-check">🤝</div><div><div class="why-title">Ongoing Support &amp; Partnership</div><div class="why-desc">We're with you long after launch — dedicated support, regular check-ins, and continuous improvement.</div></div></div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="big-stat-card">
+        <div class="big-stat-grid">
+          <div class="bsg-item"><div class="bsg-num">150+</div><div class="bsg-label">Projects Completed</div></div>
+          <div class="bsg-item"><div class="bsg-num">98%</div><div class="bsg-label">Satisfaction Rate</div></div>
+          <div class="bsg-item"><div class="bsg-num">5+</div><div class="bsg-label">Years in Business</div></div>
+          <div class="bsg-item"><div class="bsg-num">24h</div><div class="bsg-label">Support Response</div></div>
+        </div>
+        <div class="promise-badge">✦ Our Promise: Your Success is Our Success</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PORTFOLIO
+════════════════════════════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-title">Projects We're <span>Proud Of</span></h2>
+      <p class="section-sub">A selection of work showcasing what happens when strategy, design, and technology come together.</p>
+    </div>
+
+    <div class="portfolio-filters reveal">
+      <button class="pf-btn active" onclick="filterPortfolio(this,'all')">All Projects</button>
+      <button class="pf-btn" onclick="filterPortfolio(this,'web')">Websites</button>
+      <button class="pf-btn" onclick="filterPortfolio(this,'brand')">Branding</button>
+      <button class="pf-btn" onclick="filterPortfolio(this,'ecom')">E-Commerce</button>
+      <button class="pf-btn" onclick="filterPortfolio(this,'ui')">UI/UX</button>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="port-card reveal" data-cat="web">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with a screenshot of a website you built.
+            Recommended size: 800×600px — Example: src="images/portfolio-novatech.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80" alt="NovaTech Corporate Website" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Website Development</div>
+          <div class="port-name">NovaTech Corporate Website</div>
+          <div class="port-desc">Responsive multi-page site with CMS integration &amp; SEO</div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" style="transition-delay:.07s" data-cat="brand">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with your branding/logo design work.
+            Recommended size: 800×600px — Example: src="images/portfolio-vertex.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&q=80" alt="Vertex Brand Identity" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Branding &amp; Logo Design</div>
+          <div class="port-name">Vertex Brand Identity</div>
+          <div class="port-desc">Full brand system: logo, colours, typography &amp; guidelines</div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" style="transition-delay:.14s" data-cat="ecom">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with your e-commerce project screenshot.
+            Recommended size: 800×600px — Example: src="images/portfolio-luxeshop.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="LuxeShop E-Commerce" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">E-Commerce</div>
+          <div class="port-name">LuxeShop Online Store</div>
+          <div class="port-desc">Full-featured store with payment gateway &amp; product management</div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" data-cat="ui">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with a UI/UX design screenshot or mockup.
+            Recommended size: 800×600px — Example: src="images/portfolio-finpro.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="FinPro Analytics Dashboard" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">UI/UX Design</div>
+          <div class="port-name">FinPro Analytics Dashboard</div>
+          <div class="port-desc">Complex data visualisation UI focused on usability &amp; clarity</div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" style="transition-delay:.07s" data-cat="web">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with an SEO or digital marketing project image.
+            Recommended size: 800×600px — Example: src="images/portfolio-greenleaf.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="GreenLeaf SEO Campaign" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">SEO &amp; Digital Marketing</div>
+          <div class="port-name">GreenLeaf Organic Campaign</div>
+          <div class="port-desc">300% organic traffic growth in 6 months via strategic SEO</div>
+        </div>
+      </div>
+
+      <div class="port-card reveal" style="transition-delay:.14s" data-cat="brand">
+        <div class="port-thumb">
+          <!--
+            ★ REPLACE with a social media / content creation project image.
+            Recommended size: 800×600px — Example: src="images/portfolio-bloom.jpg"
+          -->
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80" alt="Bloom Social Media" />
+          <div class="port-overlay"><div class="view-btn">View Case Study →</div></div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Social Media Management</div>
+          <div class="port-name">Bloom Social Media Presence</div>
+          <div class="port-desc">Full strategy, content creation &amp; community management</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-tag">Client Reviews</div>
+      <h2 class="section-title">What Our Clients <span>Say</span></h2>
+      <p class="section-sub">Don't just take our word for it — here's what real clients say about working with Tech Hub.</p>
+    </div>
+
+    <div class="testi-grid">
+
+      <div class="testi-card featured reveal">
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="quote-icon">"</div>
+          <p class="testi-text">Tech Hub completely transformed our online presence. The new website they built is not only stunning but has directly contributed to a 40% increase in enquiries within the first two months. Their team is professional, responsive, and genuinely cares about delivering results. I couldn't recommend them more highly.</p>
+          <div class="testi-author">
+            <!--
+              ★ REPLACE with a real client headshot — Example: src="images/client-sarah.jpg"
+            -->
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Mokoena" />
+            </div>
+            <div>
+              <div class="author-name">Sarah Mokoena</div>
+              <div class="author-role">CEO, Apex Consulting Group</div>
+            </div>
+          </div>
+        </div>
+        <!--
+          ★ REPLACE with a project result or before/after image — Example: src="images/result-apex.jpg"
+        -->
+        <div class="testi-side-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&q=80" alt="Project result" />
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="transition-delay:.08s">
+        <div class="testi-stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testi-text">From logo to full brand identity, Tech Hub nailed it on the first revision. They understood our vision immediately and delivered a brand we're incredibly proud of. Fast, talented, and easy to work with.</p>
+        <div class="testi-author">
+          <div class="author-avatar">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thabo Nkosi" />
+          </div>
+          <div>
+            <div class="author-name">Thabo Nkosi</div>
+            <div class="author-role">Founder, Vertex Industries</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="transition-delay:.12s">
+        <div class="testi-stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testi-text">Our e-commerce store went live on time and on budget. Sales started flowing within the first week. Tech Hub handled everything — design, development, and even helped with our product setup. Absolute professionals.</p>
+        <div class="testi-author">
+          <div class="author-avatar">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lerato Vilakazi" />
+          </div>
+          <div>
+            <div class="author-name">Lerato Vilakazi</div>
+            <div class="author-role">Owner, LuxeShop Boutique</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="transition-delay:.16s">
+        <div class="testi-stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testi-text">The SEO results have been phenomenal. We went from page 5 to page 1 for our most important keywords. Tech Hub communicates clearly, delivers on promises, and genuinely understands our industry. Highly recommended.</p>
+        <div class="testi-author">
+          <div class="author-avatar">
+            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Kagiso Dlamini" />
+          </div>
+          <div>
+            <div class="author-name">Kagiso Dlamini</div>
+            <div class="author-role">Marketing Director, GreenLeaf Organics</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container contact-inner">
+
+    <div class="reveal">
+      <div class="section-tag">Contact Us</div>
+      <div class="gold-line"></div>
+      <h2 style="font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:14px">
+        Let's Build Your <span style="color:var(--teal)">Project</span>
+      </h2>
+      <p class="contact-info-text">Ready to take your digital presence to the next level? Get in touch today for a free consultation and personalised quote. We'd love to hear about your project.</p>
+
+      <div class="contact-methods">
+        <a href="tel:0794637463" class="contact-method">
+          <div class="method-icon"><i class="fas fa-phone"></i></div>
+          <div><div class="method-label">Call Us</div><div class="method-value">079 463 7463</div></div>
+        </a>
+        <a href="https://wa.me/27794637463" target="_blank" class="contact-method">
+          <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
+          <div><div class="method-label">WhatsApp</div><div class="method-value">Chat on WhatsApp</div></div>
+        </a>
+        <a href="mailto:repairstechhub@gmail.com" class="contact-method">
+          <div class="method-icon"><i class="fas fa-envelope"></i></div>
+          <div><div class="method-label">Email Us</div><div class="method-value">repairstechhub@gmail.com</div></div>
+        </a>
+        <div class="contact-method">
+          <div class="method-icon"><i class="fas fa-clock"></i></div>
+          <div><div class="method-label">Response Time</div><div class="method-value">Within 24 hours</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.78rem;color:var(--gray-light)">✓ Free Consultation</div>
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.78rem;color:var(--gray-light)">✓ No Hidden Fees</div>
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.78rem;color:var(--gray-light)">✓ Fast Turnaround</div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal" style="transition-delay:.15s">
+      <div class="form-title">Send Us a Message</div>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" placeholder="John" required /></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Smith" required /></div>
+        </div>
+        <div class="form-group"><label>Email Address *</label><input type="email" placeholder="john@company.com" required /></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+27 79 000 0000" /></div>
+        <div class="form-group">
+          <label>Service You Need</label>
+          <select>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Website Development</option>
+            <option>E-Commerce Solution</option>
+            <option>UI/UX &amp; Graphic Design</option>
+            <option>Branding &amp; Logo Design</option>
+            <option>Website Maintenance &amp; Security</option>
+            <option>Social Media Management</option>
+            <option>SEO Optimisation</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Project *</label><textarea placeholder="Briefly describe your project, goals, and timeline…" required></textarea></div>
+        <button type="submit" class="btn btn-gold form-submit">✦ Send My Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <!--
+            ★ REPLACE src with your logo path — Example: src="images/logo.png"
+          -->
+          <img src="ChatGPT_Image_Jan_26__2026__01_57_15_PM__1_.png" alt="Tech Hub Logo" />
+          <div class="footer-brand-logo-text">Tech<span>Hub</span></div>
+        </div>
+        <p>Your trusted digital agency for websites, branding, and digital growth. We transform businesses online — one project at a time.</p>
+
+        <!-- ★ REAL FONT AWESOME SOCIAL ICONS — update hrefs with your actual profiles -->
+        <div class="social-links">
+          <a href="https://facebook.com"            target="_blank" class="social-link fb" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com"           target="_blank" class="social-link ig" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com"             target="_blank" class="social-link tw" title="Twitter / X">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://linkedin.com"            target="_blank" class="social-link li" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://wa.me/27794637463"       target="_blank" class="social-link wa" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">E-Commerce</a></li>
+          <li><a href="#services">UI/UX Design</a></li>
+          <li><a href="#services">Branding &amp; Logo</a></li>
+          <li><a href="#services">SEO Optimisation</a></li>
+          <li><a href="#services">Social Media</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>079 463 7463</span></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span>WhatsApp Us</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>repairstechhub@gmail.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Response within 24hrs</span></div>
+        <br>
+        <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:11px 20px">Get a Free Quote</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 <span>Tech Hub</span>. All rights reserved. Crafted with ✦ by Tech Hub.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<div id="toast">✓ Message sent! We'll be in touch soon.</div>
+
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  /* Navbar scroll */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  /* Mobile menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  document.getElementById('mobileClose').addEventListener('click', closeMobile);
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* Scroll reveal */
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  /* Portfolio filter */
+  function filterPortfolio(btn, cat) {
+    document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.port-card').forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.style.opacity       = match ? '1' : '0.2';
+      card.style.transform     = match ? '' : 'scale(0.97)';
+      card.style.pointerEvents = match ? '' : 'none';
+    });
+  }
+
+  /* Contact form */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    e.target.reset();
+  }
+
+  /* Active nav highlighting */
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const so = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAnchors.forEach(a => a.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.style.color = 'var(--teal-light)';
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => so.observe(s));
+</script>
+
+</body>
+</html>

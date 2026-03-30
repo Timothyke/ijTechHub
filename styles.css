@@ -2428,3 +2428,98 @@ footer {
   .wa-float span { display: none; }
   .wa-float { padding: 12px 14px; }
 }
+/* ================================================================
+   TECH HUB — styles.css (REPAIRED)
+   Modern design system for Nairobi's creative digital agency
+   ================================================================ */
+
+/* ... [All your existing CSS variables and base styles remain unchanged] ... */
+
+/* ================================================================
+   17. CONTACT SECTION — FIXED FORM MESSAGES
+   ================================================================ */
+
+/* ✅ CRITICAL FIX: Force-hide form messages when hidden attribute is present */
+.form-msg[hidden],
+#formSuccess[hidden],
+#formError[hidden] {
+  display: none !important;
+}
+
+.form-msg {
+  display: none; /* Hidden by default */
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  font-size: .88rem;
+  font-weight: 500;
+}
+
+/* Show only when JS removes hidden AND adds .show class */
+.form-msg:not([hidden]).show {
+  display: flex !important;
+  animation: slideUp 0.3s ease;
+}
+
+.form-msg--ok {
+  background: rgba(34,197,94,.1);
+  border: 1px solid rgba(34,197,94,.25);
+  color: #86efac;
+}
+
+.form-msg--err {
+  background: rgba(239,68,68,.1);
+  border: 1px solid rgba(239,68,68,.25);
+  color: #fca5a5;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================================================
+   19. FLOATING ELEMENTS — FIXED TOAST
+   ================================================================ */
+
+/* ✅ CRITICAL FIX: Toast hidden by default with display:none */
+.toast {
+  position: fixed;
+  bottom: 88px;
+  right: 28px;
+  display: none; /* Hidden by default - was missing */
+  align-items: center;
+  gap: 8px;
+  background: var(--citrus);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .86rem;
+  padding: 12px 20px;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 600;
+  transition: var(--tr);
+}
+
+/* ✅ Show toast only when .show class is added via JS */
+.toast.show {
+  display: flex !important;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ✅ Also respect hidden attribute as backup */
+.toast[hidden] {
+  display: none !important;
+}
+
+/* ================================================================
+   [All other sections 01-16, 18, 20 remain exactly as you wrote them]
+   ================================================================ */

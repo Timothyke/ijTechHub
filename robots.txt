@@ -1,0 +1,59 @@
+# ================================================================
+# ROBOTS.TXT — Tech Hub Digital Agency
+# Hosted at: https://techhub-digital.onrender.com/robots.txt
+#
+# This file tells search engine crawlers which pages they are
+# allowed or not allowed to index.
+#
+# DEPLOY: Place this file at the ROOT of your website (same
+#         folder as index.html). The URL must be exactly:
+#         https://techhub-digital.onrender.com/robots.txt
+#
+# UPDATE: Replace techhubdigital.co.ke with your real domain
+#         in the Sitemap line below.
+# ================================================================
+
+
+# ----------------------------------------------------------------
+# Allow ALL crawlers to index everything
+# ----------------------------------------------------------------
+User-agent: *
+Allow: /
+
+# ----------------------------------------------------------------
+# Block crawlers from accessing non-public paths
+# (Update these if your site has admin, staging, or private paths)
+# ----------------------------------------------------------------
+Disallow: /cdn-cgi/
+Disallow: /private/
+Disallow: /admin/
+
+# ----------------------------------------------------------------
+# Sitemap location — tells Google where to find your sitemap.
+# Submit it manually at search.google.com/search-console too.
+# ----------------------------------------------------------------
+Sitemap: https://techhub-digital.onrender.com/sitemap.xml
+
+
+# ----------------------------------------------------------------
+# Specific crawler rules (optional fine-tuning)
+# ----------------------------------------------------------------
+
+# Google — full access
+User-agent: Googlebot
+Allow: /
+
+# Bing — full access
+User-agent: Bingbot
+Allow: /
+
+# Block AI training crawlers that don't respect opt-out
+# (remove these lines if you want your content in AI training data)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /

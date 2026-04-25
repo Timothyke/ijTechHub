@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-KE">
 <head>
-  <!-- 🔐 GOOGLE SEARCH CONSOLE VERIFICATION -->
+  <!-- ═══════════════════════════════════════════════
+       TECH HUB DIGITAL AGENCY
+       index.html — Production build
+       Nairobi, Kenya
+  ═══════════════════════════════════════════════ -->
 
+  <!-- Google Search Console -->
   <meta name="google-site-verification" content="zUjfQbggBG2vQaTyParA6bNx5lk7pkims-OzJE96mHo" />
 
-  <!-- 🌐 CORE META -->
+  <!-- Core Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#E8FF47" />
 
-  <!-- 📄 PAGE TITLE -->
+  <!-- Security: Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://api.web3forms.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' data: https://images.unsplash.com https://techhub-digital.onrender.com;
+    connect-src 'self' https://api.web3forms.com;
+    frame-ancestors 'none';
+  " />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+  <!-- Page Title -->
   <title>Web Design Nairobi | Tech Hub Digital Agency Kenya</title>
 
-  <!-- 📝 META DESCRIPTION -->
+  <!-- Meta Description -->
   <meta name="description" content="Tech Hub is Nairobi's creative digital agency — building websites, brands & e-commerce that grow Kenyan businesses. Free consultation. Fast delivery." />
 
-  <!-- 🔗 CANONICAL URL -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://techhub-digital.onrender.com/" />
 
-  <!-- 🤖 ROBOTS -->
+  <!-- Robots -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="Tech Hub Digital Agency" />
 
-  <!-- 🌍 GEO & LANGUAGE -->
+  <!-- Geo & Language -->
   <meta name="geo.region" content="KE-30" />
   <meta name="geo.placename" content="Nairobi, Kenya" />
   <meta name="geo.position" content="-1.286389;36.817223" />
   <meta name="ICBM" content="-1.286389, 36.817223" />
   <meta http-equiv="content-language" content="en-KE" />
 
-  <!-- 📘 OPEN GRAPH -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_KE" />
   <meta property="og:site_name" content="Tech Hub Digital Agency" />
@@ -42,7 +60,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Tech Hub Digital Agency — Web Design Nairobi" />
 
-  <!-- 🐦 TWITTER CARD -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@techhubdigital" />
   <meta name="twitter:creator" content="@techhubdigital" />
@@ -51,51 +69,140 @@
   <meta name="twitter:image" content="https://techhub-digital.onrender.com/images/og-banner.jpg" />
   <meta name="twitter:image:alt" content="Tech Hub Digital Agency Nairobi" />
 
-  <!-- 🔖 FAVICONS -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="images/favicon/site.webmanifest" />
 
-  <!-- ⚡ PERFORMANCE -->
+  <!-- Performance: DNS Prefetch & Preconnect -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload critical assets -->
   <link rel="preload" as="style" href="styles.css" />
   <link rel="preload" as="image" href="images/hero.jpg" type="image/jpeg" />
-  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/outfit/v11/QGYyz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2" type="font/woff2" crossorigin />
 
-  <!-- 🎨 FONTS & ICONS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- 🧠 STRUCTURED DATA -->
+  <!-- Structured Data / JSON-LD -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://techhubdigital.co.ke/#business","name":"Tech Hub Digital Agency","alternateName":"Tech Hub","description":"Nairobi's creative digital agency specialising in website development, branding, UI/UX design, e-commerce, SEO and social media management for businesses across Kenya and East Africa.","url":"https://techhubdigital.co.ke","logo":{"@type":"ImageObject","url":"https://techhubdigital.co.ke/images/logo.png","width":200,"height":200},"image":"https://techhubdigital.co.ke/images/og-banner.jpg","telephone":"+254794637463","email":"repairstechhub@gmail.com","foundingDate":"2021","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi County","addressCountry":"KE"},"geo":{"@type":"GeoCoordinates","latitude":-1.286389,"longitude":36.817223},"areaServed":[{"@type":"City","name":"Nairobi"},{"@type":"Country","name":"Kenya"},{"@type":"Place","name":"East Africa"}],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"sameAs":["https://facebook.com/techhubdigital","https://instagram.com/techhubdigital","https://twitter.com/techhubdigital","https://linkedin.com/company/techhubke","https://tiktok.com/@techhubdigital"],"priceRange":"KES","currenciesAccepted":"KES","paymentAccepted":"M-Pesa, Bank Transfer"},{"@type":"WebSite","@id":"https://techhubdigital.co.ke/#website","url":"https://techhubdigital.co.ke","name":"Tech Hub Digital Agency","inLanguage":"en-KE","publisher":{"@id":"https://techhubdigital.co.ke/#business"}},{"@type":"WebPage","@id":"https://techhubdigital.co.ke/#webpage","url":"https://techhubdigital.co.ke","name":"Web Design Nairobi | Tech Hub Digital Agency Kenya","inLanguage":"en-KE","isPartOf":{"@id":"https://techhubdigital.co.ke/#website"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://techhubdigital.co.ke/"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a website cost in Nairobi?","acceptedAnswer":{"@type":"Answer","text":"Website costs at Tech Hub range from KES 30,000 for a basic business site to KES 200,000+ for a full e-commerce solution. We provide itemised quotes with no hidden fees after a free consultation."}},{"@type":"Question","name":"How long does it take to build a website in Kenya?","acceptedAnswer":{"@type":"Answer","text":"Most websites are delivered in 1–4 weeks depending on complexity. We design in Figma first for your approval before building, keeping revisions minimal and timelines on track."}},{"@type":"Question","name":"Do you support M-Pesa payments for e-commerce?","acceptedAnswer":{"@type":"Answer","text":"Yes. We integrate M-Pesa STK Push, Daraja API, and other local payment gateways into all e-commerce projects we build for Kenyan businesses."}},{"@type":"Question","name":"Does Tech Hub offer website maintenance after launch?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every project includes 30 days of free post-launch support. We also offer monthly maintenance plans covering security monitoring, updates, backups, and performance checks."}}]}]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://techhub-digital.onrender.com/#business",
+        "name": "Tech Hub Digital Agency",
+        "alternateName": "Tech Hub",
+        "description": "Nairobi's creative digital agency specialising in website development, branding, UI/UX design, e-commerce, SEO and social media management for businesses across Kenya and East Africa.",
+        "url": "https://techhub-digital.onrender.com",
+        "telephone": "+254794637463",
+        "email": "repairstechhub@gmail.com",
+        "foundingDate": "2021",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi County",
+          "addressCountry": "KE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -1.286389,
+          "longitude": 36.817223
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Nairobi" },
+          { "@type": "Country", "name": "Kenya" },
+          { "@type": "Place", "name": "East Africa" }
+        ],
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }],
+        "priceRange": "KES",
+        "currenciesAccepted": "KES",
+        "paymentAccepted": "M-Pesa, Bank Transfer"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://techhub-digital.onrender.com/#website",
+        "url": "https://techhub-digital.onrender.com",
+        "name": "Tech Hub Digital Agency",
+        "inLanguage": "en-KE"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a website cost in Nairobi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Website costs at Tech Hub range from KES 30,000 for a basic business site to KES 200,000+ for a full e-commerce solution. We provide itemised quotes with no hidden fees after a free consultation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to build a website in Kenya?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most websites are delivered in 1–4 weeks depending on complexity. We design in Figma first for your approval before building."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you support M-Pesa payments for e-commerce?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We integrate M-Pesa STK Push, Daraja API, and other local payment gateways into all e-commerce projects."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Tech Hub offer website maintenance after launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every project includes 30 days of free post-launch support, plus optional monthly maintenance plans."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 
 <body>
+  <!-- Skip link for keyboard users -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- 🌀 Preloader -->
-  <div id="preloader" aria-hidden="true">
+  <!-- ═══ PRELOADER ═══ -->
+  <div id="preloader" aria-hidden="true" role="status">
     <div class="preloader-inner">
       <div class="preloader-logo">T<span>H</span></div>
       <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <p class="preloader-text">Loading…</p>
     </div>
   </div>
 
-  <!-- 🧭 Navigation -->
+  <!-- ═══ NAVBAR ═══ -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Tech Hub — homepage">
-        <img src="images/logo.png" alt="Tech Hub" width="52" height="52" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+      <a href="#hero" class="nav-logo" aria-label="Tech Hub — back to top">
+        <img src="images/logo.png" alt="Tech Hub logo" width="48" height="48"
+          onerror="this.style.display='none'" />
         <span class="nav-wordmark">Tech<em>Hub</em></span>
       </a>
+
       <ul class="nav-links" role="list">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
@@ -104,210 +211,615 @@
         <li><a href="#testimonials" class="nav-link">Reviews</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
+
       <a href="#contact" class="btn btn-primary nav-cta">
         <i class="fa-regular fa-message" aria-hidden="true"></i>
-        Let's Talk
+        Get a Quote
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        type="button"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
   </nav>
 
-  <!-- 📱 Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation" aria-modal="true" hidden>
-    <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+    role="dialog"
+    aria-label="Navigation menu"
+    aria-modal="true"
+    hidden
+  >
+    <button
+      class="mobile-close"
+      id="mobileClose"
+      aria-label="Close navigation menu"
+      type="button"
+    >
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
-    <nav aria-label="Mobile links">
-      <a href="#about" onclick="closeMobile(); return false;">About</a>
-      <a href="#services" onclick="closeMobile(); return false;">Services</a>
-      <a href="#process" onclick="closeMobile(); return false;">Process</a>
-      <a href="#portfolio" onclick="closeMobile(); return false;">Work</a>
-      <a href="#testimonials" onclick="closeMobile(); return false;">Reviews</a>
-      <a href="#contact" onclick="closeMobile(); return false;">Contact</a>
+
+    <nav aria-label="Mobile navigation links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#portfolio">Work</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn btn-primary" onclick="closeMobile(); return false;">
+
+    <a href="#contact" class="btn btn-primary">
       <i class="fa-regular fa-message" aria-hidden="true"></i>
       Start a Project
     </a>
-    <div class="mobile-socials">
-      <a href="https://instagram.com/techhubdigital" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://twitter.com/techhubdigital" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://linkedin.com/company/techhubke" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://wa.me/254794637463" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="https://tiktok.com/@techhubdigital" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+
+    <div class="mobile-socials" role="list" aria-label="Social media links">
+      <a href="https://instagram.com/techhubdigital" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" role="listitem">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="https://twitter.com/techhubdigital" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X / Twitter" role="listitem">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="https://linkedin.com/company/techhubke" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn" role="listitem">
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+      </a>
+      <a href="https://wa.me/254794637463" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" role="listitem">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      </a>
+      <a href="https://tiktok.com/@techhubdigital" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok" role="listitem">
+        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+      </a>
     </div>
   </div>
 
   <main id="main-content">
 
-    <!-- 🎯 Hero Section -->
-    <section id="hero" aria-label="Hero">
+    <!-- ═══════════════════════════════
+         HERO SECTION
+    ════════════════════════════════ -->
+    <section id="hero" aria-label="Hero — Tech Hub Digital Agency">
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-orb orb-1"></div>
         <div class="hero-orb orb-2"></div>
-        <div class="hero-orb orb-3"></div>
         <div class="hero-grid-overlay"></div>
       </div>
+
       <div class="container hero-inner">
         <div class="hero-copy reveal">
-          <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Available for new projects</div>
-          <h1 class="hero-title">We Build<br><span class="title-highlight">Digital Products</span><br><span class="title-outline">That Convert</span></h1>
-          <p class="hero-sub">Nairobi's creative digital agency — crafting websites, brands, and digital experiences that drive real, measurable growth for ambitious businesses across Kenya and Africa.</p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary btn-lg">Start Your Project<i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="#portfolio" class="btn btn-ghost btn-lg">View Our Work<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+          <div class="hero-badge">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Available for new projects
           </div>
-          <div class="hero-stats">
-            <div class="stat"><span class="stat-n" data-target="3">0</span><span class="stat-sfx">+</span><span class="stat-l">Projects Delivered</span></div>
+
+          <h1 class="hero-title">
+            We Build<br>
+            <span class="title-highlight">Digital Products</span><br>
+            <span class="title-outline">That Convert</span>
+          </h1>
+
+          <p class="hero-sub">
+            Nairobi's creative digital agency — crafting websites, brands, and digital
+            experiences that drive real growth for ambitious businesses across Kenya.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              Start Your Project
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#portfolio" class="btn btn-ghost btn-lg">
+              View Our Work
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="hero-stats" aria-label="Agency stats">
+            <div class="stat">
+              <div class="stat-row">
+                <span class="stat-n" data-target="3" aria-label="3 plus">0</span>
+                <span class="stat-sfx" aria-hidden="true">+</span>
+              </div>
+              <span class="stat-l">Projects Delivered</span>
+            </div>
             <div class="stat-sep" aria-hidden="true"></div>
-            <div class="stat"><span class="stat-n" data-target="100">0</span><span class="stat-sfx">%</span><span class="stat-l">On-Time Delivery</span></div>
+            <div class="stat">
+              <div class="stat-row">
+                <span class="stat-n" data-target="100" aria-label="100 percent">0</span>
+                <span class="stat-sfx" aria-hidden="true">%</span>
+              </div>
+              <span class="stat-l">On-Time Delivery</span>
+            </div>
             <div class="stat-sep" aria-hidden="true"></div>
-            <div class="stat"><span class="stat-n" data-target="3">0</span><span class="stat-sfx">+</span><span class="stat-l">Years Experience</span></div>
+            <div class="stat">
+              <div class="stat-row">
+                <span class="stat-n" data-target="3" aria-label="3 plus">0</span>
+                <span class="stat-sfx" aria-hidden="true">+</span>
+              </div>
+              <span class="stat-l">Years Experience</span>
+            </div>
           </div>
         </div>
-        <div class="hero-visual reveal" style="transition-delay:.18s" aria-hidden="true">
-          <div class="hero-float hero-float--tl"><i class="fa-solid fa-circle-check" style="color:#22c55e"></i><span>Live: <strong>Imprint Studios</strong></span></div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="hero-float hero-float--tl">
+            <i class="fa-solid fa-circle-check" style="color:#22c55e" aria-hidden="true"></i>
+            <span>Live: <strong>Imprint Studios</strong></span>
+          </div>
+
           <div class="hero-frame">
             <div class="browser-bar">
-              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-              <span class="browser-url">https://techhub-digital.onrender.com/</span>
+              <div class="browser-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="browser-url">techhub-digital.onrender.com</span>
             </div>
-            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=900&q=85&auto=format" alt="Tech Hub project showcase" width="900" height="580" loading="eager" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTgwIj48cmVjdCBmaWxsPSIjZjNmNGY2IiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjU4MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCI+SGVybyBJbWFnZTwvdGV4dD48L3N2Zz4='" />
+            <img
+              src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=900&q=80&auto=format"
+              alt="Tech Hub project showcase — website design preview"
+              width="900"
+              height="580"
+              loading="eager"
+              onerror="this.alt='Project preview unavailable'"
+            />
             <div class="hero-frame-scrim"></div>
           </div>
-          <div class="hero-float hero-float--br"><i class="fa-solid fa-arrow-trend-up" style="color:#10b981"></i><span>+340% organic traffic</span></div>
-          <div class="hero-client-strip"><span class="client-strip-label">Trusted by:</span><span class="client-chip">Imprint Studios</span><span class="client-chip">Tech Hub</span><span class="client-chip">KE Brands</span></div>
+
+          <div class="hero-float hero-float--br">
+            <i class="fa-solid fa-arrow-trend-up" style="color:#10b981" aria-hidden="true"></i>
+            <span>+340% organic traffic</span>
+          </div>
+
+          <div class="hero-client-strip">
+            <span class="client-strip-label">Trusted by:</span>
+            <span class="client-chip">Imprint Studios</span>
+            <span class="client-chip">KE Brands</span>
+          </div>
         </div>
       </div>
-      <div class="scroll-cue" aria-hidden="true"><div class="scroll-mouse"><div class="scroll-wheel"></div></div><span>Scroll</span></div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
     </section>
 
-    <!-- ℹ️ About Section -->
+
+    <!-- ═══════════════════════════════
+         ABOUT SECTION
+    ════════════════════════════════ -->
     <section id="about" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="about-visual reveal">
           <div class="about-img-wrap">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85&auto=format" alt="Tech Hub team at work" width="800" height="950" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iOTUwIj48cmVjdCBmaWxsPSIjZjNmNGY2IiB3aWR0aD0iODAwIiBoZWlnaHQ9Ijk1MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCI+VGVhbSBQaG90bzwvdGV4dD48L3N2Zz4='" />
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&auto=format"
+              alt="Tech Hub team collaborating on a project"
+              width="800"
+              height="950"
+              loading="lazy"
+            />
           </div>
-          <div class="about-chip about-chip--tl"><i class="fa-solid fa-rocket" aria-hidden="true"></i><div><strong>Launched 2021</strong><span>Nairobi, Kenya</span></div></div>
-          <div class="about-chip about-chip--br"><div class="chip-big-num">48<small>+</small></div><span>Projects done</span></div>
+          <div class="about-chip about-chip--tl">
+            <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+            <div>
+              <strong>Launched 2021</strong>
+              <span>Nairobi, Kenya</span>
+            </div>
+          </div>
+          <div class="about-chip about-chip--br">
+            <div class="chip-big-num">3<small>+</small></div>
+            <span>Projects done</span>
+          </div>
         </div>
-        <div class="about-copy reveal" style="transition-delay:.12s">
+
+        <div class="about-copy reveal">
           <div class="eyebrow">About Tech Hub</div>
-          <h2 id="about-title" class="section-title">A Nairobi-born studio for <span class="text-accent">ambitious brands</span></h2>
-          <p class="body-lg">Tech Hub is a results-driven creative studio founded in Nairobi. We partner with startups, SMEs, and established businesses across Kenya and East Africa — translating bold ideas into websites, brands, and digital tools that generate real, measurable growth.</p>
-          <p class="body-copy">We don't just deliver files. We deliver outcomes — lower bounce rates, higher enquiry volumes, stronger brand recall. Every project is guided by strategy, crafted with precision, and backed by ongoing partnership.</p>
+          <h2 id="about-title" class="section-title">
+            A Nairobi-born studio for
+            <span class="text-accent">ambitious brands</span>
+          </h2>
+          <p class="body-lg">
+            Tech Hub is a results-driven creative studio founded in Nairobi. We partner with
+            startups, SMEs, and established businesses across Kenya and East Africa — turning
+            bold ideas into websites, brands, and digital tools that generate real growth.
+          </p>
+          <p class="body-copy">
+            We don't just deliver files. We deliver outcomes — lower bounce rates, more
+            enquiries, stronger brand recall. Every project starts with strategy and ends
+            with a long-term partnership.
+          </p>
+
           <div class="pillars-grid" role="list">
-            <div class="pillar" role="listitem"><div class="pillar-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div><div><h3 class="pillar-title">Results-Driven</h3><p class="pillar-desc">Every decision anchored to your goals and real data.</p></div></div>
-            <div class="pillar" role="listitem"><div class="pillar-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div><div><h3 class="pillar-title">Fast Delivery</h3><p class="pillar-desc">Streamlined processes — no bloat, no wasted time.</p></div></div>
-            <div class="pillar" role="listitem"><div class="pillar-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div><div><h3 class="pillar-title">True Partnership</h3><p class="pillar-desc">Accountable from kickoff through long-term growth.</p></div></div>
-            <div class="pillar" role="listitem"><div class="pillar-icon"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></div><div><h3 class="pillar-title">Creative Excellence</h3><p class="pillar-desc">Distinctive work that stops thumbs and wins trust.</p></div></div>
+            <div class="pillar" role="listitem">
+              <div class="pillar-icon" aria-hidden="true">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <h3 class="pillar-title">Results-Driven</h3>
+                <p class="pillar-desc">Every decision anchored to your goals and real data.</p>
+              </div>
+            </div>
+            <div class="pillar" role="listitem">
+              <div class="pillar-icon" aria-hidden="true">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <h3 class="pillar-title">Fast Delivery</h3>
+                <p class="pillar-desc">Streamlined processes — no bloat, no wasted time.</p>
+              </div>
+            </div>
+            <div class="pillar" role="listitem">
+              <div class="pillar-icon" aria-hidden="true">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <div>
+                <h3 class="pillar-title">True Partnership</h3>
+                <p class="pillar-desc">Accountable from kickoff through long-term growth.</p>
+              </div>
+            </div>
+            <div class="pillar" role="listitem">
+              <div class="pillar-icon" aria-hidden="true">
+                <i class="fa-solid fa-pen-nib"></i>
+              </div>
+              <div>
+                <h3 class="pillar-title">Creative Excellence</h3>
+                <p class="pillar-desc">Distinctive work that stops thumbs and wins trust.</p>
+              </div>
+            </div>
           </div>
-          <a href="#contact" class="btn btn-primary btn-lg mt-2">Work with us<i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+
+          <a href="#contact" class="btn btn-primary btn-lg mt-2">
+            Work with us
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ⚙️ Services Section -->
+
+    <!-- ═══════════════════════════════
+         SERVICES SECTION
+    ════════════════════════════════ -->
     <section id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-header center reveal">
           <div class="eyebrow">What We Do</div>
-          <h2 id="services-title" class="section-title">Services built to <span class="text-accent">scale your business</span></h2>
-          <p class="section-sub">From digital strategy through to execution — everything you need to dominate your market online.</p>
+          <h2 id="services-title" class="section-title">
+            Services built to
+            <span class="text-accent">scale your business</span>
+          </h2>
+          <p class="section-sub">
+            From strategy through to execution — everything you need to grow online.
+          </p>
         </div>
+
         <div class="services-grid" role="list">
-          <article class="svc-card reveal" role="listitem"><div class="svc-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div><h3 class="svc-title">Website Development</h3><p class="svc-desc">Custom, blazing-fast websites built on modern stacks. Fully responsive, SEO-optimised, and designed to convert visitors into paying clients.</p><ul class="svc-tags"><li>HTML / CSS / JS</li><li>WordPress</li><li>React</li></ul></article>
-          <article class="svc-card svc-card--featured reveal" style="transition-delay:.05s" role="listitem"><div class="svc-badge">Most Popular</div><div class="svc-icon"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></div><h3 class="svc-title">E-Commerce Solutions</h3><p class="svc-desc">Powerful online stores that sell 24/7. Seamless checkout, secure payments, and inventory systems built to scale your revenue effortlessly.</p><ul class="svc-tags"><li>WooCommerce</li><li>Shopify</li><li>M-Pesa</li></ul></article>
-          <article class="svc-card reveal" style="transition-delay:.10s" role="listitem"><div class="svc-icon"><i class="fa-solid fa-swatchbook" aria-hidden="true"></i></div><h3 class="svc-title">UI/UX Design</h3><p class="svc-desc">Interfaces that delight and retain users. Strategic UX research paired with high-fidelity design that elevates your digital products.</p><ul class="svc-tags"><li>Figma</li><li>Prototyping</li><li>Research</li></ul></article>
-          <article class="svc-card reveal" style="transition-delay:.05s" role="listitem"><div class="svc-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div><h3 class="svc-title">Branding & Identity</h3><p class="svc-desc">A brand identity that commands attention. Logos, colour palettes, type systems, and guidelines that tell your unique story.</p><ul class="svc-tags"><li>Logo Design</li><li>Brand Guide</li><li>Print Ready</li></ul></article>
-          <article class="svc-card reveal" style="transition-delay:.10s" role="listitem"><div class="svc-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div><h3 class="svc-title">Maintenance & Security</h3><p class="svc-desc">Keep your site fast, updated, and protected. Regular backups, security scans, and uptime monitoring so you focus on your business.</p><ul class="svc-tags"><li>Monthly Plans</li><li>SSL</li><li>Backups</li></ul></article>
-          <article class="svc-card reveal" style="transition-delay:.15s" role="listitem"><div class="svc-icon"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div><h3 class="svc-title">SEO & Digital Marketing</h3><p class="svc-desc">Data-driven strategies that drive organic traffic, qualified leads, and sustainable long-term rankings for your business.</p><ul class="svc-tags"><li>On-Page SEO</li><li>Content</li><li>Analytics</li></ul></article>
+          <article class="svc-card reveal" role="listitem">
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+            <h3 class="svc-title">Website Development</h3>
+            <p class="svc-desc">Custom, fast websites built on modern stacks. Fully responsive, SEO-ready, and designed to convert visitors into paying clients.</p>
+            <ul class="svc-tags" aria-label="Technologies used">
+              <li>HTML / CSS / JS</li>
+              <li>WordPress</li>
+              <li>React</li>
+            </ul>
+          </article>
+
+          <article class="svc-card svc-card--featured reveal" role="listitem">
+            <div class="svc-badge">Most Popular</div>
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></div>
+            <h3 class="svc-title">E-Commerce Solutions</h3>
+            <p class="svc-desc">Online stores that sell 24/7. Seamless checkout, secure payments, and inventory systems built to scale your revenue.</p>
+            <ul class="svc-tags" aria-label="Technologies used">
+              <li>WooCommerce</li>
+              <li>Shopify</li>
+              <li>M-Pesa</li>
+            </ul>
+          </article>
+
+          <article class="svc-card reveal" role="listitem">
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-swatchbook"></i></div>
+            <h3 class="svc-title">UI/UX Design</h3>
+            <p class="svc-desc">Interfaces that delight and retain users. Strategic UX research paired with high-fidelity Figma design before a single line of code.</p>
+            <ul class="svc-tags" aria-label="Technologies used">
+              <li>Figma</li>
+              <li>Prototyping</li>
+              <li>Research</li>
+            </ul>
+          </article>
+
+          <article class="svc-card reveal" role="listitem">
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-palette"></i></div>
+            <h3 class="svc-title">Branding & Identity</h3>
+            <p class="svc-desc">A brand identity that commands attention. Logos, colour systems, and guidelines that tell your unique story consistently.</p>
+            <ul class="svc-tags" aria-label="Deliverables">
+              <li>Logo Design</li>
+              <li>Brand Guide</li>
+              <li>Print Ready</li>
+            </ul>
+          </article>
+
+          <article class="svc-card reveal" role="listitem">
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="svc-title">Maintenance & Security</h3>
+            <p class="svc-desc">Keep your site fast, updated, and protected. Regular backups, security scans, and uptime monitoring so you focus on your business.</p>
+            <ul class="svc-tags" aria-label="Deliverables">
+              <li>Monthly Plans</li>
+              <li>SSL</li>
+              <li>Backups</li>
+            </ul>
+          </article>
+
+          <article class="svc-card reveal" role="listitem">
+            <div class="svc-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3 class="svc-title">SEO & Digital Marketing</h3>
+            <p class="svc-desc">Data-driven strategies that drive organic traffic, qualified leads, and long-term rankings for your business.</p>
+            <ul class="svc-tags" aria-label="Deliverables">
+              <li>On-Page SEO</li>
+              <li>Content</li>
+              <li>Analytics</li>
+            </ul>
+          </article>
         </div>
-        <article class="svc-wide reveal" role="listitem" aria-label="Social Media Management">
+
+        <article class="svc-wide reveal" role="listitem" aria-label="Social Media Management service">
           <div class="svc-wide-inner">
-            <div class="svc-icon" aria-hidden="true"><i class="fa-brands fa-instagram"></i></div>
-            <div><h3 class="svc-title">Social Media Management</h3><p class="svc-desc">Consistent, engaging content across all platforms. We build your audience and convert followers into loyal customers.</p></div>
-            <a href="#contact" class="btn btn-primary">Get Started <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <div class="svc-icon" aria-hidden="true">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div>
+              <h3 class="svc-title">Social Media Management</h3>
+              <p class="svc-desc">Consistent, engaging content across all platforms. We build your audience and convert followers into loyal customers.</p>
+            </div>
+            <a href="#contact" class="btn btn-primary">
+              Get Started
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- 🔄 Process Section -->
+
+    <!-- ═══════════════════════════════
+         PROCESS SECTION
+    ════════════════════════════════ -->
     <section id="process" aria-labelledby="process-title">
       <div class="container">
         <div class="section-header center reveal">
           <div class="eyebrow">How We Work</div>
-          <h2 id="process-title" class="section-title">A clear process, <span class="text-accent">zero surprises</span></h2>
-          <p class="section-sub">From first message to final launch — here's exactly what working with Tech Hub looks like.</p>
+          <h2 id="process-title" class="section-title">
+            A clear process,
+            <span class="text-accent">zero surprises</span>
+          </h2>
+          <p class="section-sub">
+            From first message to final launch — here's exactly what working with Tech Hub looks like.
+          </p>
         </div>
-        <div class="process-steps">
-          <div class="process-step reveal"><div class="process-num" aria-hidden="true">01</div><div class="process-card"><div class="process-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div><h3 class="process-title">Discovery Call</h3><p class="process-desc">A free 30–60 minute call to understand your business, goals, audience, and timeline. No jargon — just an honest conversation.</p><span class="process-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 30–60 min</span></div></div>
-          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="process-step reveal" style="transition-delay:.08s"><div class="process-num" aria-hidden="true">02</div><div class="process-card"><div class="process-icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div><h3 class="process-title">Strategy & Proposal</h3><p class="process-desc">We map scope, sitemap, technology, and timeline. You get a written proposal with transparent, itemised pricing.</p><span class="process-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 2–3 days</span></div></div>
-          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="process-step reveal" style="transition-delay:.16s"><div class="process-num" aria-hidden="true">03</div><div class="process-card"><div class="process-icon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></div><h3 class="process-title">Design & Build</h3><p class="process-desc">We design in Figma first — you see and approve the look before a single line of code is written. Revisions included.</p><span class="process-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 1–4 weeks</span></div></div>
-          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="process-step reveal" style="transition-delay:.24s"><div class="process-num" aria-hidden="true">04</div><div class="process-card"><div class="process-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div><h3 class="process-title">Launch & Support</h3><p class="process-desc">We handle deployment, testing, and go-live. You get 30 days free support plus optional monthly maintenance plans.</p><span class="process-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> Ongoing</span></div></div>
-        </div>
+
+        <ol class="process-steps" aria-label="Our 4-step process">
+          <li class="process-step reveal">
+            <div class="process-num" aria-hidden="true">01</div>
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <h3 class="process-title">Discovery Call</h3>
+              <p class="process-desc">A free 30–60 minute call to understand your business, goals, and timeline. No jargon — just an honest conversation.</p>
+              <span class="process-time">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                30–60 min
+              </span>
+            </div>
+          </li>
+
+          <li class="process-arrow-item" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </li>
+
+          <li class="process-step reveal">
+            <div class="process-num" aria-hidden="true">02</div>
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+              <h3 class="process-title">Strategy & Proposal</h3>
+              <p class="process-desc">We map scope, sitemap, technology, and timeline. You get a written proposal with transparent, itemised pricing.</p>
+              <span class="process-time">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                2–3 days
+              </span>
+            </div>
+          </li>
+
+          <li class="process-arrow-item" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </li>
+
+          <li class="process-step reveal">
+            <div class="process-num" aria-hidden="true">03</div>
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <h3 class="process-title">Design & Build</h3>
+              <p class="process-desc">We design in Figma first — you see and approve the look before a single line of code is written. Revisions included.</p>
+              <span class="process-time">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                1–4 weeks
+              </span>
+            </div>
+          </li>
+
+          <li class="process-arrow-item" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </li>
+
+          <li class="process-step reveal">
+            <div class="process-num" aria-hidden="true">04</div>
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <i class="fa-solid fa-rocket"></i>
+              </div>
+              <h3 class="process-title">Launch & Support</h3>
+              <p class="process-desc">We handle deployment, testing, and go-live. You get 30 days free support plus optional monthly maintenance.</p>
+              <span class="process-time">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                Ongoing
+              </span>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- 🏆 Why Us Section -->
+
+    <!-- ═══════════════════════════════
+         WHY US SECTION
+    ════════════════════════════════ -->
     <section id="why" aria-labelledby="why-title">
       <div class="container why-grid">
         <div class="why-copy reveal">
           <div class="eyebrow">Why Tech Hub</div>
-          <h2 id="why-title" class="section-title">The agency that <span class="text-accent">delivers</span></h2>
-          <p class="body-lg" style="margin-bottom:2rem">We don't just build websites — we build growth engines. Here's why businesses across Kenya keep choosing Tech Hub and referring us to their networks.</p>
+          <h2 id="why-title" class="section-title">
+            The agency that
+            <span class="text-accent">delivers</span>
+          </h2>
+          <p class="body-lg">
+            We don't just build websites — we build growth engines. Here's why businesses
+            across Kenya keep choosing Tech Hub and referring us to their networks.
+          </p>
+
           <ul class="why-list" role="list">
-            <li class="why-row reveal"><div class="why-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div><div><strong>Client-focused solutions</strong><p>Your goals drive every decision. We listen before we design, always.</p></div></li>
-            <li class="why-row reveal" style="transition-delay:.04s"><div class="why-icon"><i class="fa-solid fa-tag" aria-hidden="true"></i></div><div><strong>Transparent, fair pricing</strong><p>Itemised quotes, no hidden fees, no surprises at the end of a project.</p></div></li>
-            <li class="why-row reveal" style="transition-delay:.08s"><div class="why-icon"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div><div><strong>On-time, every time</strong><p>100% of our projects delivered on or before the agreed deadline.</p></div></li>
-            <li class="why-row reveal" style="transition-delay:.12s"><div class="why-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></div><div><strong>Zero-template design</strong><p>Every design is bespoke — you'll never see your site on another business.</p></div></li>
-            <li class="why-row reveal" style="transition-delay:.16s"><div class="why-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div><div><strong>Ongoing support & partnership</strong><p>With you long after launch — check-ins, updates, and continuous improvement.</p></div></li>
+            <li class="why-row reveal" role="listitem">
+              <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+              <div>
+                <strong>Client-focused solutions</strong>
+                <p>Your goals drive every decision. We listen before we design, always.</p>
+              </div>
+            </li>
+            <li class="why-row reveal" role="listitem">
+              <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-tag"></i></div>
+              <div>
+                <strong>Transparent, fair pricing</strong>
+                <p>Itemised quotes, no hidden fees, no surprises at invoice time.</p>
+              </div>
+            </li>
+            <li class="why-row reveal" role="listitem">
+              <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></div>
+              <div>
+                <strong>On-time, every time</strong>
+                <p>100% of our projects delivered on or before the agreed deadline.</p>
+              </div>
+            </li>
+            <li class="why-row reveal" role="listitem">
+              <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-star"></i></div>
+              <div>
+                <strong>Zero-template design</strong>
+                <p>Every design is bespoke — you'll never see yours on another business.</p>
+              </div>
+            </li>
+            <li class="why-row reveal" role="listitem">
+              <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></div>
+              <div>
+                <strong>Ongoing support & partnership</strong>
+                <p>With you long after launch — updates, check-ins, and continuous improvement.</p>
+              </div>
+            </li>
           </ul>
         </div>
-        <div class="why-stats reveal" style="transition-delay:.2s">
+
+        <div class="why-stats reveal">
           <div class="stats-card">
             <div class="stats-grid">
-              <div class="stats-cell"><div class="snum">3<span>+</span></div><div class="slabel">Projects Completed</div></div>
-              <div class="stats-cell"><div class="snum">100<span>%</span></div><div class="slabel">On-Time Rate</div></div>
-              <div class="stats-cell"><div class="snum">3<span>+</span></div><div class="slabel">Years in Business</div></div>
-              <div class="stats-cell"><div class="snum">24<span>h</span></div><div class="slabel">Support Response</div></div>
+              <div class="stats-cell">
+                <div class="snum">3<span>+</span></div>
+                <div class="slabel">Projects Done</div>
+              </div>
+              <div class="stats-cell">
+                <div class="snum">100<span>%</span></div>
+                <div class="slabel">On-Time Rate</div>
+              </div>
+              <div class="stats-cell">
+                <div class="snum">3<span>+</span></div>
+                <div class="slabel">Years Active</div>
+              </div>
+              <div class="stats-cell">
+                <div class="snum">24<span>h</span></div>
+                <div class="slabel">Support Response</div>
+              </div>
             </div>
-            <div class="stats-promise"><i class="fa-solid fa-shield-check" aria-hidden="true"></i>Our Promise: Your success is our success</div>
+            <div class="stats-promise">
+              <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
+              Our Promise: Your success is our success
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 🖼️ Portfolio Section -->
+
+    <!-- ═══════════════════════════════
+         PORTFOLIO SECTION
+    ════════════════════════════════ -->
     <section id="portfolio" aria-labelledby="portfolio-title">
       <div class="container">
         <div class="section-header center reveal">
           <div class="eyebrow">Our Work</div>
-          <h2 id="portfolio-title" class="section-title">Projects we're <span class="text-accent">proud of</span></h2>
-          <p class="section-sub">Real projects, real results. Where strategy, design, and engineering come together.</p>
+          <h2 id="portfolio-title" class="section-title">
+            Projects we're
+            <span class="text-accent">proud of</span>
+          </h2>
+          <p class="section-sub">
+            Real projects, real results. Where strategy, design, and engineering come together.
+          </p>
         </div>
-        <div class="pf-filters reveal" role="group" aria-label="Filter portfolio">
-          <button class="pf-btn active" onclick="filterPortfolio(event, 'all')" aria-pressed="true">All</button>
-          <button class="pf-btn" onclick="filterPortfolio(event, 'web')" aria-pressed="false">Websites</button>
-          <button class="pf-btn" onclick="filterPortfolio(event, 'brand')" aria-pressed="false">Branding</button>
-          <button class="pf-btn" onclick="filterPortfolio(event, 'ecom')" aria-pressed="false">E-Commerce</button>
-          <button class="pf-btn" onclick="filterPortfolio(event, 'ui')" aria-pressed="false">UI/UX</button>
+
+        <div class="pf-filters reveal" role="group" aria-label="Filter portfolio by category">
+          <button class="pf-btn active" data-filter="all" aria-pressed="true" type="button">All</button>
+          <button class="pf-btn" data-filter="web" aria-pressed="false" type="button">Websites</button>
+          <button class="pf-btn" data-filter="brand" aria-pressed="false" type="button">Branding</button>
+          <button class="pf-btn" data-filter="ecom" aria-pressed="false" type="button">E-Commerce</button>
+          <button class="pf-btn" data-filter="ui" aria-pressed="false" type="button">UI/UX</button>
         </div>
-        <div class="port-grid" role="list">
+
+        <div class="port-grid" role="list" id="portfolioGrid">
           <article class="port-card reveal" data-cat="web" role="listitem">
             <div class="port-thumb">
-              <img src="images/imprint.png" alt="Imprint Studios website" width="800" height="600" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCBmaWxsPSIjZjNmNGY2IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCI+UHJvamVjdDwvdGV4dD48L3N2Zz4='" />
-              <div class="port-hover"><span>View Project</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></div>
+              <img
+                src="images/imprint.png"
+                alt="Imprint Studios — website design screenshot"
+                width="800"
+                height="600"
+                loading="lazy"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48cmVjdCBmaWxsPSIjMUUyMzMwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjN0E3ODcwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCI+SW1wcmludCBTdHVkaW9zPC90ZXh0Pjwvc3ZnPg=='"
+              />
+              <div class="port-hover" aria-hidden="true">
+                <span>View Project</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </div>
             </div>
             <div class="port-meta">
-              <div class="port-row"><span class="port-cat">Website Development</span><span class="port-kpi"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> +65% traffic</span></div>
+              <div class="port-row">
+                <span class="port-cat">Website Development</span>
+                <span class="port-kpi">
+                  <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>
+                  +65% traffic
+                </span>
+              </div>
               <h3 class="port-name">Imprint Studios</h3>
               <p class="port-blurb">Full website build with SEO for a Nairobi printing and branding company.</p>
             </div>
@@ -316,23 +828,44 @@
       </div>
     </section>
 
-    <!-- 💬 Testimonials Section -->
+
+    <!-- ═══════════════════════════════
+         TESTIMONIALS SECTION
+    ════════════════════════════════ -->
     <section id="testimonials" aria-labelledby="testi-title">
       <div class="container">
         <div class="section-header center reveal">
           <div class="eyebrow">Client Reviews</div>
-          <h2 id="testi-title" class="section-title">What our clients <span class="text-accent">say</span></h2>
+          <h2 id="testi-title" class="section-title">
+            What our clients
+            <span class="text-accent">say</span>
+          </h2>
           <p class="section-sub">Real words from real businesses. No fictional personas.</p>
         </div>
+
         <div class="testi-grid">
           <blockquote class="testi-card testi-card--featured reveal">
             <div class="testi-body">
-              <div class="testi-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <div class="testi-stars" aria-label="5 out of 5 stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
               <i class="fa-solid fa-quote-left testi-ql" aria-hidden="true"></i>
-              <p class="testi-text">Tech Hub completely transformed our online presence. The new website is not only stunning but has directly contributed to a significant increase in enquiries. Professional, responsive, and genuinely results-focused. Couldn't recommend them more highly.</p>
+              <p class="testi-text">
+                Tech Hub completely transformed our online presence. The new website is not only
+                stunning but has directly contributed to a significant increase in enquiries.
+                Professional, responsive, and genuinely results-focused. Couldn't recommend them
+                more highly.
+              </p>
               <footer class="testi-footer">
-                <img src="images/" alt="Lilian M." width="48" height="48" loading="lazy" class="testi-av" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCI+PGNpcmNsZSBmaWxsPSIjZTVlN2ViIiBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzZiNzI4MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiPvCfkqQ8L3RleHQ+PC9zdmc+='" />
-                <div><cite class="testi-name">Lilian M.</cite><span class="testi-role">CEO, Imprint Studios</span></div>
+                <div class="testi-av-placeholder" aria-hidden="true">LM</div>
+                <div>
+                  <cite class="testi-name">Lilian M.</cite>
+                  <span class="testi-role">CEO, Imprint Studios — Nairobi</span>
+                </div>
               </footer>
             </div>
           </blockquote>
@@ -340,45 +873,234 @@
       </div>
     </section>
 
-    <!-- 📬 Contact Section -->
+
+    <!-- ═══════════════════════════════
+         CONTACT SECTION
+    ════════════════════════════════ -->
     <section id="contact" aria-labelledby="contact-title">
       <div class="container contact-grid">
+
         <div class="contact-info reveal">
           <div class="eyebrow">Let's Talk</div>
-          <h2 id="contact-title" class="section-title">Start your <span class="text-accent">project</span> today</h2>
-          <p class="body-lg" style="margin-bottom:2rem">Ready to grow your digital presence? Get in touch for a free consultation. We typically respond within 4 hours during business hours.</p>
-          <address style="font-style:normal" class="contact-methods">
-            <a href="tel:+254794637463" class="cmethod" aria-label="Call us now on 0794 637 463"><div class="cmethod-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div><div><span class="cmethod-label">Call Now</span><span class="cmethod-val">0794 637 463</span></div></a>
-            <a href="https://wa.me/254794637463?text=Hi%20Tech%20Hub%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener" class="cmethod"><div class="cmethod-icon cmethod-icon--wa"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></div><div><span class="cmethod-label">WhatsApp</span><span class="cmethod-val">Chat now — we're online</span></div></a>
-            <a href="mailto:repairstechhub@gmail.com" class="cmethod" aria-label="Email us at repairstechhub@gmail.com"><div class="cmethod-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div><div><span class="cmethod-label">Email Us</span><span class="cmethod-val">repairstechhub@gmail.com</span></div></a>
-            <div class="cmethod"><div class="cmethod-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div><div><span class="cmethod-label">Based in</span><span class="cmethod-val">Nairobi, Kenya</span></div></div>
+          <h2 id="contact-title" class="section-title">
+            Start your
+            <span class="text-accent">project</span> today
+          </h2>
+          <p class="body-lg">
+            Ready to grow your digital presence? Get in touch for a free consultation.
+            We typically respond within 4 hours during business hours.
+          </p>
+
+          <address class="contact-methods" style="font-style:normal">
+            <a href="tel:+254794637463" class="cmethod" aria-label="Call us on 0794 637 463">
+              <div class="cmethod-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <span class="cmethod-label">Call Now</span>
+                <span class="cmethod-val">0794 637 463</span>
+              </div>
+            </a>
+
+            <a
+              href="https://wa.me/254794637463?text=Hi%20Tech%20Hub%2C%20I%27d%20like%20to%20discuss%20a%20project"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cmethod"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <div class="cmethod-icon cmethod-icon--wa" aria-hidden="true">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <span class="cmethod-label">WhatsApp</span>
+                <span class="cmethod-val">Chat now — we're online</span>
+              </div>
+            </a>
+
+            <a href="mailto:repairstechhub@gmail.com" class="cmethod" aria-label="Email us at repairstechhub@gmail.com">
+              <div class="cmethod-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <span class="cmethod-label">Email Us</span>
+                <span class="cmethod-val">repairstechhub@gmail.com</span>
+              </div>
+            </a>
+
+            <div class="cmethod">
+              <div class="cmethod-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <span class="cmethod-label">Based in</span>
+                <span class="cmethod-val">Nairobi, Kenya</span>
+              </div>
+            </div>
           </address>
-          <div class="trust-chips">
+
+          <div class="trust-chips" aria-label="Our guarantees">
             <span class="trust-chip"><i class="fa-solid fa-check" aria-hidden="true"></i> Free consultation</span>
             <span class="trust-chip"><i class="fa-solid fa-check" aria-hidden="true"></i> No hidden fees</span>
             <span class="trust-chip"><i class="fa-solid fa-check" aria-hidden="true"></i> Fast turnaround</span>
             <span class="trust-chip"><i class="fa-solid fa-check" aria-hidden="true"></i> Itemised quotes</span>
           </div>
         </div>
-        <div class="contact-form-wrap reveal" style="transition-delay:.15s">
-          <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOURFORMID" method="POST" novalidate>
-            <input type="hidden" name="_next" value="https://techhubdigital.co.ke/?sent=1" />
-            <input type="hidden" name="_subject" value="New project enquiry — Tech Hub website" />
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <!-- CONTACT FORM — Web3Forms integration -->
+        <div class="contact-form-wrap reveal">
+          <form
+            id="contactForm"
+            class="contact-form"
+            novalidate
+            aria-label="Project enquiry form"
+          >
+            <!-- Web3Forms access key (replace with your actual key) -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New project enquiry — Tech Hub website" />
+            <input type="hidden" name="from_name" value="Tech Hub Website" />
+            <input type="hidden" name="redirect" value="false" />
+
+            <!-- Honeypot anti-spam -->
+            <input
+              type="text"
+              name="botcheck"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
             <h3 class="form-title">Send us a message</h3>
+
             <div class="form-row">
-              <div class="form-g"><label for="fn">First name <abbr title="required">*</abbr></label><input type="text" id="fn" name="firstName" placeholder="John" required autocomplete="given-name" /></div>
-              <div class="form-g"><label for="ln">Last name <abbr title="required">*</abbr></label><input type="text" id="ln" name="lastName" placeholder="Smith" required autocomplete="family-name" /></div>
+              <div class="form-g">
+                <label for="fn">
+                  First name <abbr title="required" aria-label="required">*</abbr>
+                </label>
+                <input
+                  type="text"
+                  id="fn"
+                  name="firstName"
+                  placeholder="John"
+                  required
+                  autocomplete="given-name"
+                  maxlength="50"
+                />
+                <span class="field-error" id="fn-error" role="alert" hidden></span>
+              </div>
+              <div class="form-g">
+                <label for="ln">
+                  Last name <abbr title="required" aria-label="required">*</abbr>
+                </label>
+                <input
+                  type="text"
+                  id="ln"
+                  name="lastName"
+                  placeholder="Smith"
+                  required
+                  autocomplete="family-name"
+                  maxlength="50"
+                />
+                <span class="field-error" id="ln-error" role="alert" hidden></span>
+              </div>
             </div>
-            <div class="form-g"><label for="em">Email address <abbr title="required">*</abbr></label><input type="email" id="em" name="email" placeholder="you@company.com" required autocomplete="email" /></div>
-            <div class="form-g"><label for="ph">Phone / WhatsApp</label><input type="tel" id="ph" name="phone" placeholder="+254 700 000 000" autocomplete="tel" /></div>
-            <div class="form-g"><label for="sv">Service needed</label><select id="sv" name="service"><option value="" disabled selected>Select a service…</option><option>Website Development</option><option>E-Commerce Solution</option><option>UI/UX Design</option><option>Branding & Identity</option><option>Website Maintenance</option><option>SEO & Digital Marketing</option><option>Social Media Management</option><option>Multiple Services</option></select></div>
-            <div class="form-g"><label for="bd">Approximate budget</label><select id="bd" name="budget"><option value="" disabled selected>Select budget range…</option><option>Under KES 30,000</option><option>KES 30,000 – 80,000</option><option>KES 80,000 – 200,000</option><option>Over KES 200,000</option><option>Not sure yet</option></select></div>
-            <div class="form-g"><label for="msg">Tell us about your project <abbr title="required">*</abbr></label><textarea id="msg" name="message" placeholder="Describe your project, goals, and timeline…" required rows="4"></textarea></div>
-            <button type="submit" class="btn btn-primary form-submit" id="submitBtn"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Send Message</button>
-            <!-- ✅ FIXED: Added display:none backup + ensured hidden attribute -->
-            <div id="formSuccess" class="form-msg form-msg--ok" role="alert" aria-live="polite" hidden style="display:none"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Message sent! We'll be in touch within 4 hours.</span></div>
-            <div id="formError" class="form-msg form-msg--err" role="alert" aria-live="polite" hidden style="display:none"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i><span>Something went wrong. Try WhatsApp or email instead.</span></div>
+
+            <div class="form-g">
+              <label for="em">
+                Email address <abbr title="required" aria-label="required">*</abbr>
+              </label>
+              <input
+                type="email"
+                id="em"
+                name="email"
+                placeholder="you@company.com"
+                required
+                autocomplete="email"
+                maxlength="100"
+              />
+              <span class="field-error" id="em-error" role="alert" hidden></span>
+            </div>
+
+            <div class="form-g">
+              <label for="ph">Phone / WhatsApp</label>
+              <input
+                type="tel"
+                id="ph"
+                name="phone"
+                placeholder="+254 700 000 000"
+                autocomplete="tel"
+                maxlength="20"
+              />
+              <span class="field-error" id="ph-error" role="alert" hidden></span>
+            </div>
+
+            <div class="form-g">
+              <label for="sv">Service needed</label>
+              <select id="sv" name="service">
+                <option value="" disabled selected>Select a service…</option>
+                <option value="Website Development">Website Development</option>
+                <option value="E-Commerce Solution">E-Commerce Solution</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Branding & Identity">Branding &amp; Identity</option>
+                <option value="Website Maintenance">Website Maintenance</option>
+                <option value="SEO & Digital Marketing">SEO &amp; Digital Marketing</option>
+                <option value="Social Media Management">Social Media Management</option>
+                <option value="Multiple Services">Multiple Services</option>
+              </select>
+            </div>
+
+            <div class="form-g">
+              <label for="bd">Approximate budget</label>
+              <select id="bd" name="budget">
+                <option value="" disabled selected>Select budget range…</option>
+                <option value="Under KES 30,000">Under KES 30,000</option>
+                <option value="KES 30,000 – 80,000">KES 30,000 – 80,000</option>
+                <option value="KES 80,000 – 200,000">KES 80,000 – 200,000</option>
+                <option value="Over KES 200,000">Over KES 200,000</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-g">
+              <label for="msg">
+                Tell us about your project <abbr title="required" aria-label="required">*</abbr>
+              </label>
+              <textarea
+                id="msg"
+                name="message"
+                placeholder="Describe your project, goals, and timeline…"
+                required
+                rows="4"
+                maxlength="2000"
+              ></textarea>
+              <span class="field-error" id="msg-error" role="alert" hidden></span>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary form-submit"
+              id="submitBtn"
+            >
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Send Message
+            </button>
+
+            <div
+              id="formSuccess"
+              class="form-msg form-msg--ok"
+              role="alert"
+              aria-live="polite"
+              hidden
+            >
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span>Message sent! We'll be in touch within 4 hours.</span>
+            </div>
+
+            <div
+              id="formError"
+              class="form-msg form-msg--err"
+              role="alert"
+              aria-live="polite"
+              hidden
+            >
+              <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+              <span id="formErrorText">Something went wrong. Try WhatsApp or email instead.</span>
+            </div>
           </form>
         </div>
       </div>
@@ -386,25 +1108,28 @@
 
   </main>
 
-  <!-- 🦶 Footer -->
+
+  <!-- ═══ FOOTER ═══ -->
   <footer role="contentinfo">
     <div class="container footer-inner">
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#hero" class="footer-logo" aria-label="Tech Hub — back to top">
-            <img src="images/logo.png" alt="Tech Hub" width="42" height="42" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+            <img src="images/logo.png" alt="Tech Hub logo" width="40" height="40" loading="lazy"
+              onerror="this.style.display='none'" />
             <span>Tech<em>Hub</em></span>
           </a>
           <p>Nairobi's creative digital agency — building websites, brands, and digital experiences that drive real growth across Kenya and Africa.</p>
           <div class="footer-socials" role="list" aria-label="Social media">
-            <a href="https://facebook.com/techhubdigital" target="_blank" rel="noopener" class="soc soc--fb" aria-label="Facebook" role="listitem"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://instagram.com/techhubdigital" target="_blank" rel="noopener" class="soc soc--ig" aria-label="Instagram" role="listitem"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com/techhubdigital" target="_blank" rel="noopener" class="soc soc--tw" aria-label="X / Twitter" role="listitem"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/company/techhubke" target="_blank" rel="noopener" class="soc soc--li" aria-label="LinkedIn" role="listitem"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://wa.me/254794637463" target="_blank" rel="noopener" class="soc soc--wa" aria-label="WhatsApp" role="listitem"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://tiktok.com/@techhubdigital" target="_blank" rel="noopener" class="soc soc--tt" aria-label="TikTok" role="listitem"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://facebook.com/techhubdigital" target="_blank" rel="noopener noreferrer" class="soc soc--fb" aria-label="Facebook" role="listitem"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://instagram.com/techhubdigital" target="_blank" rel="noopener noreferrer" class="soc soc--ig" aria-label="Instagram" role="listitem"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/techhubdigital" target="_blank" rel="noopener noreferrer" class="soc soc--tw" aria-label="X / Twitter" role="listitem"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/company/techhubke" target="_blank" rel="noopener noreferrer" class="soc soc--li" aria-label="LinkedIn" role="listitem"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="https://wa.me/254794637463" target="_blank" rel="noopener noreferrer" class="soc soc--wa" aria-label="WhatsApp" role="listitem"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+            <a href="https://tiktok.com/@techhubdigital" target="_blank" rel="noopener noreferrer" class="soc soc--tt" aria-label="TikTok" role="listitem"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
           </div>
         </div>
+
         <nav class="footer-col" aria-label="Quick links">
           <h4>Quick Links</h4>
           <ul role="list">
@@ -417,32 +1142,53 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+
         <nav class="footer-col" aria-label="Services">
           <h4>Services</h4>
           <ul role="list">
             <li><a href="#services">Website Development</a></li>
             <li><a href="#services">E-Commerce</a></li>
             <li><a href="#services">UI/UX Design</a></li>
-            <li><a href="#services">Branding & Identity</a></li>
+            <li><a href="#services">Branding &amp; Identity</a></li>
             <li><a href="#services">SEO Optimisation</a></li>
             <li><a href="#services">Social Media</a></li>
             <li><a href="#services">Maintenance</a></li>
           </ul>
         </nav>
+
         <div class="footer-col">
           <h4>Get In Touch</h4>
           <address style="font-style:normal">
-            <a href="tel:+254794637463" class="footer-contact-row" aria-label="Call us now"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>Call Now: 0794 637 463</span></a>
-            <a href="mailto:repairstechhub@gmail.com" class="footer-contact-row" aria-label="Email us"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>repairstechhub@gmail.com</span></a>
-            <div class="footer-contact-row"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Nairobi, Kenya</span></div>
-            <div class="footer-contact-row"><i class="fa-solid fa-clock" aria-hidden="true"></i><span>Mon–Fri, 8 AM – 6 PM EAT</span></div>
+            <a href="tel:+254794637463" class="footer-contact-row" aria-label="Call us now">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <span>0794 637 463</span>
+            </a>
+            <a href="mailto:repairstechhub@gmail.com" class="footer-contact-row" aria-label="Email us">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span>repairstechhub@gmail.com</span>
+            </a>
+            <div class="footer-contact-row">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>Nairobi, Kenya</span>
+            </div>
+            <div class="footer-contact-row">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <span>Mon–Fri, 8 AM – 6 PM EAT</span>
+            </div>
           </address>
-          <a href="#contact" class="btn btn-primary btn-sm" style="margin-top:1.25rem">Free Consultation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="#contact" class="btn btn-primary btn-sm" style="margin-top:1.25rem">
+            Free Consultation
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; <span id="currentYear"></span><strong>Tech Hub Digital Agency</strong>. All rights reserved. Built in Nairobi.</p>
-        <nav class="footer-legal" aria-label="Legal">
+        <p class="footer-copy">
+          &copy; <span id="currentYear"></span>
+          <strong>Tech Hub Digital Agency</strong>. All rights reserved. Built in Nairobi.
+        </p>
+        <nav class="footer-legal" aria-label="Legal links">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
         </nav>
@@ -450,47 +1196,46 @@
     </div>
   </footer>
 
-  <!-- 💬 Floating WhatsApp -->
-  <a href="https://wa.me/254794637463?text=Hi%20Tech%20Hub%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>Chat with us</span></a>
+  <!-- ═══ FLOATING ELEMENTS ═══ -->
 
-  <!-- ⬆️ Back to Top -->
-  <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
+  <!-- WhatsApp float -->
+  <a
+    href="https://wa.me/254794637463?text=Hi%20Tech%20Hub%2C%20I%27d%20like%20to%20discuss%20a%20project"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="wa-float"
+    id="waFloat"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span>Chat with us</span>
+  </a>
 
-  <!-- 🔔 Toast Notification - ✅ FIXED: Changed visibility:hidden to hidden attribute -->
-  <div id="toast" class="toast" role="status" aria-live="polite" hidden><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Message sent! We'll reply within 4 hours.</span></div>
+  <!-- Back to top -->
+  <button
+    id="backTop"
+    class="back-top"
+    aria-label="Scroll back to top"
+    type="button"
+    hidden
+  >
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </button>
 
-  <!-- 📜 Scripts -->
+  <!-- Toast notification -->
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    hidden
+  >
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+    <span id="toastText">Message sent!</span>
+  </div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
-  
-  <!-- ✅ Safety script: Force-hide messages on load -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      ['formSuccess', 'formError', 'toast'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) { el.hidden = true; el.style.display = 'none'; }
-      });
-      if (typeof closeMobile !== 'function') {
-        window.closeMobile = function() {
-          var menu = document.getElementById('mobileMenu');
-          var hamburger = document.getElementById('hamburger');
-          if (menu) { menu.hidden = true; menu.classList.remove('active'); }
-          if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
-        };
-      }
-      if (typeof filterPortfolio !== 'function') {
-        window.filterPortfolio = function(e, category) {
-          if (e && e.preventDefault) e.preventDefault();
-          document.querySelectorAll('.pf-btn').forEach(function(btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); });
-          if (e && e.target) { e.target.classList.add('active'); e.target.setAttribute('aria-pressed', 'true'); }
-          document.querySelectorAll('.port-card').forEach(function(card) {
-            var cat = card.dataset.cat;
-            card.style.display = (category === 'all' || cat === category) ? 'block' : 'none';
-          });
-        };
-      }
-      var yearEl = document.getElementById('currentYear');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-    });
-  </script>
 </body>
 </html>

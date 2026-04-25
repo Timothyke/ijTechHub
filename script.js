@@ -1,104 +1,135 @@
+/**
+ * TECH HUB — script.js
+ * Production build — clean, modular, accessible
+ *
+ * Modules:
+ *  01. Preloader
+ *  02. Navbar (scroll state + active link)
+ *  03. Mobile Menu (with focus trap)
+ *  04. Scroll Reveal
+ *  05. Stat Counters
+ *  06. Portfolio Filter
+ *  07. Contact Form (Web3Forms)
+ *  08. Back to Top
+ *  09. Footer Year
+ *  10. Toast Notification
+ *  11. Utilities
+ */
+
+'use strict';
+
 /* ================================================================
-   TECH HUB — script.js (REPAIRED & ENHANCED)
-   All interactive behaviour for techhubdigital.co.ke
-   
-   CHANGES MADE:
-   ✅ Fixed CSS variable fallbacks in showToast()
-   ✅ Added email/phone validation to contact form
-   ✅ Fixed portfolio filter transition conflicts
-   ✅ Added focus trap for mobile menu (a11y)
-   ✅ Added debounce to scroll handlers for performance
-   ✅ Fixed counter animation decimal flicker
-   ✅ Added error boundary for fetch operations
-   ✅ Ensured graceful degradation if CSS fails
+   UTILITIES
    ================================================================ */
+
+/**
+ * Throttle: limit how often a function fires.
+ * @param {Function} fn
+ * @param {number} limit - ms
+ */
+function throttle(fn, limit = 200) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = Date.now();
+    if (now - lastCall >= limit) {
+      lastCall = now;
+      fn.apply(this, args);
+    }
+  };
+}
+
+/**
+ * Safe text setter — prevents XSS by using textContent.
+ * @param {Element} el
+ * @param {string} text
+ */
+function safeText(el, text) {
+  if (el) el.textContent = String(text);
+}
+
+/**
+ * Show or hide an element using the hidden attribute.
+ * @param {Element} el
+ * @param {boolean} visible
+ */
+function setVisible(el, visible) {
+  if (!el) return;
+  el.hidden = !visible;
+}
+
+/**
+ * Sanitize a string for safe display (strips HTML tags).
+ * @param {string} str
+ * @returns {string}
+ */
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.textContent;
+}
 
 
 /* ================================================================
    01. PRELOADER
-   Fades out once the DOM is ready + a short delay for the bar animation
    ================================================================ */
 (function initPreloader() {
   const loader = document.getElementById('preloader');
   if (!loader) return;
 
-  // Fallback: hide preloader after 3s max if load event fails
-  const fallbackTimer = setTimeout(() => loader.classList.add('done'), 3000);
+  // Fallback: hide after 3s even if load event doesn't fire
+  const fallback = setTimeout(() => loader.classList.add('done'), 3000);
 
   window.addEventListener('load', () => {
-    clearTimeout(fallbackTimer);
-    // Match the 1.2s fill animation then fade out
+    clearTimeout(fallback);
+    // Wait for bar animation (1.1s) then fade out
     setTimeout(() => {
       loader.classList.add('done');
       // Remove from DOM after transition to free memory
-      setTimeout(() => {
-        if (loader.parentNode) loader.parentNode.removeChild(loader);
-      }, 400);
-    }, 1300);
+      setTimeout(() => loader.remove(), 500);
+    }, 1200);
   });
 })();
 
 
 /* ================================================================
    02. NAVBAR
-   - Adds .scrolled class when page scrolls past 60px
-   - Highlights the nav link for the section currently in the viewport
    ================================================================ */
 (function initNavbar() {
-  const navbar   = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
   if (!navbar) return;
 
-  /* --- Scroll state (solid background) --- */
-  let lastScrollY = window.scrollY;
-  function onScroll() {
-    const currentScrollY = window.scrollY;
-    // Only update DOM if state changed (performance)
-    const shouldScroll = currentScrollY > 60;
-    if (navbar.classList.contains('scrolled') !== shouldScroll) {
-      navbar.classList.toggle('scrolled', shouldScroll);
-    }
-    lastScrollY = currentScrollY;
+  /* Scroll state */
+  function updateNavbar() {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
   }
 
-  // Debounced scroll handler for performance
-  let scrollTimeout;
-  window.addEventListener('scroll', () => {
-    if (scrollTimeout) return;
-    scrollTimeout = setTimeout(() => {
-      onScroll();
-      scrollTimeout = null;
-    }, 100);
-  }, { passive: true });
-  
-  onScroll(); // run once on load
+  window.addEventListener('scroll', throttle(updateNavbar, 100), { passive: true });
+  updateNavbar(); // run on load
 
-  /* --- Active nav link via IntersectionObserver --- */
-  if (sections.length && navLinks.length) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            const isActive = link.getAttribute('href') === `#${id}`;
-            if (link.classList.contains('active') !== isActive) {
-              link.classList.toggle('active', isActive);
-            }
-          });
+  /* Active link via IntersectionObserver */
+  if (!sections.length || !navLinks.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
         });
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0.1 }
-    );
-    sections.forEach((sec) => sectionObserver.observe(sec));
-  }
+      });
+    },
+    { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 })();
 
 
 /* ================================================================
    03. MOBILE MENU
-   Opens / closes the full-screen overlay with accessibility enhancements
    ================================================================ */
 (function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -106,512 +137,448 @@
   const closeBtn  = document.getElementById('mobileClose');
   if (!hamburger || !menu) return;
 
-  let lastFocusedElement = null;
-  const focusableSelectors = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+  let previousFocus = null;
 
-  function getFocusableElements() {
-    return Array.from(menu.querySelectorAll(focusableSelectors))
-      .filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+  const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+  function getFocusable() {
+    return [...menu.querySelectorAll(FOCUSABLE)].filter(
+      (el) => !el.hasAttribute('disabled') && el.offsetParent !== null
+    );
   }
 
-  function open() {
-    lastFocusedElement = document.activeElement;
+  function openMenu() {
+    previousFocus = document.activeElement;
+    menu.hidden = false;
     hamburger.classList.add('open');
-    menu.classList.add('open');
-    menu.hidden = false; // Ensure visible for screen readers
     hamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    
-    // Focus first focusable element for accessibility
-    setTimeout(() => {
-      const focusable = getFocusableElements();
+
+    requestAnimationFrame(() => {
+      const focusable = getFocusable();
       if (focusable[0]) focusable[0].focus();
-    }, 100);
+    });
   }
 
-  function close() {
-    hamburger.classList.remove('open');
-    menu.classList.remove('open');
+  function closeMenu() {
     menu.hidden = true;
+    hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
-    
-    // Restore focus to hamburger
-    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-      lastFocusedElement.focus();
+
+    if (previousFocus && typeof previousFocus.focus === 'function') {
+      previousFocus.focus();
     }
   }
 
-  hamburger.addEventListener('click', (e) => {
-    e.preventDefault();
-    menu.classList.contains('open') ? close() : open();
+  /* Toggle */
+  hamburger.addEventListener('click', () => {
+    menu.hidden ? openMenu() : closeMenu();
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    close();
-  });
+  /* Close button */
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  // Close on Escape key
+  /* Escape key */
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
+    if (e.key === 'Escape' && !menu.hidden) {
       e.preventDefault();
-      close();
+      closeMenu();
     }
   });
 
-  // Focus trap for accessibility (WCAG 2.1)
+  /* Focus trap */
   menu.addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab' || !menu.classList.contains('open')) return;
-    
-    const focusable = getFocusableElements();
+    if (e.key !== 'Tab' || menu.hidden) return;
+    const focusable = getFocusable();
     if (!focusable.length) return;
-    
     const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    
-    if (e.shiftKey) {
-      // Shift + Tab
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    } else {
-      // Tab
-      if (document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
+    const last  = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 
-  // Close on outside click
+  /* Close on nav link click (mobile) */
+  menu.querySelectorAll('nav a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* Close on outside click */
   document.addEventListener('click', (e) => {
-    if (menu.classList.contains('open') && 
-        !menu.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-      close();
+    if (!menu.hidden && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMenu();
     }
   });
 
-  // Expose closeMobile for inline onclick attributes
-  window.closeMobile = close;
+  /* Expose for any inline usage */
+  window.closeMobile = closeMenu;
 })();
 
 
 /* ================================================================
    04. SCROLL REVEAL
-   Elements with class .reveal animate in when scrolled into view.
-   Adds .visible → CSS transitions handle the animation.
    ================================================================ */
 (function initScrollReveal() {
-  const revealEls = document.querySelectorAll('.reveal');
-  if (!revealEls.length) return;
+  const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // fire once only
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  revealEls.forEach((el) => {
-    // Add initial state for CSS transition
-    el.style.willChange = 'transform, opacity';
+  elements.forEach((el) => observer.observe(el));
+})();
+
+
+/* ================================================================
+   05. STAT COUNTERS
+   ================================================================ */
+(function initCounters() {
+  const counters = document.querySelectorAll('[data-target]');
+  if (!counters.length) return;
+
+  function animate(el) {
+    const target   = parseInt(el.getAttribute('data-target'), 10);
+    if (isNaN(target) || target <= 0) return;
+
+    const duration  = 1600; // ms
+    const frameTime = 1000 / 60; // ~60fps
+    const totalFrames = Math.round(duration / frameTime);
+    let frame = 0;
+
+    const timer = setInterval(() => {
+      frame++;
+      // Ease-out: decelerates near the end
+      const progress = 1 - Math.pow(1 - frame / totalFrames, 3);
+      el.textContent = frame >= totalFrames ? target : Math.round(progress * target);
+
+      if (frame >= totalFrames) {
+        clearInterval(timer);
+        el.textContent = target; // Guarantee exact final value
+      }
+    }, frameTime);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((el) => {
+    el.textContent = '0';
     observer.observe(el);
   });
 })();
 
 
 /* ================================================================
-   05. ANIMATED STAT COUNTERS
-   Elements with data-target="NUMBER" count up when scrolled into view.
-   Used in the hero stats row.
+   06. PORTFOLIO FILTER
    ================================================================ */
-(function initCounters() {
-  const counters = document.querySelectorAll('[data-target]');
-  if (!counters.length) return;
+(function initPortfolioFilter() {
+  const filterGroup = document.querySelector('.pf-filters');
+  const grid        = document.getElementById('portfolioGrid');
+  if (!filterGroup || !grid) return;
 
-  function animateCounter(el) {
-    const target   = parseInt(el.getAttribute('data-target'), 10);
-    if (isNaN(target)) return;
-    
-    const duration = 1800; // ms
-    const stepTime = 16;   // ~60fps
-    const steps    = Math.floor(duration / stepTime);
-    const increment = target / steps;
-    let current = 0;
-    let stepCount = 0;
+  filterGroup.addEventListener('click', (e) => {
+    const btn = e.target.closest('.pf-btn');
+    if (!btn) return;
 
-    const timer = setInterval(() => {
-      stepCount++;
-      current += increment;
-      
-      // Use Math.round for clean integers, prevent overshoot
-      const displayValue = stepCount >= steps ? target : Math.round(current);
-      el.textContent = displayValue;
-      
-      if (stepCount >= steps) {
-        el.textContent = target; // Ensure exact final value
-        clearInterval(timer);
-      }
-    }, stepTime);
-  }
+    const category = btn.dataset.filter;
 
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+    /* Update button states */
+    filterGroup.querySelectorAll('.pf-btn').forEach((b) => {
+      b.classList.toggle('active', b === btn);
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
 
-  counters.forEach((el) => {
-    // Ensure element has initial value
-    if (!el.textContent || el.textContent === '0') {
-      el.textContent = '0';
-    }
-    counterObserver.observe(el);
+    /* Show/hide cards */
+    grid.querySelectorAll('.port-card').forEach((card) => {
+      const matches = category === 'all' || card.dataset.cat === category;
+      card.classList.toggle('is-hidden', !matches);
+    });
   });
 })();
 
 
 /* ================================================================
-   06. PORTFOLIO FILTER
-   Shows/hides portfolio cards based on data-cat attribute.
-   Called by onclick on filter buttons in the HTML.
-   ================================================================ */
-function filterPortfolio(clickedBtn, category) {
-  // Prevent default if called from event
-  if (clickedBtn?.preventDefault) clickedBtn.preventDefault();
-  
-  // Update button active states
-  document.querySelectorAll('.pf-btn').forEach((btn) => {
-    const isActive = btn === clickedBtn;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-  });
-
-  // Show/fade cards with smooth transition
-  document.querySelectorAll('.port-card').forEach((card) => {
-    const isMatch = category === 'all' || card.dataset.cat === category;
-    
-    // Use CSS class for transition instead of inline styles (cleaner)
-    if (isMatch) {
-      card.classList.remove('hidden');
-      card.style.pointerEvents = '';
-    } else {
-      card.classList.add('hidden');
-      card.style.pointerEvents = 'none';
-    }
-  });
-}
-
-// Add CSS class handler for .hidden state (ensure this exists in styles.css)
-// .port-card.hidden { opacity: 0; transform: scale(0.97); pointer-events: none; }
-
-
-/* ================================================================
-   07. CONTACT FORM
-   Uses Formspree for email delivery (no backend required).
-   
-   SETUP:
-   1. Go to https://formspree.io and create a free account
-   2. Create a new form and copy the form ID
-   3. In index.html, replace YOURFORMID in the form action URL
-   4. That's it — submissions will be emailed to you automatically
+   07. CONTACT FORM — Web3Forms
    ================================================================ */
 (function initContactForm() {
   const form       = document.getElementById('contactForm');
   const submitBtn  = document.getElementById('submitBtn');
   const successMsg = document.getElementById('formSuccess');
   const errorMsg   = document.getElementById('formError');
-  if (!form) return;
+  const errorText  = document.getElementById('formErrorText');
+  if (!form || !submitBtn) return;
 
-  // Email validation regex (simple but effective)
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // Kenya phone regex (optional, lenient)
-  const phoneRegex = /^(\+254|0)[17]\d{8}$/;
+  /* Validation rules */
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const PHONE_RE = /^(\+254|0)[17]\d{8}$/;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  const validators = {
+    fn:  (v) => v.length >= 2 ? null : 'Please enter your first name.',
+    ln:  (v) => v.length >= 2 ? null : 'Please enter your last name.',
+    em:  (v) => EMAIL_RE.test(v) ? null : 'Please enter a valid email address.',
+    ph:  (v) => !v || PHONE_RE.test(v.replace(/\s/g, '')) ? null : 'Enter a valid Kenyan number (e.g. 0712345678).',
+    msg: (v) => v.length >= 10 ? null : 'Please describe your project (at least 10 characters).',
+  };
 
-    // Reset previous errors
-    let hasError = false;
-    form.querySelectorAll('[required]').forEach((field) => {
-      field.style.borderColor = '';
+  /* Field-level error display */
+  function setFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errEl = document.getElementById(`${fieldId}-error`);
+    if (!field) return;
+
+    if (message) {
+      field.setAttribute('aria-invalid', 'true');
+      field.setAttribute('aria-describedby', `${fieldId}-error`);
+      if (errEl) {
+        safeText(errEl, message);
+        errEl.hidden = false;
+      }
+    } else {
       field.setAttribute('aria-invalid', 'false');
-    });
+      field.removeAttribute('aria-describedby');
+      if (errEl) {
+        safeText(errEl, '');
+        errEl.hidden = true;
+      }
+    }
+  }
 
-    // Validate required fields
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach((field) => {
-      if (!field.value.trim()) {
-        field.style.borderColor = '#ef4444';
-        field.setAttribute('aria-invalid', 'true');
-        field.setAttribute('aria-describedby', `${field.id}-error`);
-        hasError = true;
+  function clearFieldError(fieldId) {
+    setFieldError(fieldId, null);
+  }
+
+  /* Run all validations; return true if valid */
+  function validateForm() {
+    let isValid = true;
+
+    Object.entries(validators).forEach(([id, validate]) => {
+      const field = document.getElementById(id);
+      if (!field) return;
+      const value = field.value.trim();
+      const error = validate(value);
+      if (error) {
+        setFieldError(id, error);
+        isValid = false;
+      } else {
+        clearFieldError(id);
       }
     });
 
-    // Validate email format
-    const emailField = form.querySelector('input[type="email"]');
-    if (emailField && emailField.value.trim() && !emailRegex.test(emailField.value.trim())) {
-      emailField.style.borderColor = '#ef4444';
-      emailField.setAttribute('aria-invalid', 'true');
-      showToast('Please enter a valid email address.', 'error');
-      hasError = true;
+    return isValid;
+  }
+
+  /* Live validation on blur */
+  Object.keys(validators).forEach((id) => {
+    const field = document.getElementById(id);
+    if (!field) return;
+
+    field.addEventListener('blur', () => {
+      const error = validators[id](field.value.trim());
+      if (error) {
+        setFieldError(id, error);
+      } else {
+        clearFieldError(id);
+      }
+    });
+
+    field.addEventListener('input', () => {
+      // Clear error as soon as user starts typing again
+      if (field.getAttribute('aria-invalid') === 'true') {
+        clearFieldError(id);
+      }
+    });
+  });
+
+  /* Submit */
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Hide previous feedback
+    setVisible(successMsg, false);
+    setVisible(errorMsg, false);
+
+    // Honeypot check
+    const honeypot = form.querySelector('input[name="botcheck"]');
+    if (honeypot && honeypot.value) {
+      // Silently reject bots — show fake success
+      setVisible(successMsg, true);
+      return;
     }
 
-    // Validate phone format (if provided)
-    const phoneField = form.querySelector('input[type="tel"]');
-    if (phoneField && phoneField.value.trim() && !phoneRegex.test(phoneField.value.trim().replace(/\s/g, ''))) {
-      phoneField.style.borderColor = '#ef4444';
-      phoneField.setAttribute('aria-invalid', 'true');
-      showToast('Please enter a valid Kenyan phone number.', 'error');
-      hasError = true;
-    }
-
-    if (hasError) {
-      // Focus first invalid field
+    // Validate
+    if (!validateForm()) {
       const firstInvalid = form.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    // Update button state
-    const originalBtnHTML = submitBtn.innerHTML;
+    // Loading state
+    const originalHTML = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
-    
-    // Hide previous messages
-    if (successMsg) successMsg.hidden = true;
-    if (errorMsg) errorMsg.hidden = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending…';
 
     try {
-      const response = await fetch(form.action, {
+      const formData = new FormData(form);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 
-          'Accept': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        }
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       });
 
-      if (response.ok) {
-        // Success
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // SUCCESS
         form.reset();
-        if (successMsg) {
-          successMsg.hidden = false;
-          successMsg.focus?.(); // Focus for screen readers
-        }
-        showToast('Message sent! We\'ll reply within 4 hours.');
-        submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Sent!';
-        
-        // Reset button after delay
+
+        // Clear any lingering field errors
+        Object.keys(validators).forEach(clearFieldError);
+
+        setVisible(successMsg, true);
+        successMsg?.focus();
+        showToast('Message sent! We\'ll be in touch within 4 hours.');
+
+        submitBtn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Sent!';
         setTimeout(() => {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
-        }, 3000);
-        
-      } else if (response.status === 400) {
-        // Formspree validation error
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.errors?.[0]?.message || 'Form validation failed');
-      } else {
-        throw new Error(`Server error: ${response.status}`);
-      }
-    } catch (err) {
-      console.error('Form submission error:', err);
-      
-      // Show user-friendly error
-      if (errorMsg) {
-        errorMsg.hidden = false;
-        errorMsg.textContent = `Error: ${err.message || 'Something went wrong'}`;
-        errorMsg.focus?.();
-      }
-      showToast('Something went wrong. Try WhatsApp or email instead.', 'error');
-      
-      // Keep button enabled for retry
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHTML;
-    }
-  });
+          submitBtn.innerHTML = originalHTML;
+        }, 3500);
 
-  // Remove error styling on input
-  form.querySelectorAll('input, textarea, select').forEach((field) => {
-    field.addEventListener('input', () => { 
-      field.style.borderColor = '';
-      field.setAttribute('aria-invalid', 'false');
-    });
-    field.addEventListener('blur', () => {
-      // Re-validate on blur if field is required and has value
-      if (field.hasAttribute('required') && field.value.trim()) {
-        if (field.type === 'email' && !emailRegex.test(field.value.trim())) {
-          field.style.borderColor = '#ef4444';
-          field.setAttribute('aria-invalid', 'true');
-        }
+      } else {
+        // API returned an error
+        throw new Error(result.message || 'Submission failed. Please try again.');
       }
-    });
+
+    } catch (err) {
+      console.error('[Tech Hub] Form error:', err.message);
+
+      const userMessage = err.message && err.message.length < 120
+        ? sanitize(err.message)
+        : 'Something went wrong. Please try WhatsApp or email instead.';
+
+      if (errorText) safeText(errorText, userMessage);
+      setVisible(errorMsg, true);
+      errorMsg?.focus();
+
+      showToast('Submission failed. Try WhatsApp instead.', 'error');
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalHTML;
+    }
   });
 })();
 
 
 /* ================================================================
-   08. BACK TO TOP BUTTON
-   Appears when user scrolls more than 400px down the page.
+   08. BACK TO TOP
    ================================================================ */
 (function initBackToTop() {
   const btn = document.getElementById('backTop');
   if (!btn) return;
 
-  // Debounced scroll for performance
-  let scrollTimeout;
-  window.addEventListener('scroll', () => {
-    if (scrollTimeout) return;
-    scrollTimeout = setTimeout(() => {
-      const shouldShow = window.scrollY > 400;
-      if (btn.hidden !== shouldShow) {
-        btn.hidden = !shouldShow;
-      }
-      scrollTimeout = null;
-    }, 100);
-  }, { passive: true });
-  
-  // Initial state
-  btn.hidden = window.scrollY < 400;
-  
-  // Smooth scroll with fallback
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ 
-      top: 0, 
-      behavior: 'smooth' 
-    });
+  function update() {
+    setVisible(btn, window.scrollY > 400);
+  }
+
+  window.addEventListener('scroll', throttle(update, 120), { passive: true });
+  update();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
 
 
 /* ================================================================
-   09. FOOTER — AUTO YEAR
-   Keeps the copyright year current automatically.
+   09. FOOTER YEAR
    ================================================================ */
 (function setYear() {
-  const yearEl = document.getElementById('currentYear');
-  if (yearEl) {
-    // Use textContent to prevent XSS
-    yearEl.textContent = new Date().getFullYear();
-  }
+  const el = document.getElementById('currentYear');
+  if (el) safeText(el, new Date().getFullYear());
 })();
 
 
 /* ================================================================
-   10. HELPERS
+   10. TOAST NOTIFICATION
    ================================================================ */
 
 /**
- * showToast — displays the bottom-right toast notification.
- *
- * @param {string}  message  - Text to display
- * @param {'success'|'error'} type - Controls icon and colour (default: 'success')
- * @param {number}  duration - Milliseconds before auto-hide (default: 4000)
+ * Display a toast message.
+ * @param {string} message
+ * @param {'success'|'error'} type
+ * @param {number} duration - ms before auto-hide
  */
-function showToast(message, type = 'success', duration = 4000) {
-  const toast = document.getElementById('toast');
-  if (!toast) {
-    // Fallback: use alert if toast element missing
-    console.warn('Toast element not found. Message:', message);
-    if (type === 'error') alert(`Error: ${message}`);
-    return;
-  }
+function showToast(message, type = 'success', duration = 4500) {
+  const toast   = document.getElementById('toast');
+  const textEl  = document.getElementById('toastText');
+  const iconEl  = toast?.querySelector('i');
+  if (!toast) return;
 
-  const iconEl = toast.querySelector('i');
-  const textEl = toast.querySelector('span');
+  // Set content safely
+  if (textEl) safeText(textEl, message);
 
-  // Update text safely
-  if (textEl) textEl.textContent = message;
-
-  // Swap icon and colour based on type with CSS variable fallbacks
+  // Icon
   if (iconEl) {
     iconEl.className = type === 'error'
       ? 'fa-solid fa-circle-exclamation'
       : 'fa-solid fa-circle-check';
+    iconEl.setAttribute('aria-hidden', 'true');
   }
-  
-  // Use CSS variables with fallbacks (define these in your CSS root)
-  const colors = {
-    success: getComputedStyle(document.documentElement).getPropertyValue('--citrus').trim() || '#E8FF47',
-    error: getComputedStyle(document.documentElement).getPropertyValue('--error-red').trim() || '#ef4444'
-  };
-  const textColors = {
-    success: getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#111827',
-    error: '#ffffff'
-  };
-  
-  toast.style.background = colors[type];
-  toast.style.color = textColors[type];
 
-  // Show toast using class (more reliable than inline visibility)
-  toast.classList.remove('show'); // Reset animation
-  void toast.offsetWidth; // Force reflow to restart animation
+  // Colour
+  toast.style.background = type === 'error' ? '#ef4444' : '';
+  toast.style.color      = type === 'error' ? '#fff' : '';
+
+  // Show
+  toast.hidden = false;
+  // Force reflow to restart transition
+  void toast.offsetWidth;
   toast.classList.add('show');
-  toast.hidden = false; // Ensure visible for screen readers
 
-  // Auto-hide after duration
-  if (toast._timer) clearTimeout(toast._timer);
+  // Auto-hide
+  clearTimeout(toast._timer);
   toast._timer = setTimeout(() => {
     toast.classList.remove('show');
-    // Hide from screen readers after animation
     setTimeout(() => {
       if (!toast.classList.contains('show')) {
         toast.hidden = true;
+        toast.style.background = '';
+        toast.style.color = '';
       }
-    }, 300);
+    }, 350);
   }, duration);
 }
 
-// ✅ Utility: Debounce function for performance-critical events
-function debounce(func, wait = 100) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-window.debounce = debounce; // Expose globally if needed
+// Expose globally in case needed from inline HTML
+window.showToast = showToast;
 
-// ✅ Utility: Throttle function for scroll/resize
-function throttle(func, limit = 200) {
-  let inThrottle;
-  return function(...args) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  };
-}
-window.throttle = throttle;
 
-// ✅ Initialize everything when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    // All IIFEs above run immediately, but this ensures DOM is ready
-    console.log('✅ Tech Hub scripts initialized');
-  });
-} else {
-  console.log('✅ Tech Hub scripts initialized (DOM already ready)');
+/* ================================================================
+   INIT LOG
+   ================================================================ */
+if (typeof console !== 'undefined') {
+  console.log('%c✅ Tech Hub initialized', 'color:#E8FF47;font-weight:bold;background:#0D0F14;padding:2px 6px;border-radius:3px');
 }

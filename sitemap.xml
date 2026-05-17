@@ -1,88 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ================================================================
-  SITEMAP — Tech Hub Digital Agency
-  Submit this file to Google Search Console:
-    1. Go to https://search.google.com/search-console
-    2. Select your property
-    3. Click Sitemaps in the left sidebar
-    4. Enter: sitemap.xml  and click Submit
-
-  UPDATE: Replace techhubdigital.co.ke with your real domain
-          wherever it appears below.
-
-  WHEN TO UPDATE THIS FILE:
-  - Each time you add a new page, add a <url> entry below.
-  - Increase the <priority> for your most important pages (max 1.0).
-  - <changefreq> hints to Google how often you update the page.
-  ================================================================
--->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- ============================================================
-       HOMEPAGE — highest priority, changes most frequently
-       ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://techhub-digital.onrender.com/</loc>
-    <lastmod>2025-03-24</lastmod>  <!-- UPDATE: date you last made changes -->
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- ============================================================
-       SECTION ANCHORS — these are sections on the homepage.
-       Google treats anchor URLs as part of the same page but
-       including them helps crawlers discover all content areas.
-       ============================================================ -->
-  <url>
-    <loc>https://techhub-digital.onrender.com/#about</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://techhub-digital.onrender.com/#services</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://techhub-digital.onrender.com/#portfolio</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://techhub-digital.onrender.com/#contact</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- ============================================================
-       LEGAL PAGES — add these once you create them
-       Uncomment and update the <lastmod> date when live.
-       ============================================================ -->
-  <!--
-  <url>
-    <loc>https://techhub-digital.onrender.com/privacy-policy.html</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://techhub-digital.onrender.com/terms.html</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  -->
-
+  <url><loc>https://techhub-digital.onrender.com/#about</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://techhub-digital.onrender.com/#services</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://techhub-digital.onrender.com/#work</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://techhub-digital.onrender.com/#design-gallery</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://techhub-digital.onrender.com/#contact</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>

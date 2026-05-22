@@ -35,6 +35,7 @@
   <meta name="twitter:title" content="Tech Hub Digital, Premium Web Design and Brand Systems" />
   <meta name="twitter:description" content="Premium websites, branding, Shopify stores, cybersecurity and digital growth systems from Nairobi." />
   <meta name="twitter:image" content="https://techhub-digital.onrender.com/images/og-banner.png" />
+  <meta name="keywords" content="web design Nairobi, Tech Hub Digital, Nairobi web developer, graphic design Kenya, Shopify store Kenya, cybersecurity Nairobi, branding Nairobi, UI UX design Kenya" />
 
   <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
   <link rel="apple-touch-icon" href="images/logo.svg" />
@@ -256,11 +257,15 @@
     <section class="section design-gallery" id="design-gallery">
       <div class="container">
         <div class="section-header reveal">
-          <p class="eyebrow"><span></span> Designs Gallery</p>
-          <h2>MY PREMIUM DESIGNS.</h2>
-          <p>The gallery is built to accept real uploaded images instantly. Add your design files inside <code>images/designs/</code> and update the <code>data-image</code> value on each item.</p>
+          <p class="eyebrow"><span></span> Design Gallery</p>
+          <h2>Premium visual work built for brands that need to be remembered.</h2>
+          <p>
+            A curated showcase for posters, logos, brand systems, social media campaigns and flyers.
+            Place each image directly inside <code>images/designs/</code> using the exact file names shown in the placement guide. The gallery cards and lightbox will load them automatically.
+          </p>
         </div>
-        <div class="gallery-filters reveal" role="group" aria-label="Filter gallery designs">
+
+        <div class="gallery-filters reveal" role="group" aria-label="Filter Tech Hub Digital portfolio designs">
           <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true">All</button>
           <button class="filter-btn" data-filter="posters" type="button" aria-pressed="false">Posters</button>
           <button class="filter-btn" data-filter="logos" type="button" aria-pressed="false">Logos</button>
@@ -268,13 +273,106 @@
           <button class="filter-btn" data-filter="social" type="button" aria-pressed="false">Social Media</button>
           <button class="filter-btn" data-filter="flyers" type="button" aria-pressed="false">Flyers</button>
         </div>
-        <div class="gallery-grid" id="galleryGrid">
-          <button class="gallery-item reveal" data-category="posters" data-title="Campaign Poster" data-note="Poster design for high-impact campaign visibility." data-image="images/designs/campaign-poster.jpg"><span>Campaign Poster</span><small>Posters</small></button>
-          <button class="gallery-item reveal" data-category="logos" data-title="Minimal Logo System" data-note="Modern logo direction with clean, flexible brand usage." data-image="images/designs/logo-system.jpg"><span>Logo System</span><small>Logos</small></button>
-          <button class="gallery-item reveal" data-category="branding" data-title="Brand Identity Board" data-note="Visual identity direction with color, type and brand feel." data-image="images/designs/brand-board.jpg"><span>Brand Board</span><small>Branding</small></button>
-          <button class="gallery-item reveal" data-category="social" data-title="Social Media Creative" data-note="Scroll-stopping creative formatted for social campaigns." data-image="images/designs/social-creative.jpg"><span>Social Creative</span><small>Social Media</small></button>
-          <button class="gallery-item reveal" data-category="flyers" data-title="Promo Flyer" data-note="Professional flyer layout for offers, events and local campaigns." data-image="images/designs/promo-flyer.jpg"><span>Promo Flyer</span><small>Flyers</small></button>
-          <button class="gallery-item reveal" data-category="posters" data-title="Event Poster" data-note="Cinematic event poster system with clear hierarchy and strong contrast." data-image="images/designs/event-poster.jpg"><span>Event Poster</span><small>Posters</small></button>
+
+        <div class="gallery-grid" id="galleryGrid" aria-label="Tech Hub Digital design portfolio gallery">
+          <button class="gallery-item reveal" type="button"
+            data-category="posters"
+            data-title="Campaign Poster"
+            data-image="images/designs/campaign-poster.jpg"
+            data-alt="Premium Tech Hub Digital campaign poster with dark navy background, high contrast typography, Nairobi tech studio branding and neon lime accents"
+            data-note="High-impact campaign poster for launch promotions, offers and digital brand visibility."
+            aria-label="Open Campaign Poster design preview">
+            <span>Campaign Poster</span>
+            <small>Posters</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="logos"
+            data-title="Logo System"
+            data-image="images/designs/logo-system.jpg"
+            data-alt="Premium Tech Hub Digital logo system presentation with primary logo, lockups, brand marks and dark tech studio styling"
+            data-note="A flexible logo presentation system built for websites, social media, favicons and brand documents."
+            aria-label="Open Logo System design preview">
+            <span>Logo System</span>
+            <small>Logos</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="branding"
+            data-title="Brand Board"
+            data-image="images/designs/brand-board.jpg"
+            data-alt="Tech Hub Digital brand board showing logo usage, color palette, typography, UI elements and premium Nairobi studio identity"
+            data-note="A full brand direction board showing palette, typography, layout mood and visual consistency."
+            aria-label="Open Brand Board design preview">
+            <span>Brand Board</span>
+            <small>Branding</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="social"
+            data-title="Social Creative"
+            data-image="images/designs/social-creative.jpg"
+            data-alt="Premium Tech Hub Digital social media creative for web solutions with cinematic dark layout and conversion focused message"
+            data-note="A scroll-stopping social media design system for Instagram, Facebook, TikTok and LinkedIn campaigns."
+            aria-label="Open Social Creative design preview">
+            <span>Social Creative</span>
+            <small>Social Media</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="flyers"
+            data-title="Promo Flyer"
+            data-image="images/designs/promo-flyer.jpg"
+            data-alt="Premium Tech Hub Digital cybersecurity service flyer with shield graphic, dark navy background and professional service layout"
+            data-note="A polished flyer layout for services, packages, local campaigns and business promotions."
+            aria-label="Open Promo Flyer design preview">
+            <span>Promo Flyer</span>
+            <small>Flyers</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="posters"
+            data-title="Event Poster"
+            data-image="images/designs/event-poster.jpg"
+            data-alt="Premium Nairobi digital future event poster for Tech Hub Digital with cinematic city visuals and modern tech typography"
+            data-note="A premium poster concept for workshops, launches, training sessions and tech events."
+            aria-label="Open Event Poster design preview">
+            <span>Event Poster</span>
+            <small>Posters</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="social"
+            data-title="Digital Marketing Creative"
+            data-image="images/designs/digital-marketing-flyer.jpg"
+            data-alt="Premium Tech Hub Digital digital marketing creative with dark luxury styling, growth message and clean call to action"
+            data-note="A premium growth-focused creative for marketing campaigns, lead generation and service promotion."
+            aria-label="Open Digital Marketing Creative design preview">
+            <span>Digital Marketing</span>
+            <small>Social Media</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="branding"
+            data-title="Business Card Mockup"
+            data-image="images/designs/business-card.jpg"
+            data-alt="Tech Hub Digital business card mockup with premium dark brand styling and professional contact presentation"
+            data-note="A polished business card mockup for professional brand presentation and client-facing identity systems."
+            aria-label="Open Business Card Mockup design preview">
+            <span>Business Card</span>
+            <small>Branding</small>
+          </button>
+
+          <button class="gallery-item reveal" type="button"
+            data-category="logos"
+            data-title="Light Logo Version"
+            data-image="images/designs/logo-light.jpg"
+            data-alt="Light version of the Tech Hub Digital logo system with clean white background and premium tech brand presentation"
+            data-note="A clean light-background logo variation for presentations, documents and flexible brand usage."
+            aria-label="Open Light Logo Version design preview">
+            <span>Light Logo</span>
+            <small>Logos</small>
+          </button>
         </div>
       </div>
     </section>
@@ -340,7 +438,7 @@
   <dialog class="lightbox" id="lightbox" aria-label="Design preview">
     <button class="lightbox-close" type="button" id="lightboxClose" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button>
     <div class="lightbox-preview" id="lightboxPreview" aria-hidden="true"></div>
-    <img id="lightboxImage" alt="Selected design preview" hidden loading="lazy" decoding="async" />
+    <img id="lightboxImage" alt="Selected Tech Hub Digital design preview" hidden loading="lazy" decoding="async" />
     <h3 id="lightboxTitle"></h3>
     <p id="lightboxNote" class="lightbox-note"></p>
   </dialog>

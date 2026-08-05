@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Products â€” NEXUS</title>
+<title>All Products Ã¢â‚¬â€ NEXUS</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
     <div class="header-actions">
       <div class="search-mini">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="quick-search" placeholder="Search devicesâ€¦">
+        <input type="text" id="quick-search" placeholder="Search devicesÃ¢â‚¬Â¦">
       </div>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -47,7 +47,7 @@
         <button class="filter-chip" data-filter="samsung">Samsung</button>
       </div>
       <div class="product-grid" id="product-grid">
-        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsâ€¦</p>
+        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsÃ¢â‚¬Â¦</p>
       </div>
     </div>
   </section>
@@ -56,8 +56,8 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
-      <span>Â© 2026 NEXUS. All rights reserved.</span>
-      <span>Built with Supabase</span>
+      <span>Ã‚Â© 2026 NEXUS. All rights reserved.</span>
+      
     </div>
   </div>
 </footer>
@@ -93,7 +93,7 @@
     document.querySelectorAll(".filter-chip").forEach((c) => c.classList.toggle("active", c.dataset.filter === category));
     titleEl.textContent = labels[category] || "All Products";
     crumbEl.textContent = labels[category] || "All Products";
-    grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsâ€¦</p>`;
+    grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsÃ¢â‚¬Â¦</p>`;
 
     let products = await fetchProducts({ category });
     if (search) {
@@ -114,6 +114,7 @@
 </script>
 </body>
 </html>
+
 
 
 

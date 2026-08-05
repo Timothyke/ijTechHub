@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart â€” NEXUS</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="NEXUS"><span>TechHub</span></a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="products.html?category=laptops">Laptops</a>
+      <a href="products.html?category=iphones">iPhones</a>
+      <a href="products.html?category=samsung">Samsung</a>
+      <a href="products.html">All Products</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap breadcrumb"><a href="index.html">Home</a> / Cart</div>
+  <div class="wrap">
+    <div class="section-head"><h2>Your Cart</h2></div>
+    <div class="cart-layout">
+      <div id="cart-items"></div>
+      <div class="summary-card">
+        <h3>Order Summary</h3>
+        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">$0.00</span></div>
+        <div class="summary-row total"><span>Total</span><span class="price" id="sum-total">$0.00</span></div>
+        <a href="checkout.html" class="btn btn-primary btn-block" id="checkout-btn" style="margin-top:16px;">Proceed to checkout</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>Â© 2026 NEXUS. All rights reserved.</span>
+      <span>Built with Supabase</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script>
+  function money(n) { return "$" + Number(n).toFixed(2); }
+
+  function render() {
+    const cart = getCart();
+    const container = document.getElementById("cart-items");
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <p>Your cart is empty.</p>
+          <a href="products.html" class="btn btn-outline" style="margin-top:16px;">Browse products</a>
+        </div>`;
+      checkoutBtn.classList.add("btn-disabled");
+      checkoutBtn.style.pointerEvents = "none";
+      checkoutBtn.style.opacity = ".4";
+    } else {
+      container.innerHTML = cart
+        .map(
+          (item) => `
+        <div class="cart-item" data-id="${item.id}">
+          <img src="${item.image_url}" alt="${item.name}">
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-cat">${item.category}</div>
+            <a href="#" class="remove-link" data-remove="${item.id}">Remove</a>
+          </div>
+          <div class="qty-control">
+            <button data-minus="${item.id}">âˆ’</button>
+            <span>${item.qty}</span>
+            <button data-plus="${item.id}">+</button>
+          </div>
+          <div class="cart-item-price">${money(item.price * item.qty)}</div>
+        </div>`
+        )
+        .join("");
+
+      container.querySelectorAll("[data-remove]").forEach((el) =>
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          removeFromCart(el.dataset.remove);
+          render();
+        })
+      );
+      container.querySelectorAll("[data-plus]").forEach((el) =>
+        el.addEventListener("click", () => {
+          const c = getCart().find((i) => i.id === el.dataset.plus);
+          updateQty(el.dataset.plus, c.qty + 1);
+          render();
+        })
+      );
+      container.querySelectorAll("[data-minus]").forEach((el) =>
+        el.addEventListener("click", () => {
+          const c = getCart().find((i) => i.id === el.dataset.minus);
+          if (c.qty <= 1) { removeFromCart(el.dataset.minus); } else { updateQty(el.dataset.minus, c.qty - 1); }
+          render();
+        })
+      );
+    }
+
+    const subtotal = cartTotal();
+    const shipping = subtotal === 0 ? 0 : subtotal >= 500 ? 0 : 15;
+    document.getElementById("sum-subtotal").textContent = money(subtotal);
+    document.getElementById("sum-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
+    document.getElementById("sum-total").textContent = money(subtotal + shipping);
+  }
+
+  render();
+</script>
+</body>
+</html>
+
+
+

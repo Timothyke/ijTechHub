@@ -6,7 +6,7 @@
    ============================================================ */
 
 function money(n) {
-  return "$" + Number(n).toFixed(2);
+  return "KES" + Number(n).toFixed(2);
 }
 
 function renderSummary() {
@@ -20,7 +20,7 @@ function renderSummary() {
   }
 
   linesEl.innerHTML = cart
-    .map((item) => `<div class="order-line"><span>${item.name} × ${item.qty}</span><span>${money(item.price * item.qty)}</span></div>`)
+    .map((item) => `<div class="order-line"><span>KES{item.name} × KES{item.qty}</span><span>KES{money(item.price * item.qty)}</span></div>`)
     .join("");
 
   const subtotal = cartTotal();
@@ -93,7 +93,7 @@ if (window.paypal && getCart().length > 0) {
           customer_name: shipping.name,
           customer_email: shipping.email,
           customer_phone: shipping.phone,
-          shipping_address: `${shipping.address}, ${shipping.city}, ${shipping.country}`,
+          shipping_address: `KES{shipping.address}, KES{shipping.city}, KES{shipping.country}`,
           items: cart,
           total: orderTotal,
           status: "paid",

@@ -1,11 +1,3 @@
-/* ============================================================
-   NEXUS TECH — design tokens
-   Palette: graphite base, copper/gold signature (nod to gold-
-   plated contacts + aluminum unibody devices), brick red for
-   sale tags, muted green for stock status.
-   Type: Space Grotesk (display) / Inter (body) / IBM Plex Mono
-   (spec sheets — the signature motif of this build).
-   ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 

@@ -21,7 +21,7 @@ function productCard(p) {
   let tag = "";
   if (onSale) tag = `<span class="product-tag sale">SALE</span>`;
   else if (p.featured) tag = `<span class="product-tag new">NEW</span>`;
-  else if (p.stock <= 5 && p.stock > 0) tag = `<span class="product-tag stock-low">LOW STOCK</span>`;
+  else if (p.stock <= 5 && p.stock > 0) tag = `<span class="product-tag stock-low">ONLY ${p.stock} LEFT</span>`;
 
   return `
   <article class="product-card">
@@ -48,14 +48,17 @@ function productCard(p) {
   </article>`;
 }
 
-async function fetchProducts({ category = null, featured = null, limit = null } = {}) {
+async function fetchProducts({ category = null, categories = null, featured = null, limit = null, onSaleOnly = false } = {}) {
   let query = supabaseClient.from("products").select("*").order("created_at", { ascending: false });
   // Only show products with a real photo uploaded — hides anything still
   // pointing at the starter SVG placeholders (images/*.svg). Applies to
   // every category, laptops included.
   query = query.not("image_url", "like", "%.svg");
   if (category && category !== "all") query = query.eq("category", category);
+  // categories: pass an array to fetch multiple, e.g. ["iphones","samsung"]
+  if (categories && categories.length) query = query.in("category", categories);
   if (featured !== null) query = query.eq("featured", featured);
+  if (onSaleOnly) query = query.not("compare_at_price", "is", null);
   if (limit) query = query.limit(limit);
   const { data, error } = await query;
   if (error) {

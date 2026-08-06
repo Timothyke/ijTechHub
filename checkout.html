@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout â€” NEXUS</title>
+<title>Checkout &mdash; Tech Hub</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-row">
-    <a href="index.html" class="logo"><img src="images/logo.png" alt="NEXUS"><span>TechHub</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Tech Hub"><span>TechHub</span></a>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="products.html">All Products</a>
@@ -63,16 +63,17 @@
 
         <div id="paypal-button-container"></div>
         <p id="paypal-hint" style="font-family:var(--font-mono); font-size:.76rem; color:var(--text-faint); margin-top:8px;">Fill in your details above, then complete payment with PayPal.</p>
+        <p id="usd-charge-note" style="font-family:var(--font-mono); font-size:.76rem; color:var(--accent); margin-top:4px;"></p>
         <div class="status-msg" id="status-msg"></div>
-        <p class="checkout-note">Payments are processed securely by PayPal. NEXUS never sees or stores your card details. Your order is recorded once PayPal confirms payment.</p>
+        <p class="checkout-note">Prices are shown in KES for reference. PayPal settles in USD, so your card/PayPal balance will be charged the USD equivalent shown above &mdash; Tech Hub never sees or stores your card details. Your order is recorded once PayPal confirms payment.</p>
       </div>
 
       <div class="summary-card">
         <h3>Order Summary</h3>
         <div id="order-lines"></div>
-        <div class="summary-row" style="margin-top:14px;"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
-        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">$0.00</span></div>
-        <div class="summary-row total"><span>Total</span><span class="price" id="sum-total">$0.00</span></div>
+        <div class="summary-row" style="margin-top:14px;"><span>Subtotal</span><span id="sum-subtotal">KES 0</span></div>
+        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">KES 0</span></div>
+        <div class="summary-row total"><span>Total</span><span class="price" id="sum-total">KES 0</span></div>
       </div>
     </div>
   </div>
@@ -81,8 +82,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
-      <span>Â© 2026 NEXUS. All rights reserved.</span>
-      <span>Built with Supabase</span>
+      <span>&copy; 2026 Tech Hub. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -92,14 +92,12 @@
 <script src="js/cart.js"></script>
 
 <!--
-  PAYPAL SDK â€” replace YOUR_PAYPAL_CLIENT_ID below with your real
-  client ID from developer.paypal.com. See README.md â†’ "Add your
-  PayPal account" for the full walkthrough.
+  PAYPAL SDK — currency stays USD here on purpose (see js/checkout.js
+  comments): PayPal does not support settling transactions in KES,
+  so the real charge always happens in USD while the page displays
+  KES for the shopper's convenience.
 -->
 <script src="https://www.paypal.com/sdk/js?client-id=Aby-Y2fwHLmZlkJm7gRUKlo3lWFJ6BdIkocU8p8ncrgT6UP25GY9a8HX2FDarAKWQKUtI2GD4I2I1cnn&currency=USD"></script>
 <script src="js/checkout.js"></script>
 </body>
 </html>
-
-
-

@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Products â€” NEXUS</title>
+<title>All Products &mdash; Tech Hub</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-row">
-    <a href="index.html" class="logo"><img src="images/logo.png" alt="NEXUS"><span>TechHub</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Tech Hub"><span>TechHub</span></a>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="products.html?category=laptops">Laptops</a>
@@ -21,7 +21,7 @@
     <div class="header-actions">
       <div class="search-mini">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="quick-search" placeholder="Search devicesâ€¦">
+        <input type="text" id="quick-search" placeholder="Search devices&hellip;">
       </div>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -47,7 +47,7 @@
         <button class="filter-chip" data-filter="samsung">Samsung</button>
       </div>
       <div class="product-grid" id="product-grid">
-        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsâ€¦</p>
+        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading products&hellip;</p>
       </div>
     </div>
   </section>
@@ -56,8 +56,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
-      <span>Â© 2026 NEXUS. All rights reserved.</span>
-      <span>Built with Supabase</span>
+      <span>&copy; 2026 Tech Hub. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -93,7 +92,7 @@
     document.querySelectorAll(".filter-chip").forEach((c) => c.classList.toggle("active", c.dataset.filter === category));
     titleEl.textContent = labels[category] || "All Products";
     crumbEl.textContent = labels[category] || "All Products";
-    grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsâ€¦</p>`;
+    grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading products&hellip;</p>`;
 
     let products = await fetchProducts({ category });
     if (search) {
@@ -103,7 +102,7 @@
     countEl.textContent = products.length + " item" + (products.length === 1 ? "" : "s");
 
     if (products.length === 0) {
-      grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">No products found. Add some in your Supabase products table.</p>`;
+      grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">No products found in this category yet.</p>`;
       return;
     }
     grid.innerHTML = products.map(productCard).join("");
@@ -114,6 +113,3 @@
 </script>
 </body>
 </html>
-
-
-

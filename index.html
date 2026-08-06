@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="promo-bar">FREE SHIPPING ON ORDERS OVER KES500 &nbsp;Â·&nbsp; SECURE CHECKOUT VIA PAYPAL</div>
+<div class="promo-bar">FREE SHIPPING ON ORDERS OVER KES 65,000 &nbsp;&middot;&nbsp; SECURE CHECKOUT VIA PAYPAL</div>
 
 <header class="site-header">
   <div class="wrap header-row">
@@ -24,7 +24,7 @@
     <div class="header-actions">
       <div class="search-mini">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="quick-search" placeholder="Search devicesâ€¦">
+        <input type="text" id="quick-search" placeholder="Search devices&hellip;">
       </div>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -40,7 +40,7 @@
       <div>
         <div class="eyebrow">Spring lineup / in stock now</div>
         <h1>Every device, <em>fully specced</em>. Zero guesswork.</h1>
-        <p>Laptops, iPhones and Samsung devices with the full datasheet up front â€” chip, RAM, storage â€” so you order once and order right.</p>
+        <p>Laptops, iPhones and Samsung devices with the full datasheet up front &mdash; chip, RAM, storage &mdash; so you order once and order right.</p>
         <div class="hero-actions">
           <a href="products.html" class="btn btn-primary">Browse catalogue</a>
           <a href="products.html?category=laptops" class="btn btn-outline">Shop laptops</a>
@@ -52,13 +52,26 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="images/hero.png" alt="Featured device â€” replace with your own photo">
-        <div class="hero-badge">MacBook Pro 14" Â· M3 Pro</div>
+        <img src="images/hero.png" alt="Featured device">
+        <div class="hero-badge">MacBook Pro 14" &middot; M3 Pro</div>
       </div>
     </div>
   </section>
 
   <div class="trace"><svg viewBox="0 0 1240 20" preserveAspectRatio="none"><line class="line" x1="0" y1="10" x2="1240" y2="10"/><circle class="node" cx="120" cy="10" r="3"/><circle class="node" cx="620" cy="10" r="3"/><circle class="node" cx="1120" cy="10" r="3"/></svg></div>
+
+  <!-- Products first — highest priority on the page -->
+  <section class="products-section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Featured devices</h2>
+        <a href="products.html" class="sub">View all &rarr;</a>
+      </div>
+      <div class="product-grid" id="featured-grid">
+        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading products&hellip;</p>
+      </div>
+    </div>
+  </section>
 
   <section class="cat-strip">
     <div class="wrap">
@@ -82,18 +95,6 @@
           <h3>Samsung</h3>
           <span class="cat-count">Galaxy S &amp; Z series, unlocked</span>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="products-section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Featured devices</h2>
-        <a href="products.html" class="sub">View all â†’</a>
-      </div>
-      <div class="product-grid" id="featured-grid">
-        <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productsâ€¦</p>
       </div>
     </div>
   </section>
@@ -141,20 +142,19 @@
         <ul>
           <li><a href="cart.html">Your cart</a></li>
           <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="mailto:hello@example.com">Contact us</a></li>
+          <li><a href="mailto:timothymaina030@gmail.com">Contact us</a></li>
         </ul>
       </div>
       <div>
         <h5>Contact</h5>
         <ul>
-          <li>hello@example.com</li>
+          <li>timothymaina030@gmail.com</li>
           <li>Nairobi, Kenya</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>Â© 2026 Tech Hub. All rights reserved.</span>
-      <span>Built with Supabase</span>
+      <span>&copy; 2026 Tech Hub. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -169,7 +169,7 @@
     let products = await fetchProducts({ featured: true, limit: 8 });
     if (products.length === 0) products = await fetchProducts({ limit: 8 });
     if (products.length === 0) {
-      grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">No products yet - add some in your Supabase products table.</p>`;
+      grid.innerHTML = `<p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">No products yet &mdash; check back soon.</p>`;
       return;
     }
     grid.innerHTML = products.map(productCard).join("");
@@ -184,7 +184,3 @@
 </script>
 </body>
 </html>
-
-
-
-

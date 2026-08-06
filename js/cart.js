@@ -1,9 +1,29 @@
 /* ============================================================
    CART — persisted in localStorage, no backend needed.
    Shape: [{ id, name, price, image_url, category, qty }]
+   `price` is always stored/summed in USD (the real, underlying
+   value) — KES is a DISPLAY conversion only, applied by money()
+   below. This keeps totals accurate regardless of which currency
+   is shown on screen.
    ============================================================ */
 
 const CART_KEY = "nexus_cart";
+
+// Approximate USD → KES rate. PayPal does not support charging in
+// KES directly, so the real transaction always happens in USD —
+// this constant is only used to SHOW a KES-equivalent price to
+// shoppers. Update this periodically to stay close to the real
+// exchange rate (check e.g. xe.com/currencyconverter).
+const KES_RATE = 129;
+
+// Every page includes this file, so this is the one place that
+// defines how a price is displayed. Pass it a USD amount (the
+// value actually stored on products/cart items) and it returns a
+// formatted KES string.
+function money(usdAmount) {
+  const kes = Number(usdAmount) * KES_RATE;
+  return "KES " + kes.toLocaleString("en-KE", { maximumFractionDigits: 0 });
+}
 
 function getCart() {
   try {
@@ -49,6 +69,9 @@ function updateQty(id, qty) {
   saveCart(cart);
 }
 
+// Returns the raw USD subtotal — the real value, not the display
+// currency. Multiply by KES_RATE (or call money()) when showing
+// it to the user.
 function cartTotal() {
   return getCart().reduce((sum, item) => sum + item.price * item.qty, 0);
 }

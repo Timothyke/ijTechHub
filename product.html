@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title-tag">Product â€” NEXUS</title>
+<title id="page-title-tag">Product &mdash; Tech Hub</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-row">
-    <a href="index.html" class="logo"><img src="images/logo.png" alt="NEXUS"><span>TechHub</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Tech Hub"><span>TechHub</span></a>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="products.html?category=laptops">Laptops</a>
@@ -28,11 +28,11 @@
 </header>
 
 <main>
-  <div class="wrap breadcrumb"><a href="index.html">Home</a> / <a href="products.html" id="crumb-cat">Products</a> / <span id="crumb-name">â€¦</span></div>
+  <div class="wrap breadcrumb"><a href="index.html">Home</a> / <a href="products.html" id="crumb-cat">Products</a> / <span id="crumb-name">&hellip;</span></div>
 
   <div class="wrap">
     <div id="product-root" class="pd-grid">
-      <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading productâ€¦</p>
+      <p style="color:var(--text-faint); font-family:var(--font-mono); font-size:.8rem;">Loading product&hellip;</p>
     </div>
   </div>
 </main>
@@ -40,8 +40,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
-      <span>Â© 2026 NEXUS. All rights reserved.</span>
-      <span>Built with Supabase</span>
+      <span>&copy; 2026 Tech Hub. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -64,7 +63,7 @@
       return;
     }
     const p = currentProduct;
-    document.getElementById("page-title-tag").textContent = p.name + " â€” NEXUS";
+    document.getElementById("page-title-tag").textContent = p.name + " \u2014 Tech Hub";
     document.getElementById("crumb-cat").textContent = p.category;
     document.getElementById("crumb-cat").href = "products.html?category=" + p.category;
     document.getElementById("crumb-name").textContent = p.name;
@@ -78,7 +77,7 @@
         <span class="product-cat">${p.category}</span>
         <h1>${p.name}</h1>
         <div class="pd-rating">
-          <span class="star">â˜…â˜…â˜…â˜…â˜…</span> ${p.rating || "â€”"} (${p.reviews_count || 0} reviews)
+          <span class="star">\u2605\u2605\u2605\u2605\u2605</span> ${p.rating || "\u2014"} (${p.reviews_count || 0} reviews)
         </div>
         <div class="pd-price">
           <span class="price">${money(p.price)}</span>
@@ -91,7 +90,7 @@
         </div>
         <div class="qty-row">
           <div class="qty-control">
-            <button id="qty-minus" aria-label="Decrease quantity">âˆ’</button>
+            <button id="qty-minus" aria-label="Decrease quantity">\u2212</button>
             <span id="qty-val">1</span>
             <button id="qty-plus" aria-label="Increase quantity">+</button>
           </div>
@@ -101,7 +100,7 @@
           <button class="btn btn-primary" id="add-to-cart-btn" ${inStock ? "" : "disabled"}>Add to cart</button>
           <a href="checkout.html" class="btn btn-outline" id="buy-now-btn">Buy now</a>
         </div>
-        <p class="stock-note">${inStock ? "âœ“ Ships within 24 hours" : ""}</p>
+        <p class="stock-note">${inStock ? "\u2713 Ships within 24 hours" : ""}</p>
       </div>
     `;
 
@@ -116,7 +115,7 @@
     document.getElementById("add-to-cart-btn").addEventListener("click", () => {
       addToCart(p, qty);
       const btn = document.getElementById("add-to-cart-btn");
-      btn.textContent = "Added âœ“";
+      btn.textContent = "Added \u2713";
       setTimeout(() => (btn.textContent = "Add to cart"), 1200);
     });
     document.getElementById("buy-now-btn").addEventListener("click", () => {
@@ -128,6 +127,3 @@
 </script>
 </body>
 </html>
-
-
-

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Cart-Tech Hub</title>
+<title>Your Cart &mdash; Tech Hub</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-row">
-    <a href="index.html" class="logo">Tech Hub<span class="dot">.</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Tech Hub"><span>TechHub</span></a>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="products.html?category=laptops">Laptops</a>
@@ -35,9 +35,9 @@
       <div id="cart-items"></div>
       <div class="summary-card">
         <h3>Order Summary</h3>
-        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">KES0.00</span></div>
-        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">KES0.00</span></div>
-        <div class="summary-row total"><span>Total</span><span class="price" id="sum-total">KES0.00</span></div>
+        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">KES 0</span></div>
+        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">KES 0</span></div>
+        <div class="summary-row total"><span>Total</span><span class="price" id="sum-total">KES 0</span></div>
         <a href="checkout.html" class="btn btn-primary btn-block" id="checkout-btn" style="margin-top:16px;">Proceed to checkout</a>
       </div>
     </div>
@@ -47,14 +47,16 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-bottom">
-      <span>@2026 Tech Hub. All rights reserved.</span>
+      <span>&copy; 2026 Tech Hub. All rights reserved.</span>
     </div>
   </div>
 </footer>
 
 <script src="js/cart.js"></script>
 <script>
-  function money(n) { return "KES" + Number(n).toFixed(2); }
+  // KES_RATE and money() are provided by js/cart.js so every page
+  // formats currency the same way — this page reuses them instead
+  // of defining its own copy.
 
   function render() {
     const cart = getCart();
@@ -75,19 +77,19 @@
       container.innerHTML = cart
         .map(
           (item) => `
-        <div class="cart-item" data-id="KES{item.id}">
-          <img src="KES{item.image_url}" alt="KES{item.name}">
+        <div class="cart-item" data-id="${item.id}">
+          <img src="${item.image_url}" alt="${item.name}">
           <div>
-            <div class="cart-item-name">KES{item.name}</div>
-            <div class="cart-item-cat">KES{item.category}</div>
-            <a href="#" class="remove-link" data-remove="KES{item.id}">Remove</a>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-cat">${item.category}</div>
+            <a href="#" class="remove-link" data-remove="${item.id}">Remove</a>
           </div>
           <div class="qty-control">
-            <button data-minus="KES{item.id}">−</button>
-            <span>KES{item.qty}</span>
-            <button data-plus="KES{item.id}">+</button>
+            <button data-minus="${item.id}">\u2212</button>
+            <span>${item.qty}</span>
+            <button data-plus="${item.id}">+</button>
           </div>
-          <div class="cart-item-price">KES{money(item.price * item.qty)}</div>
+          <div class="cart-item-price">${money(item.price * item.qty)}</div>
         </div>`
         )
         .join("");

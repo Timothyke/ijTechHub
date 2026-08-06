@@ -1,12 +1,12 @@
 /* ============================================================
-   CHECKOUT — renders order summary, validates the shipping form,
-   then hands the total to PayPal's Buttons SDK. On approval we
-   write one row to the `orders` table in Supabase and clear the
-   local cart. No server code required.
+   CHECKOUT — renders order summary in KES for the shopper, but
+   creates the actual PayPal order in USD, since PayPal does not
+   support KES as a transaction currency. money() and KES_RATE
+   come from js/cart.js.
    ============================================================ */
 
-function money(n) {
-  return "KES" + Number(n).toFixed(2);
+function usdMoney(n) {
+  return "$" + Number(n).toFixed(2);
 }
 
 function renderSummary() {
@@ -14,22 +14,29 @@ function renderSummary() {
   const linesEl = document.getElementById("order-lines");
 
   if (cart.length === 0) {
-    linesEl.innerHTML = `<p style="font-family:var(--font-mono); font-size:.8rem; color:var(--text-faint);">Your cart is empty. <a href="products.html" style="color:var(--accent);">Go shopping →</a></p>`;
+    linesEl.innerHTML = `<p style="font-family:var(--font-mono); font-size:.8rem; color:var(--text-faint);">Your cart is empty. <a href="products.html" style="color:var(--accent);">Go shopping &rarr;</a></p>`;
     document.getElementById("paypal-button-container").style.display = "none";
     document.getElementById("paypal-hint").style.display = "none";
   }
 
   linesEl.innerHTML = cart
-    .map((item) => `<div class="order-line"><span>KES{item.name} × KES{item.qty}</span><span>KES{money(item.price * item.qty)}</span></div>`)
+    .map((item) => `<div class="order-line"><span>${item.name} \u00d7 ${item.qty}</span><span>${money(item.price * item.qty)}</span></div>`)
     .join("");
 
-  const subtotal = cartTotal();
-  const shipping = subtotal === 0 ? 0 : subtotal >= 500 ? 0 : 15;
+  const subtotal = cartTotal(); // USD, the real value
+  const shipping = subtotal === 0 ? 0 : subtotal >= 500 ? 0 : 15; // USD threshold
+  const totalUsd = subtotal + shipping;
+
   document.getElementById("sum-subtotal").textContent = money(subtotal);
   document.getElementById("sum-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
-  document.getElementById("sum-total").textContent = money(subtotal + shipping);
+  document.getElementById("sum-total").textContent = money(totalUsd);
 
-  return subtotal + shipping;
+  const usdNote = document.getElementById("usd-charge-note");
+  if (usdNote) {
+    usdNote.textContent = `You'll be charged the USD equivalent via PayPal: ${usdMoney(totalUsd)}`;
+  }
+
+  return totalUsd;
 }
 
 function showStatus(message, type) {
@@ -58,7 +65,7 @@ function formIsValid() {
   return true;
 }
 
-let orderTotal = renderSummary();
+let orderTotalUsd = renderSummary();
 
 if (window.paypal && getCart().length > 0) {
   paypal
@@ -72,12 +79,14 @@ if (window.paypal && getCart().length > 0) {
       },
 
       createOrder: (data, actions) => {
-        orderTotal = renderSummary();
+        orderTotalUsd = renderSummary();
         return actions.order.create({
           purchase_units: [
             {
-              amount: { value: orderTotal.toFixed(2), currency_code: "USD" },
-              description: "NEXUS order — " + getCart().length + " item(s)",
+              // PayPal charges in USD — the real transaction currency.
+              // KES on screen is a display conversion only.
+              amount: { value: orderTotalUsd.toFixed(2), currency_code: "USD" },
+              description: "Tech Hub order \u2014 " + getCart().length + " item(s)",
             },
           ],
         });
@@ -93,9 +102,9 @@ if (window.paypal && getCart().length > 0) {
           customer_name: shipping.name,
           customer_email: shipping.email,
           customer_phone: shipping.phone,
-          shipping_address: `KES{shipping.address}, KES{shipping.city}, KES{shipping.country}`,
+          shipping_address: `${shipping.address}, ${shipping.city}, ${shipping.country}`,
           items: cart,
-          total: orderTotal,
+          total: orderTotalUsd,
           status: "paid",
         });
 
@@ -106,7 +115,7 @@ if (window.paypal && getCart().length > 0) {
         }
 
         clearCart();
-        showStatus("Payment successful — thank you! A confirmation has been sent to " + shipping.email + ". Reference: " + captureResult.id, "success");
+        showStatus("Payment successful \u2014 thank you! A confirmation has been sent to " + shipping.email + ". Reference: " + captureResult.id, "success");
         document.getElementById("checkout-form").querySelectorAll("input, textarea").forEach((f) => (f.disabled = true));
         document.getElementById("paypal-button-container").style.display = "none";
       },

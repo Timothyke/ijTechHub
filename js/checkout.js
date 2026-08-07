@@ -1,5 +1,5 @@
 /* ============================================================
-   CHECKOUT — renders order summary in KES (the real stored value),
+   CHECKOUT - renders order summary in KES (the real stored value),
    but creates the actual PayPal order in USD, since PayPal does not
    support KES as a transaction currency. KES_RATE comes from
    js/cart.js and is applied ONLY here, once, at the moment of charge.
@@ -84,7 +84,7 @@ if (window.paypal && getCart().length > 0) {
         return actions.order.create({
           purchase_units: [
             {
-              // PayPal charges in USD — the real transaction currency.
+              // PayPal charges in USD - the real transaction currency.
               // KES on screen is the real stored value; USD is derived
               // here, once, only for the actual charge.
               amount: { value: orderTotalUsd.toFixed(2), currency_code: "USD" },

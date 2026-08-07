@@ -138,7 +138,7 @@
 <script src="js/nav.js"></script>
 
 <!--
-  PAYPAL SDK — currency stays USD here on purpose (see js/checkout.js
+  PAYPAL SDK - currency stays USD here on purpose (see js/checkout.js
   comments): PayPal does not support settling transactions in KES,
   so the real charge always happens in USD while the page displays
   KES for the shopper's convenience.
@@ -146,7 +146,7 @@
 <script src="https://www.paypal.com/sdk/js?client-id=Aby-Y2fwHLmZlkJm7gRUKlo3lWFJ6BdIkocU8p8ncrgT6UP25GY9a8HX2FDarAKWQKUtI2GD4I2I1cnn&currency=USD"></script>
 <script src="js/checkout.js"></script>
 <script>
-  // Payment method tabs — purely a UI toggle, doesn't touch the PayPal
+  // Payment method tabs - purely a UI toggle, doesn't touch the PayPal
   // flow in js/checkout.js at all.
   document.querySelectorAll("#payment-tabs .filter-chip").forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -178,7 +178,7 @@
   // NOTE for Timo: this assumes your `orders.status` column accepts
   // arbitrary text values like "pending_mpesa" / "pending_bank_transfer".
   // If it's a constrained enum in Supabase, either add these values to
-  // it or tell me what status name to use instead — insert errors are
+  // it or tell me what status name to use instead - insert errors are
   // caught below so the WhatsApp flow still works either way, but the
   // order won't be saved until the status value is valid.
   async function submitManualOrder(statusValue) {

@@ -1,8 +1,8 @@
 /* ============================================================
-   PRODUCTS — fetch from Supabase, render cards + spec strips.
+   PRODUCTS - fetch from Supabase, render cards + spec strips.
    money() and KES_RATE come from js/cart.js (loaded before this
    file on every page) so currency formatting stays consistent
-   site-wide — this file no longer defines its own copy.
+   site-wide - this file no longer defines its own copy.
    ============================================================ */
 
 // Renders the 3-4 line monospace spec sheet used on cards + detail page.
@@ -50,7 +50,7 @@ function productCard(p) {
 
 async function fetchProducts({ category = null, categories = null, featured = null, limit = null, onSaleOnly = false } = {}) {
   let query = supabaseClient.from("products").select("*").order("created_at", { ascending: false });
-  // Only show products with a real photo uploaded — hides anything still
+  // Only show products with a real photo uploaded - hides anything still
   // pointing at the starter SVG placeholders (images/*.svg). Applies to
   // every category, laptops included.
   query = query.not("image_url", "like", "%.svg");

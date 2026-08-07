@@ -1,0 +1,2027 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IT Services & Digital Solutions | Tech Hub</title>
+
+    <meta name="description"
+          content="Tech Hub provides professional websites, e-commerce solutions, POS systems, business management systems, graphic design, SEO, digital marketing and IT support.">
+
+    <meta name="keywords"
+          content="IT services Kenya, website development Kenya, e-commerce website, business website, POS systems, graphic design, SEO, digital marketing, Tech Hub">
+
+    <meta name="author" content="Tech Hub">
+
+    <meta property="og:title" content="IT Services & Digital Solutions | Tech Hub">
+    <meta property="og:description"
+          content="Professional websites, e-commerce platforms, business systems and digital solutions for modern businesses.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Keep this if your existing website already uses Google Fonts.
+         Replace the font with your existing site's font if necessary. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #071A35;
+            --primary-light: #0B2852;
+            --secondary: #1E88E5;
+            --gold: #F4B400;
+            --white: #ffffff;
+            --light: #f5f7fb;
+            --text: #1b2638;
+            --muted: #667085;
+            --border: #e5e7eb;
+            --success: #16a34a;
+            --shadow: 0 12px 35px rgba(7, 26, 53, 0.10);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav {
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: var(--primary);
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #344054;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            padding: 11px 18px;
+            border-radius: 9px;
+            background: var(--primary);
+            color: var(--white) !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--secondary);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: var(--primary);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(30,136,229,0.25), transparent 30%),
+                linear-gradient(135deg, var(--primary), #0c2b52);
+            color: var(--white);
+            padding: 95px 0 90px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            right: -120px;
+            top: -100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244,180,0,0.12);
+            border: 1px solid rgba(244,180,0,0.3);
+            color: #ffd66b;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 4.3rem);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #d9e4f2;
+            font-size: 1.08rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 48px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #101828;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        .btn-outline {
+            border-color: rgba(255,255,255,0.35);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--white);
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            padding: 28px;
+            border-radius: 22px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+        }
+
+        .hero-card-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-feature {
+            display: flex;
+            gap: 13px;
+            margin-bottom: 18px;
+            color: #e4edf8;
+        }
+
+        .hero-feature:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-feature i {
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        /* =========================
+           SECTION BASICS
+        ========================= */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .section-heading .label {
+            color: var(--secondary);
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            color: var(--primary);
+            margin-bottom: 13px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services-section {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            position: relative;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 18px rgba(7,26,53,0.03);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: rgba(30,136,229,0.3);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 13px;
+            background: rgba(30,136,229,0.1);
+            color: var(--secondary);
+            display: grid;
+            place-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 0.91rem;
+            margin-bottom: 18px;
+        }
+
+        .service-link {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .service-link:hover {
+            gap: 11px;
+        }
+
+        /* =========================
+           WHY US
+        ========================= */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .why-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--white);
+        }
+
+        .why-number {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 13px;
+        }
+
+        .why-card h3 {
+            color: var(--primary);
+            font-size: 1.03rem;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process-section {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .process-section .section-heading h2 {
+            color: var(--white);
+        }
+
+        .process-section .section-heading p {
+            color: #b9c9dc;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 26px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .process-number {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--primary);
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        .process-card h3 {
+            margin-bottom: 9px;
+        }
+
+        .process-card p {
+            color: #bdcce0;
+            font-size: 0.89rem;
+        }
+
+        /* =========================
+           PAYMENT
+        ========================= */
+
+        .payment-section {
+            background: var(--light);
+        }
+
+        .payment-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .payment-method {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .payment-method i {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .payment-method h3 {
+            color: var(--primary);
+            margin-bottom: 7px;
+        }
+
+        .payment-method p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .till-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin: 10px 0 14px;
+        }
+
+        .copy-btn {
+            border: 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 9px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondary);
+        }
+
+        .copy-message {
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--success);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta-section {
+            padding: 75px 0;
+        }
+
+        .cta-box {
+            background:
+                radial-gradient(circle at 90% 10%, rgba(30,136,229,0.3), transparent 28%),
+                var(--primary);
+            border-radius: 24px;
+            padding: 55px;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            color: #c9d8ea;
+            max-width: 650px;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .contact-info,
+        .contact-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+        }
+
+        .contact-info h2 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-info > p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: 0;
+        }
+
+        .contact-item i {
+            color: var(--secondary);
+            width: 20px;
+            margin-top: 4px;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .contact-item span,
+        .contact-item a {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .contact-card > p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .dark-btn {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .dark-btn:hover {
+            background: var(--secondary);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: var(--white);
+        }
+
+        .whatsapp-btn:hover {
+            filter: brightness(0.95);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #041124;
+            color: #d4dfed;
+            padding: 55px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 35px;
+            padding-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            color: #9fb0c5;
+            font-size: 0.88rem;
+            max-width: 350px;
+        }
+
+        footer h4 {
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #9fb0c5;
+            font-size: 0.87rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8294ab;
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav {
+                min-height: 66px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 66px;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 14px 5%;
+                border-bottom: 1px solid #f0f2f5;
+            }
+
+            .nav-cta {
+                margin: 10px 5%;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .services-grid,
+            .why-grid,
+            .process-grid,
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 35px 25px;
+            }
+
+            .payment-box {
+                padding: 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero-buttons,
+            .cta-actions,
+            .contact-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-card {
+                padding: 22px;
+            }
+
+            .service-card,
+            .why-card,
+            .process-card {
+                padding: 22px;
+            }
+
+            .till-number {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="index.html" class="logo" aria-label="Tech Hub Home">
+            <span class="logo-mark">
+                <i class="fas fa-microchip"></i>
+            </span>
+            Tech Hub
+        </a>
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="products.html">Products</a>
+            </li>
+
+            <li>
+                <a href="services.html" class="active">IT Services</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+            <li>
+                <a href="#contact" class="nav-cta">Get a Quote</a>
+            </li>
+        </ul>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                <i class="fas fa-bolt"></i>
+                IT SERVICES & DIGITAL SOLUTIONS
+            </div>
+
+            <h1>
+                Smart IT Solutions
+                <span>For Your Business</span>
+            </h1>
+
+            <p>
+                We build professional websites, e-commerce platforms,
+                business systems and digital solutions designed to help
+                businesses grow, operate efficiently and reach more customers.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Get a Quote
+                </a>
+
+                <a href="https://wa.me/254794637463?text=Hello%20Tech%20Hub,%20I%20would%20like%20to%20inquire%20about%20your%20IT%20services."
+                   target="_blank"
+                   rel="noopener"
+                   class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i>
+                    Talk to Us
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="hero-card-title">
+                Technology that works for your business
+            </div>
+
+            <div class="hero-feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Professional and modern digital solutions</span>
+            </div>
+
+            <div class="hero-feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Responsive websites for phones, tablets and computers</span>
+            </div>
+
+            <div class="hero-feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Business-focused systems and automation</span>
+            </div>
+
+            <div class="hero-feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Ongoing technical support when you need it</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services-section" id="services">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="label">
+                What We Do
+            </div>
+
+            <h2>
+                IT Services Built Around Your Needs
+            </h2>
+
+            <p>
+                From getting your business online to building custom systems,
+                we provide practical technology solutions designed around your goals.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <!-- Service 1 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-cart-shopping"></i>
+                </div>
+
+                <h3>E-Commerce Websites</h3>
+
+                <p>
+                    Professional online stores that allow businesses to
+                    showcase products, receive orders and grow online sales.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 2 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+
+                <h3>Business Websites</h3>
+
+                <p>
+                    Modern responsive websites that give businesses a
+                    professional online presence and help customers find you.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 3 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <h3>Custom Website Development</h3>
+
+                <p>
+                    Custom websites and web applications developed around
+                    your specific business requirements.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 4 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+
+                <h3>POS Systems</h3>
+
+                <p>
+                    Point-of-sale solutions to help businesses manage sales,
+                    products, inventory and daily operations.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 5 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+
+                <h3>Business Management Systems</h3>
+
+                <p>
+                    Custom digital systems designed to simplify business
+                    processes, records, reporting and operations.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 6 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+
+                <h3>Web Applications</h3>
+
+                <p>
+                    Interactive web-based applications built for specific
+                    business and organizational requirements.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 7 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+
+                <h3>Graphic Design</h3>
+
+                <p>
+                    Professional posters, flyers, social media designs,
+                    business graphics and digital branding materials.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 8 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-magnifying-glass-chart"></i>
+                </div>
+
+                <h3>SEO & Digital Marketing</h3>
+
+                <p>
+                    Solutions designed to improve your online visibility,
+                    reach potential customers and grow your digital presence.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 9 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-screwdriver-wrench"></i>
+                </div>
+
+                <h3>Website Maintenance & Support</h3>
+
+                <p>
+                    Website updates, troubleshooting, maintenance, security
+                    checks and technical support.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 10 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+
+                <h3>IT Consulting</h3>
+
+                <p>
+                    Practical technology guidance to help businesses choose
+                    and implement the right digital solutions.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 11 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+
+                <h3>Database & Business Solutions</h3>
+
+                <p>
+                    Structured digital solutions that help businesses
+                    organize information and manage important records.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Get a Quote
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <!-- Service 12 -->
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-gears"></i>
+                </div>
+
+                <h3>Custom IT Solutions</h3>
+
+                <p>
+                    Have a unique technology requirement? Tell us what you
+                    need and we can discuss a solution built around it.
+                </p>
+
+                <a href="#contact" class="service-link">
+                    Talk to Us
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="label">
+                Why Tech Hub
+            </div>
+
+            <h2>
+                Technology With Your Business In Mind
+            </h2>
+
+            <p>
+                We focus on creating solutions that are useful,
+                professional and built around real business needs.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <div class="why-number">01</div>
+                <h3>Business-Focused Solutions</h3>
+                <p>
+                    Technology designed around your actual business needs
+                    rather than unnecessary features.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">02</div>
+                <h3>Professional & Modern</h3>
+                <p>
+                    Clean and modern digital solutions that help your
+                    business look credible online.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">03</div>
+                <h3>Mobile-Friendly</h3>
+                <p>
+                    Responsive websites and systems designed to work
+                    across phones, tablets and computers.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">04</div>
+                <h3>Affordable Solutions</h3>
+                <p>
+                    Practical technology solutions designed to provide
+                    value without unnecessary costs.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">05</div>
+                <h3>Reliable Support</h3>
+                <p>
+                    Technical assistance when you need help maintaining
+                    or improving your digital systems.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">06</div>
+                <h3>Built to Grow</h3>
+                <p>
+                    Solutions that can evolve with your business as
+                    your needs and customer base grow.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="process-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="label" style="color:#F4B400;">
+                Our Process
+            </div>
+
+            <h2>
+                From Idea To Digital Solution
+            </h2>
+
+            <p>
+                A simple process designed to make getting your technology
+                solution straightforward.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="process-number">01</div>
+
+                <h3>Tell Us What You Need</h3>
+
+                <p>
+                    Contact us and explain your business or project requirements.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">02</div>
+
+                <h3>Get a Solution</h3>
+
+                <p>
+                    We discuss your requirements and recommend an appropriate
+                    solution for your needs.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">03</div>
+
+                <h3>We Build It</h3>
+
+                <p>
+                    We develop and configure your website, system or
+                    digital solution.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">04</div>
+
+                <h3>Launch & Support</h3>
+
+                <p>
+                    We help you launch your solution and provide support
+                    when needed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAYMENT
+========================= -->
+
+<section class="payment-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="label">
+                Payment Options
+            </div>
+
+            <h2>
+                Convenient Ways To Pay
+            </h2>
+
+            <p>
+                Choose the payment method that works best for you.
+            </p>
+
+        </div>
+
+
+        <div class="payment-box">
+
+            <div class="payment-grid">
+
+                <div class="payment-method">
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                    <h3>M-PESA</h3>
+
+                    <p>
+                        Pay securely through our M-PESA Till Number.
+                    </p>
+
+                    <div class="till-number" id="tillNumber">
+                        3671768
+                    </div>
+
+                    <button class="copy-btn"
+                            type="button"
+                            onclick="copyTillNumber()">
+                        <i class="fas fa-copy"></i>
+                        Copy Till Number
+                    </button>
+
+                    <span id="copyMessage"
+                          class="copy-message"
+                          aria-live="polite"></span>
+
+                </div>
+
+
+                <div class="payment-method">
+
+                    <i class="fas fa-building-columns"></i>
+
+                    <h3>Bank Transfer</h3>
+
+                    <p>
+                        Bank transfer is accepted for our products
+                        and IT services.
+                    </p>
+
+                    <br>
+
+                    <strong style="color:var(--primary);">
+                        Contact us for bank details.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div>
+
+                <h2>
+                    Ready To Take Your Business Digital?
+                </h2>
+
+                <p>
+                    Tell us what you need and let's build the right
+                    technology solution for your business.
+                </p>
+
+            </div>
+
+
+            <div class="cta-actions">
+
+                <a href="#contact"
+                   class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Get a Quote
+                </a>
+
+                <a href="https://wa.me/254794637463?text=Hello%20Tech%20Hub,%20I%20would%20like%20to%20get%20a%20quote%20for%20your%20IT%20services."
+                   target="_blank"
+                   rel="noopener"
+                   class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+
+                <h2>
+                    Let's Talk About Your Project
+                </h2>
+
+                <p>
+                    Have an idea, business website requirement,
+                    e-commerce project or custom IT need?
+                    Contact us and let's discuss it.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <i class="fas fa-phone"></i>
+
+                    <div>
+                        <strong>Call Us</strong>
+
+                        <a href="tel:+254794637463">
+                            0794637463
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <i class="fab fa-whatsapp"></i>
+
+                    <div>
+                        <strong>WhatsApp</strong>
+
+                        <a href="https://wa.me/254794637463"
+                           target="_blank"
+                           rel="noopener">
+                            Chat with us on WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <i class="fas fa-mobile-screen"></i>
+
+                    <div>
+                        <strong>M-PESA Till</strong>
+
+                        <span>3671768</span>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <i class="fas fa-building-columns"></i>
+
+                    <div>
+                        <strong>Bank Transfer</strong>
+
+                        <span>Accepted — contact us for details</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <h3>
+                    Start Your Project
+                </h3>
+
+                <p>
+                    The fastest way to get started is to contact us
+                    directly. Tell us what you need and we'll discuss
+                    the next step with you.
+                </p>
+
+                <div class="contact-buttons">
+
+                    <a href="https://wa.me/254794637463?text=Hello%20Tech%20Hub,%20I%20want%20to%20discuss%20a%20project."
+                       target="_blank"
+                       rel="noopener"
+                       class="btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Us
+                    </a>
+
+                    <a href="tel:+254794637463"
+                       class="btn dark-btn">
+                        <i class="fas fa-phone"></i>
+                        Call 0794637463
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    <span class="logo-mark">
+                        <i class="fas fa-microchip"></i>
+                    </span>
+                    Tech Hub
+                </a>
+
+                <p>
+                    Professional technology products and digital
+                    solutions for modern businesses.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="products.html">Products</a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">IT Services</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>IT Services</h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#services">Web Development</a>
+                    </li>
+
+                    <li>
+                        <a href="#services">E-Commerce</a>
+                    </li>
+
+                    <li>
+                        <a href="#services">POS Systems</a>
+                    </li>
+
+                    <li>
+                        <a href="#services">Graphic Design</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Contact</h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="tel:+254794637463">
+                            0794637463
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://wa.me/254794637463"
+                           target="_blank"
+                           rel="noopener">
+                            WhatsApp
+                        </a>
+                    </li>
+
+                    <li>
+                        M-PESA: 3671768
+                    </li>
+
+                    <li>
+                        Bank Transfer Accepted
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                &copy; <span id="currentYear"></span> Tech Hub. All rights reserved.
+            </span>
+
+            <span>
+                IT Services & Digital Solutions
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fas fa-xmark"></i>'
+                : '<i class="fas fa-bars"></i>';
+
+        });
+
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.innerHTML =
+                    '<i class="fas fa-bars"></i>';
+
+            });
+
+        });
+
+    }
+
+
+    /* =========================
+       COPY M-PESA TILL
+    ========================= */
+
+    async function copyTillNumber() {
+
+        const tillNumber =
+            document.getElementById("tillNumber").textContent.trim();
+
+        const message =
+            document.getElementById("copyMessage");
+
+        try {
+
+            await navigator.clipboard.writeText(tillNumber);
+
+            message.textContent = "Copied!";
+
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2500);
+
+        } catch (error) {
+
+            /*
+             * Fallback for browsers that do not support
+             * navigator.clipboard.
+             */
+
+            const textarea =
+                document.createElement("textarea");
+
+            textarea.value = tillNumber;
+
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+
+            document.body.appendChild(textarea);
+
+            textarea.select();
+
+            try {
+                document.execCommand("copy");
+                message.textContent = "Copied!";
+            } catch (err) {
+                message.textContent =
+                    "Copy failed — please copy manually.";
+            }
+
+            document.body.removeChild(textarea);
+
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2500);
+
+        }
+
+    }
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================= */
+
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
+```

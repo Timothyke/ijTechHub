@@ -16,8 +16,6 @@
       <a href="products.html?category=laptops">Laptops</a>
       <a href="products.html?category=iphones">iPhones</a>
       <a href="products.html?category=samsung">Samsung</a>
-      <a href="products.html?category=samsung">Monitors</a>
-      <a href="products.html?category=samsung">Desktops</a>
       <a href="products.html">All Products</a>
     </nav>
     <div class="header-actions">
@@ -119,8 +117,8 @@
       );
     }
 
-    const subtotal = cartTotal();
-    const shipping = subtotal === 0 ? 0 : subtotal >= 500 ? 0 : 15;
+    const subtotal = cartTotal(); // KES, the real value
+    const shipping = subtotal === 0 ? 0 : subtotal >= 65000 ? 0 : 2000; // KES threshold, matches promo bar
     document.getElementById("sum-subtotal").textContent = money(subtotal);
     document.getElementById("sum-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
     document.getElementById("sum-total").textContent = money(subtotal + shipping);

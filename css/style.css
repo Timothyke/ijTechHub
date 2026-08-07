@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS TECH — design tokens
+   Techhub design tokens
    Palette: graphite base, copper/gold signature (nod to gold-
    plated contacts + aluminum unibody devices), brick red for
    sale tags, muted green for stock status.
@@ -104,6 +104,23 @@ button{font-family:inherit; cursor:pointer;}
 }
 .search-mini svg{flex-shrink:0; color:var(--text-faint);}
 
+/* ---------- mobile nav ---------- */
+.menu-btn{
+  display:none; background:none; border:none; color:var(--text);
+  padding:6px; align-items:center; justify-content:center;
+}
+.mobile-nav{
+  display:none; flex-direction:column;
+  background:var(--panel); border-top:1px solid var(--border-soft);
+  padding:4px 24px 12px;
+}
+.mobile-nav a{
+  padding:13px 0; font-size:.92rem; color:var(--text-muted);
+  border-bottom:1px solid var(--border-soft);
+}
+.mobile-nav a.active{color:var(--accent);}
+.mobile-nav.open{display:flex;}
+
 /* ---------- buttons ---------- */
 .btn{
   display:inline-flex; align-items:center; gap:8px; justify-content:center;
@@ -133,7 +150,7 @@ button{font-family:inherit; cursor:pointer;}
 }
 .hero h1 em{color:var(--accent); font-style:normal;}
 .hero p{color:var(--text-muted); font-size:1rem; max-width:440px; margin-bottom:28px;}
-.hero-actions{display:flex; gap:14px;}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 .hero-specs{
   font-family:var(--font-mono); font-size:.76rem; color:var(--text-faint);
   margin-top:32px; display:flex; gap:24px;
@@ -149,6 +166,39 @@ button{font-family:inherit; cursor:pointer;}
   position:absolute; bottom:16px; left:16px; background:rgba(16,18,20,.88);
   border:1px solid var(--border); padding:8px 12px; border-radius:var(--radius);
   font-family:var(--font-mono); font-size:.72rem; color:var(--text-muted);
+}
+
+/* ---------- payment info / contact CTAs ---------- */
+.payment-badges{
+  margin-top:24px; padding:14px 18px; background:var(--panel);
+  border:1px solid var(--border); border-radius:var(--radius);
+  font-family:var(--font-mono); font-size:.78rem; display:inline-block; max-width:100%;
+}
+.pay-badge{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.pay-label{color:var(--text-faint);}
+.pay-value{font-weight:600; letter-spacing:.02em; color:var(--accent);}
+.copy-btn{
+  border:1px solid var(--border); background:none; color:var(--text-muted);
+  padding:3px 10px; border-radius:var(--radius); font-family:inherit;
+  font-size:.72rem; transition:all .15s;
+}
+.copy-btn:hover{border-color:var(--accent); color:var(--accent);}
+.pay-badge-note{margin-top:6px; color:var(--text-faint);}
+
+.whatsapp-float{
+  position:fixed; right:20px; bottom:20px; z-index:60;
+  display:flex; align-items:center; gap:8px;
+  background:var(--accent); color:#14110a;
+  padding:14px 20px; border-radius:var(--radius);
+  font-family:var(--font-mono); font-size:.8rem; font-weight:600;
+  box-shadow:0 10px 28px rgba(0,0,0,.4);
+  transition:background .15s;
+}
+.whatsapp-float:hover{background:var(--accent-bright);}
+.whatsapp-float svg{flex-shrink:0;}
+@media (max-width:560px){
+  .whatsapp-float span{display:none;}
+  .whatsapp-float{padding:14px; border-radius:50%;}
 }
 
 /* ---------- category strip ---------- */
@@ -239,6 +289,39 @@ button{font-family:inherit; cursor:pointer;}
 .perk h4{font-size:.86rem; font-weight:600; margin-bottom:2px;}
 .perk p{font-size:.78rem; color:var(--text-faint);}
 
+/* ---------- IT services page ---------- */
+.services-hero{padding:72px 0 48px; border-bottom:1px solid var(--border-soft); text-align:center;}
+.services-hero .eyebrow{justify-content:center;}
+.services-hero .eyebrow::before{display:none;}
+.services-hero h1{
+  font-family:var(--font-display); font-size:2.6rem; line-height:1.1;
+  font-weight:700; letter-spacing:-.02em; margin-bottom:16px;
+}
+.services-hero h1 em{color:var(--accent); font-style:normal;}
+.services-hero p{color:var(--text-muted); font-size:1rem; max-width:560px; margin:0 auto 28px;}
+.services-hero .hero-actions{justify-content:center;}
+
+.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:56px 0;}
+.service-card{
+  background:var(--panel); border:1px solid var(--border); border-radius:6px;
+  padding:28px; display:flex; flex-direction:column; gap:12px;
+  transition:border-color .15s, transform .15s;
+}
+.service-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+.service-card .service-icon{color:var(--accent);}
+.service-card h3{font-family:var(--font-display); font-size:1.15rem; font-weight:600;}
+.service-card p{color:var(--text-faint); font-size:.84rem; line-height:1.6; flex:1;}
+.service-card .btn{align-self:flex-start; margin-top:4px;}
+
+.why-us{padding:8px 0 64px;}
+.why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px;}
+.why-item{
+  display:flex; gap:12px; align-items:flex-start; padding:20px;
+  background:var(--panel); border:1px solid var(--border-soft); border-radius:6px;
+}
+.why-item svg{color:var(--accent); flex-shrink:0; margin-top:2px;}
+.why-item p{font-size:.86rem; color:var(--text-muted);}
+
 /* ---------- footer ---------- */
 .site-footer{padding:56px 0 28px; border-top:1px solid var(--border-soft); margin-top:40px;}
 .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; margin-bottom:40px;}
@@ -274,6 +357,11 @@ button{font-family:inherit; cursor:pointer;}
 .qty-control span{font-family:var(--font-mono); width:36px; text-align:center;}
 .pd-actions{display:flex; gap:12px;}
 .stock-note{font-family:var(--font-mono); font-size:.76rem; color:var(--green); margin-top:16px;}
+.pd-payment-note{
+  font-family:var(--font-mono); font-size:.74rem; color:var(--text-faint);
+  margin-top:16px; padding-top:16px; border-top:1px dashed var(--border);
+}
+.pd-payment-note strong{color:var(--accent); font-weight:600;}
 
 /* ---------- cart page ---------- */
 .cart-layout{display:grid; grid-template-columns:1.6fr 1fr; gap:40px; padding:40px 0 72px;}
@@ -328,9 +416,13 @@ button{font-family:inherit; cursor:pointer;}
   .main-nav{display:none;}
   .search-mini{display:none;}
   .perks-grid{grid-template-columns:1fr 1fr;}
+  .services-grid, .why-grid{grid-template-columns:1fr 1fr;}
+  .menu-btn{display:flex;}
 }
 @media (max-width:560px){
   .product-grid{grid-template-columns:1fr 1fr;}
   .hero h1{font-size:2.2rem;}
   .cart-item{grid-template-columns:60px 1fr; grid-template-rows:auto auto;}
+  .services-grid, .why-grid{grid-template-columns:1fr;}
+  .services-hero h1{font-size:2rem;}
 }

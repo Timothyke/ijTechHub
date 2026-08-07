@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buy Laptops, iPhones &amp; Samsung Phones in Nairobi | Tech Hub Digital</title>
-<meta name="description" content="Genuine laptops, iPhones and Samsung phones with full specs, fast Nairobi dispatch, and secure PayPal checkout. Free shipping over KES 65,000.">
+<meta name="description" content="Genuine laptops, iPhones and Samsung phones in Nairobi. Pay via M-PESA, bank transfer or secure PayPal checkout. Free shipping over KES 65,000.">
 <meta property="og:title" content="Tech Hub &mdash; Genuine Devices, Fast Nairobi Delivery">
-<meta property="og:description" content="Laptops, iPhones Samsung, Desktops & Monitors with the full spec sheet up front. Free shipping over KES 65,000, secure PayPal checkout.">
+<meta property="og:description" content="Laptops, iPhones Samsung, Desktops & Monitors with the full spec sheet up front. Free shipping over KES 65,000, M-PESA & PayPal accepted.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://techhubdigital.online/">
 <meta property="og:image" content="https://techhubdigital.online/images/hero.png">
@@ -24,10 +24,26 @@
     "addressLocality": "Nairobi",
     "addressCountry": "KE"
   },
-  "email": "repairstechhub@gmail.com"
+  "telephone": "+254794637463",
+  "email": "repairstechhub@gmail.com",
+  "paymentAccepted": ["M-Pesa", "Bank Transfer", "PayPal"]
 }
 </script>
 <link rel="stylesheet" href="css/style.css">
+<!-- TEMP: styles for new conversion elements (payment badges, WhatsApp float, copy button).
+     Move these into css/style.css once shared so colors/spacing match the real design system. -->
+<style>
+  .payment-badges{margin-top:16px;padding:12px 16px;border:1px solid rgba(0,0,0,.1);border-radius:10px;font-family:var(--font-mono);font-size:.78rem;display:inline-block;max-width:100%;}
+  .pay-badge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .pay-label{color:var(--text-faint,#888);}
+  .pay-value{font-weight:600;letter-spacing:.02em;}
+  .copy-btn{border:1px solid currentColor;background:transparent;padding:2px 10px;border-radius:6px;font-family:inherit;font-size:.72rem;cursor:pointer;}
+  .copy-btn:hover{opacity:.75;}
+  .pay-badge-note{margin-top:6px;color:var(--text-faint,#888);}
+  .whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:999;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;text-decoration:none;font-family:var(--font-mono);font-size:.8rem;box-shadow:0 6px 18px rgba(0,0,0,.18);}
+  .whatsapp-float svg{flex-shrink:0;}
+  @media (max-width:640px){.whatsapp-float span{display:none;}.whatsapp-float{padding:12px;}}
+</style>
 </head>
 <body>
 
@@ -44,12 +60,19 @@
       <a href="products.html?category=Monitors">Monitors</a>
       <a href="products.html?category=Desktops">Desktops</a>
       <a href="products.html">All Products</a>
+      <a href="services.html">IT Services</a>
     </nav>
     <div class="header-actions">
       <div class="search-mini">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="text" id="quick-search" placeholder="Search devices&hellip;">
       </div>
+      <a href="tel:+254794637463" class="icon-btn" aria-label="Call us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      </a>
+      <a href="https://wa.me/254794637463" target="_blank" rel="noopener" class="icon-btn" aria-label="WhatsApp us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+      </a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" data-cart-count>0</span>
@@ -62,18 +85,26 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">Mpesa & &middot; PayPal-protected checkout</div>
+        <div class="eyebrow">M-PESA, Bank Transfer &amp; PayPal &mdash; secure checkout</div>
         <h1>Buy your next device <em>From us</em>.</h1>
         <p>Tired of ordering a laptop or phone only to find out the specs weren't what you expected? Every listing here shows the real chip, RAM and storage up front &mdash; so what you order is exactly what shows up at your door.</p>
         <div class="hero-actions">
           <a href="products.html" class="btn btn-primary">Browse catalogue</a>
           <a href="products.html?category=laptops" class="btn btn-outline">Shop laptops</a>
         </div>
-        <p style="font-family:var(--font-mono); font-size:.72rem; color:var(--text-faint); margin-top:12px;">&#10003; Pay securely with PayPal &nbsp;&middot;&nbsp; &#10003; 14-day returns &nbsp;&middot;&nbsp; &#10003; Ships from Nairobi</p>
+        <p style="font-family:var(--font-mono); font-size:.72rem; color:var(--text-faint); margin-top:12px;">&#10003; M-PESA, Bank Transfer &amp; PayPal accepted &nbsp;&middot;&nbsp; &#10003; 14-day returns &nbsp;&middot;&nbsp; &#10003; Ships from Nairobi</p>
         <div class="hero-specs" id="trust-stats">
           <div><strong id="stat-orders">1,200+</strong>orders delivered</div>
           <div><strong>14-day</strong>returns</div>
           <div><strong>4.8/5</strong>avg. rating</div>
+        </div>
+        <div class="payment-badges">
+          <div class="pay-badge">
+            <span class="pay-label">Pay via M-PESA Till</span>
+            <span class="pay-value" id="mpesa-till">3671768</span>
+            <button type="button" class="copy-btn" id="copy-till-btn">Copy</button>
+          </div>
+          <div class="pay-badge-note">Bank Transfer Available &mdash; contact us for details &middot; PayPal also accepted</div>
         </div>
       </div>
       <div class="hero-visual">
@@ -135,12 +166,12 @@
           <h3>Samsung</h3>
           <span class="cat-count">Galaxy S,Note &amp; Z series</span>
           </a>
-        <a class="cat-card" href="products.html?category=iphones">
+        <a class="cat-card" href="products.html?category=Monitors">
           <span class="cat-tag">Line 04</span>
           <h3>Monitors</h3>
           <span class="cat-count">All in one monitors,edge to edge and Touch screens Available </span>
         </a>
-         <a class="cat-card" href="products.html?category=iphones">
+         <a class="cat-card" href="products.html?category=Desktops">
           <span class="cat-tag">Line 05</span>
           <h3>Desktops</h3>
           <span class="cat-count">Well specced ie.Core i7,12th Gen,32Gb Ram 512Gb ssd</span>
@@ -157,7 +188,7 @@
       </div>
       <div class="perk">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-        <div><h4>Your money is protected</h4><p>Every payment covered by PayPal buyer protection</p></div>
+        <div><h4>Your money is protected</h4><p>Secure PayPal checkout, verified M-PESA, or bank transfer</p></div>
       </div>
       <div class="perk">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
@@ -165,7 +196,7 @@
       </div>
       <div class="perk">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-        <div><h4>Real support, 7 days a week</h4><p>Message us and get a reply instantly</p></div>
+        <div><h4>Real support, 7 days a week</h4><p>Call or WhatsApp us on 0794637463 &mdash; we reply fast</p></div>
       </div>
     </div>
   </section>
@@ -184,25 +215,29 @@
           <li><a href="products.html?category=laptops">Laptops</a></li>
           <li><a href="products.html?category=iphones">iPhones</a></li>
           <li><a href="products.html?category=samsung">Samsung</a></li>
-          <li><a href="products.html?category=samsung">Monitors</a></li>
-          <li><a href="products.html?category=samsung">Desktops</a></li>
+          <li><a href="products.html?category=Monitors">Monitors</a></li>
+          <li><a href="products.html?category=Desktops">Desktops</a></li>
           <li><a href="products.html">All products</a></li>
         </ul>
       </div>
       <div>
         <h5>Support</h5>
         <ul>
+          <li><a href="services.html">IT Services</a></li>
           <li><a href="cart.html">Your cart</a></li>
           <li><a href="checkout.html">Checkout</a></li>
           <li><a href="mailto:repairstechhub@gmail.com">Contact us</a></li>
         </ul>
       </div>
       <div>
-        <h5>Contact</h5>
+        <h5>Contact &amp; Payment</h5>
         <ul>
-          <li>repairstechhub@gmail.com</li>
-          <li>0794637463</li>
+          <li><a href="mailto:repairstechhub@gmail.com">repairstechhub@gmail.com</a></li>
+          <li><a href="tel:+254794637463">Call: 0794637463</a></li>
+          <li><a href="https://wa.me/254794637463" target="_blank" rel="noopener">WhatsApp: 0794637463</a></li>
           <li>Nairobi, Kenya</li>
+          <li>M-PESA Till: 3671768</li>
+          <li>Bank Transfer Available</li>
         </ul>
       </div>
     </div>
@@ -211,6 +246,11 @@
     </div>
   </div>
 </footer>
+
+<a href="https://wa.me/254794637463" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+  <span>WhatsApp Us</span>
+</a>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
@@ -269,6 +309,19 @@
     if (e.key === "Enter" && e.target.value.trim()) {
       window.location.href = "products.html?search=" + encodeURIComponent(e.target.value.trim());
     }
+  });
+
+  // M-PESA Till copy-to-clipboard
+  document.getElementById("copy-till-btn").addEventListener("click", function () {
+    const till = document.getElementById("mpesa-till").textContent.trim();
+    const btn = this;
+    const original = btn.textContent;
+    navigator.clipboard.writeText(till).then(() => {
+      btn.textContent = "Copied \u2713";
+      setTimeout(() => (btn.textContent = original), 1200);
+    }).catch(() => {
+      alert("M-PESA Till Number: " + till);
+    });
   });
 </script>
 </body>

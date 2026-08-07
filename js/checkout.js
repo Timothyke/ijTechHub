@@ -1,12 +1,12 @@
 /* ============================================================
-   CHECKOUT — renders order summary in KES for the shopper, but
-   creates the actual PayPal order in USD, since PayPal does not
-   support KES as a transaction currency. money() and KES_RATE
-   come from js/cart.js.
+   CHECKOUT — renders order summary in KES (the real stored value),
+   but creates the actual PayPal order in USD, since PayPal does not
+   support KES as a transaction currency. KES_RATE comes from
+   js/cart.js and is applied ONLY here, once, at the moment of charge.
    ============================================================ */
 
-function usdMoney(n) {
-  return "$" + Number(n).toFixed(2);
+function usdMoney(kesAmount) {
+  return "$" + (Number(kesAmount) / KES_RATE).toFixed(2);
 }
 
 function renderSummary() {
@@ -23,20 +23,20 @@ function renderSummary() {
     .map((item) => `<div class="order-line"><span>${item.name} \u00d7 ${item.qty}</span><span>${money(item.price * item.qty)}</span></div>`)
     .join("");
 
-  const subtotal = cartTotal(); // USD, the real value
-  const shipping = subtotal === 0 ? 0 : subtotal >= 500 ? 0 : 15; // USD threshold
-  const totalUsd = subtotal + shipping;
+  const subtotal = cartTotal(); // KES, the real value
+  const shipping = subtotal === 0 ? 0 : subtotal >= 65000 ? 0 : 2000; // KES threshold, matches promo bar
+  const totalKes = subtotal + shipping;
 
   document.getElementById("sum-subtotal").textContent = money(subtotal);
   document.getElementById("sum-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
-  document.getElementById("sum-total").textContent = money(totalUsd);
+  document.getElementById("sum-total").textContent = money(totalKes);
 
   const usdNote = document.getElementById("usd-charge-note");
   if (usdNote) {
-    usdNote.textContent = `You'll be charged the USD equivalent via PayPal: ${usdMoney(totalUsd)}`;
+    usdNote.textContent = `You'll be charged the USD equivalent via PayPal: ${usdMoney(totalKes)}`;
   }
 
-  return totalUsd;
+  return totalKes;
 }
 
 function showStatus(message, type) {
@@ -65,7 +65,7 @@ function formIsValid() {
   return true;
 }
 
-let orderTotalUsd = renderSummary();
+let orderTotalKes = renderSummary();
 
 if (window.paypal && getCart().length > 0) {
   paypal
@@ -79,12 +79,14 @@ if (window.paypal && getCart().length > 0) {
       },
 
       createOrder: (data, actions) => {
-        orderTotalUsd = renderSummary();
+        orderTotalKes = renderSummary();
+        const orderTotalUsd = orderTotalKes / KES_RATE;
         return actions.order.create({
           purchase_units: [
             {
               // PayPal charges in USD — the real transaction currency.
-              // KES on screen is a display conversion only.
+              // KES on screen is the real stored value; USD is derived
+              // here, once, only for the actual charge.
               amount: { value: orderTotalUsd.toFixed(2), currency_code: "USD" },
               description: "Tech Hub order \u2014 " + getCart().length + " item(s)",
             },
@@ -104,7 +106,7 @@ if (window.paypal && getCart().length > 0) {
           customer_phone: shipping.phone,
           shipping_address: `${shipping.address}, ${shipping.city}, ${shipping.country}`,
           items: cart,
-          total: orderTotalUsd,
+          total: orderTotalKes,
           status: "paid",
         });
 

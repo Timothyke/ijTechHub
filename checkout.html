@@ -159,35 +159,74 @@
     });
   });
 
-  function buildWhatsAppOrderMessage(method) {
-    const form = document.getElementById("checkout-form");
-    if (!form.reportValidity()) return null; // reuses existing required-field validation
-    const name = document.getElementById("full-name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const city = document.getElementById("city").value.trim();
-    const country = document.getElementById("country").value.trim();
-    const total = (document.getElementById("sum-total").textContent || "").trim();
+  function buildOrderMessage(method, shipping, cart, totalKes, extraLine) {
     return [
       `New order (${method})`,
-      `Name: ${name}`,
-      `Phone: ${phone}`,
-      `Address: ${address}, ${city}, ${country}`,
-      `Total: ${total}`,
-      `Please confirm my order.`
+      `Name: ${shipping.name}`,
+      `Phone: ${shipping.phone}`,
+      `Address: ${shipping.address}, ${shipping.city}, ${shipping.country}`,
+      `Items: ${cart.length}`,
+      `Total: ${money(totalKes)}`,
+      extraLine
     ].join("\n");
   }
 
-  document.getElementById("mpesa-confirm-btn").addEventListener("click", () => {
-    const msg = buildWhatsAppOrderMessage("M-PESA");
-    if (!msg) return;
+  // Records a "pending" order in Supabase the same way js/checkout.js does
+  // for PayPal, just without a paypal_order_id and with a status that
+  // flags it as awaiting manual confirmation.
+  //
+  // NOTE for Timo: this assumes your `orders.status` column accepts
+  // arbitrary text values like "pending_mpesa" / "pending_bank_transfer".
+  // If it's a constrained enum in Supabase, either add these values to
+  // it or tell me what status name to use instead — insert errors are
+  // caught below so the WhatsApp flow still works either way, but the
+  // order won't be saved until the status value is valid.
+  async function submitManualOrder(statusValue) {
+    if (!formIsValid()) return null; // formIsValid() is defined in js/checkout.js
+    const shipping = getShippingDetails();
+    const cart = getCart();
+    const totalKes = renderSummary();
+
+    const { error } = await supabaseClient.from("orders").insert({
+      customer_name: shipping.name,
+      customer_email: shipping.email,
+      customer_phone: shipping.phone,
+      shipping_address: `${shipping.address}, ${shipping.city}, ${shipping.country}`,
+      items: cart,
+      total: totalKes,
+      status: statusValue,
+    });
+
+    if (error) {
+      console.error("Manual order save failed:", error);
+    }
+    return { shipping, cart, totalKes };
+  }
+
+  function finishManualCheckout(payTabId) {
+    clearCart();
+    showStatus("Order recorded \u2014 we'll confirm your payment over WhatsApp shortly.", "success");
+    document.getElementById("checkout-form").querySelectorAll("input, textarea").forEach((f) => (f.disabled = true));
+    document.getElementById(payTabId).style.display = "none";
+    document.getElementById("payment-tabs").style.display = "none";
+  }
+
+  document.getElementById("mpesa-confirm-btn").addEventListener("click", async () => {
+    const result = await submitManualOrder("pending_mpesa");
+    if (!result) return;
+    const { shipping, cart, totalKes } = result;
+    const msg = buildOrderMessage("M-PESA", shipping, cart, totalKes, "I've sent payment to Till 3671768 \u2014 please confirm my order.");
     window.open("https://wa.me/254794637463?text=" + encodeURIComponent(msg), "_blank");
+    finishManualCheckout("pay-mpesa");
   });
 
-  document.getElementById("bank-confirm-btn").addEventListener("click", () => {
-    const msg = buildWhatsAppOrderMessage("Bank Transfer");
-    if (!msg) return;
+  document.getElementById("bank-confirm-btn").addEventListener("click", async () => {
+    const result = await submitManualOrder("pending_bank_transfer");
+    if (!result) return;
+    const { shipping, cart, totalKes } = result;
+    const msg = buildOrderMessage("Bank Transfer", shipping, cart, totalKes, "Please send me your bank details \u2014 I'd like to pay via bank transfer.");
     window.open("https://wa.me/254794637463?text=" + encodeURIComponent(msg), "_blank");
+    finishManualCheckout("pay-bank");
   });
 
   document.getElementById("copy-till-checkout-btn").addEventListener("click", function () {

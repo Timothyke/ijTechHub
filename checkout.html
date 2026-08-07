@@ -16,12 +16,28 @@
       <a href="products.html">All Products</a>
     </nav>
     <div class="header-actions">
+      <a href="tel:+254794637463" class="icon-btn" aria-label="Call us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      </a>
+      <a href="https://wa.me/254794637463" target="_blank" rel="noopener" class="icon-btn" aria-label="WhatsApp us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+      </a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" data-cart-count>0</span>
       </a>
+      <button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+      </button>
     </div>
   </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">All Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="tel:+254794637463">Call: 0794637463</a>
+    <a href="https://wa.me/254794637463" target="_blank" rel="noopener">WhatsApp Us</a>
+  </nav>
 </header>
 
 <main>
@@ -61,11 +77,39 @@
           </div>
         </form>
 
-        <div id="paypal-button-container"></div>
-        <p id="paypal-hint" style="font-family:var(--font-mono); font-size:.76rem; color:var(--text-faint); margin-top:8px;">Fill in your details above, then complete payment with PayPal.</p>
-        <p id="usd-charge-note" style="font-family:var(--font-mono); font-size:.76rem; color:var(--accent); margin-top:4px;"></p>
+        <div class="filter-row" id="payment-tabs" style="margin-bottom:20px;">
+          <button type="button" class="filter-chip active" data-pay="paypal">PayPal</button>
+          <button type="button" class="filter-chip" data-pay="mpesa">M-PESA</button>
+          <button type="button" class="filter-chip" data-pay="bank">Bank Transfer</button>
+        </div>
+
+        <div id="pay-paypal">
+          <div id="paypal-button-container"></div>
+          <p id="paypal-hint" style="font-family:var(--font-mono); font-size:.76rem; color:var(--text-faint); margin-top:8px;">Fill in your details above, then complete payment with PayPal.</p>
+          <p id="usd-charge-note" style="font-family:var(--font-mono); font-size:.76rem; color:var(--accent); margin-top:4px;"></p>
+        </div>
+
+        <div id="pay-mpesa" style="display:none;">
+          <div class="payment-badges" style="display:block;">
+            <div class="pay-badge">
+              <span class="pay-label">Pay via M-PESA Till</span>
+              <span class="pay-value" id="mpesa-till-checkout">3671768</span>
+              <button type="button" class="copy-btn" id="copy-till-checkout-btn">Copy</button>
+            </div>
+            <div class="pay-badge-note">Send the order total (see summary, right) to the Till above, then tap confirm below and we'll verify your payment over WhatsApp.</div>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" id="mpesa-confirm-btn" style="margin-top:16px;">I've Paid via M-PESA &mdash; Confirm via WhatsApp</button>
+        </div>
+
+        <div id="pay-bank" style="display:none;">
+          <div class="payment-badges" style="display:block;">
+            <div class="pay-badge-note">Bank Transfer Available &mdash; message us and we'll send our bank details, then send your proof of payment.</div>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" id="bank-confirm-btn" style="margin-top:16px;">Request Bank Details via WhatsApp</button>
+        </div>
+
         <div class="status-msg" id="status-msg"></div>
-        <p class="checkout-note">Prices are shown in KES for reference. PayPal settles in USD, so your card/PayPal balance will be charged the USD equivalent shown above &mdash; Tech Hub never sees or stores your card details.Your order is recorded once PayPal confirms payment.</p>
+        <p class="checkout-note">Prices are shown in KES for reference. PayPal settles in USD, so your card/PayPal balance will be charged the USD equivalent shown above &mdash; Tech Hub never sees or stores your card details. M-PESA and Bank Transfer orders are confirmed manually over WhatsApp once payment is received.</p>
       </div>
 
       <div class="summary-card">
@@ -83,6 +127,7 @@
   <div class="wrap">
     <div class="footer-bottom">
       <span>&copy; 2026 Tech Hub. All rights reserved.</span>
+      <span>Call: <a href="tel:+254794637463">0794637463</a> &middot; M-PESA Till: 3671768 &middot; Bank Transfer Available</span>
     </div>
   </div>
 </footer>
@@ -90,6 +135,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/nav.js"></script>
 
 <!--
   PAYPAL SDK — currency stays USD here on purpose (see js/checkout.js
@@ -99,5 +145,62 @@
 -->
 <script src="https://www.paypal.com/sdk/js?client-id=Aby-Y2fwHLmZlkJm7gRUKlo3lWFJ6BdIkocU8p8ncrgT6UP25GY9a8HX2FDarAKWQKUtI2GD4I2I1cnn&currency=USD"></script>
 <script src="js/checkout.js"></script>
+<script>
+  // Payment method tabs — purely a UI toggle, doesn't touch the PayPal
+  // flow in js/checkout.js at all.
+  document.querySelectorAll("#payment-tabs .filter-chip").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll("#payment-tabs .filter-chip").forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      const mode = tab.dataset.pay;
+      document.getElementById("pay-paypal").style.display = mode === "paypal" ? "" : "none";
+      document.getElementById("pay-mpesa").style.display = mode === "mpesa" ? "" : "none";
+      document.getElementById("pay-bank").style.display = mode === "bank" ? "" : "none";
+    });
+  });
+
+  function buildWhatsAppOrderMessage(method) {
+    const form = document.getElementById("checkout-form");
+    if (!form.reportValidity()) return null; // reuses existing required-field validation
+    const name = document.getElementById("full-name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const country = document.getElementById("country").value.trim();
+    const total = (document.getElementById("sum-total").textContent || "").trim();
+    return [
+      `New order (${method})`,
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Address: ${address}, ${city}, ${country}`,
+      `Total: ${total}`,
+      `Please confirm my order.`
+    ].join("\n");
+  }
+
+  document.getElementById("mpesa-confirm-btn").addEventListener("click", () => {
+    const msg = buildWhatsAppOrderMessage("M-PESA");
+    if (!msg) return;
+    window.open("https://wa.me/254794637463?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  document.getElementById("bank-confirm-btn").addEventListener("click", () => {
+    const msg = buildWhatsAppOrderMessage("Bank Transfer");
+    if (!msg) return;
+    window.open("https://wa.me/254794637463?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  document.getElementById("copy-till-checkout-btn").addEventListener("click", function () {
+    const till = document.getElementById("mpesa-till-checkout").textContent.trim();
+    const btn = this;
+    const original = btn.textContent;
+    navigator.clipboard.writeText(till).then(() => {
+      btn.textContent = "Copied \u2713";
+      setTimeout(() => (btn.textContent = original), 1200);
+    }).catch(() => {
+      alert("M-PESA Till Number: " + till);
+    });
+  });
+</script>
 </body>
 </html>

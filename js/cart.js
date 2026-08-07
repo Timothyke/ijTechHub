@@ -9,20 +9,16 @@
 
 const CART_KEY = "nexus_cart";
 
-// Approximate USD → KES rate. PayPal does not support charging in
-// KES directly, so the real transaction always happens in USD —
-// this constant is only used to SHOW a KES-equivalent price to
-// shoppers. Update this periodically to stay close to the real
-// exchange rate (check e.g. xe.com/currencyconverter).
+// Approximate KES → USD rate, used ONLY to convert the real KES total
+// into a USD amount at the moment PayPal is charged (PayPal doesn't
+// support settling in KES). `price` on every product/cart item is
+// stored directly in KES — this constant is never applied to display,
+// only at the actual checkout charge. Update periodically.
 const KES_RATE = 129;
 
-// Every page includes this file, so this is the one place that
-// defines how a price is displayed. Pass it a USD amount (the
-// value actually stored on products/cart items) and it returns a
-// formatted KES string.
-function money(usdAmount) {
-  const kes = Number(usdAmount) * KES_RATE;
-  return "KES " + kes.toLocaleString("en-KE", { maximumFractionDigits: 0 });
+// `price` is the real KES value — this just formats it, no conversion.
+function money(kesAmount) {
+  return "KES " + Number(kesAmount).toLocaleString("en-KE", { maximumFractionDigits: 0 });
 }
 
 function getCart() {
@@ -69,9 +65,9 @@ function updateQty(id, qty) {
   saveCart(cart);
 }
 
-// Returns the raw USD subtotal — the real value, not the display
-// currency. Multiply by KES_RATE (or call money()) when showing
-// it to the user.
+// Returns the cart subtotal in KES — the real, stored value.
+// Divide by KES_RATE (or use checkout.js's usd conversion) only
+// at the moment of the actual PayPal charge.
 function cartTotal() {
   return getCart().reduce((sum, item) => sum + item.price * item.qty, 0);
 }
